@@ -1,0 +1,40 @@
+if &shell =~# 'fish$'
+    set shell=sh
+endif
+
+set nocompatible    " Required for Vundle
+filetype off        " Required for Vundle
+set rtp+=~/.vim/bundle/Vundle.vim
+source ~/.vim/plugins.vim
+filetype plugin indent on " Required for Vundle
+
+source ~/.vim/basic.vim
+source ~/.vim/extended.vim
+source ~/.vim/mymappings.vim
+
+"" Statusline
+let g:airline_theme = "powerlineish"
+let g:airline_powerline_fonts = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_left_sep=''
+let g:airline_right_sep=''
+let g:airline_section_z=''
+
+set number " show line numbers
+
+" Folding
+set foldenable
+set foldlevelstart=10
+set foldnestmax=10
+set foldmethod=indent
+
+" Functions for convenience
+" Toggles between number and relative number
+function! ToggleNumber()
+    if(&relativenumber == 1)
+        set norelativenumber
+        set number
+    else
+        set relativenumber
+    endif
+endfunc

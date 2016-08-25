@@ -1,0 +1,129 @@
+!!!!!!!!!!!!!!!!
+! URxvt Config !
+!!!!!!!!!!!!!!!!
+!
+! No scrollbar
+URxvt*scrollBar: false
+! do not scroll with output
+URxvt*scrollTtyOutput: false
+!
+! ! scroll in relation to buffer (with mouse scroll or Shift+Page Up)
+URxvt*scrollWithBuffer: true
+!
+! ! scroll back to the bottom on keypress
+URxvt*scrollTtyKeypress: true
+
+!! Enable scroll in scrolling within secondery screens, i.e. less
+URxvt.secondaryScreen: 1
+URxvt.secondaryScroll: 0
+
+!! Do not save lines, just use a terminal multiplexer for that
+URxvt*saveLines: 0
+
+!! Font settings
+!!URxvt.font: xft:Consolas:style=Medium:size=14
+URxvt.font: xft:Source Code Pro for Powerline:style=Medium:size=16, xft:FontAwesome:style=Regular:size=14
+
+!! Perl extensions
+URxvt.perl-ext-common: default,selection-to-clipboard,url-select
+
+!! url settings
+URxvt.keysym.M-u: perl:url-select:select-next
+URxvt.url-select.url-launcher: /usr/bin/xdg-open
+URxvt.url-select.underline: true
+URxvt.colorUL: #ffffff
+
+!!!!!!!!!!!!!!!!!!
+!  URxvt Colors  !
+!!!!!!!!!!!!!!!!!!
+
+URxvt.background:       #1B1D1E
+URxvt.cursorColor:      #0A9DFF
+URxvt.foreground:       #FFFFFF
+uRxvt.highlightColor:   #0A9DFF
+
+URxvt.color0:           #000000
+URxvt.color1:           #FF0000
+URxvt.color2:           #A6E22E
+URxvt.color3:           #FD971F
+URxvt.color4:           #AE81FF
+URxvt.color5:           #F92672
+URxvt.color6:           #66D9EF
+URxvt.color7:           #F2F2F2
+URxvt.color8:           #5D5D5D
+URxvt.color9:           #FF0000
+URxvt.color10:          #A6E22E
+URxvt.color11:          #FD971F
+URxvt.color12:          #AE81FF
+URxvt.color13:          #F92672
+URxvt.color14:          #66D9EF
+URxvt.color15:          #FFFFFF
+
+
+!!!!!!!!!
+! Style !
+!!!!!!!!!
+
+! NORMAL COLORS
+! ----------------
+! color 0    white
+! color 1      red
+! color 2    green
+! color 3   yellow
+! color 4     blue
+! color 5   purple
+! color 6     cyan
+! color 7    black
+
+!URxvt*color0:              #D6DAE4
+!URxvt*color1:              #F71118
+!URxvt*color2:              #2CC55D
+!URxvt*color3:              #ECB90F
+!URxvt*color4:              #2A84D2
+!URxvt*color5:              #4E59B7
+!URxvt*color6:              #0F80D5
+!URxvt*color7:              #1F1F1F
+
+! LIGHT COLORS
+! ---------------
+! color 8   black
+! color 9     red 
+! color 10  green
+! color 11 yellow
+! color 12   blue
+! color 13 purple
+! color 14   cyan 
+! color 15  white
+
+ !URxvt*color8:              #D6DAE4
+ !URxvt*color9:              #DE342E
+ !URxvt*color10:             #1DD260
+ !URxvt*color11:             #F2BD09
+ !URxvt*color12:             #0F80D5
+ !URxvt*color13:             #524FB9
+ !URxvt*color14:             #0F7CDA
+ !URxvt*color15:             #FFFFFF
+
+! OTHER COLORS
+
+ !URxvt*background:          #131313
+ !URxvt*foreground:          #D6DAE4
+ !URxvt*cursorColor:         #D6DAE4
+
+
+!!!!!!!!
+!! Rofi !
+!!!!!!!!!
+
+! Color
+rofi.color-enabled: true
+rofi.color-window: #131313, #131313, #0F73FB
+rofi.color-normal: #131313, #D6DAE4, #131313, #202020, #0F73FB
+rofi.color-active: #131313, #2CC55D, #131313, #202020, #2CC55D
+rofi.color-urgent: #131313, #F71118, #131313, #202020, #DA4281
+
+! Opacity
+rofi.opacity: 97
+
+! Font
+rofi.font: Noto Sans 16
