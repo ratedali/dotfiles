@@ -83,7 +83,6 @@ interval=3
 signal=10
 # MPD 
 [mpd]
-label=
 command=~/.bin/mpd_block
 interval=3
 
