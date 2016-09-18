@@ -18,8 +18,8 @@
 fa_playing=""
 fa_paused=""
 fa_stopped=""
-playing_color="#2FA0F5"
-paused_color="#ffff00"
+playing_color="#0A9DFF"
+paused_color="#FD971F"
 stopped_color="#ff0000"
 
 host="$BLOCK_INSTANCE"
@@ -31,7 +31,7 @@ status=$(mpc --host "$host" | head -n 2)
 len=$(echo "$status" | wc -l)
 
 if [[ len -lt 2 ]]; then
-    echo "$fa_stopped Nothing on your queue"
+    echo "$fa_stopped Nothing playing"
     echo
     echo "$stopped_color"
     exit 0
