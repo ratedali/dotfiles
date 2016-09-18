@@ -25,89 +25,85 @@
 #
 #  0. You just DO WHAT THE FUCK YOU WANT TO.
 
-if [ -z "$TMUX" ]; then
-
     # Adjust to your preffered terminal
-    TERMCMD=${TERMCMD:-urxvtc}
-    TERMEXE="$TERMCMD -e"
+TERMCMD=${TERMCMD:-urxvt}
+term_execute() {
+    $TERMCMD -e $@
+}
 
-    if [ "$1" == "-n" ]; then
-        NO_NEW=1
-        SESSION_NAME="$2"
-        WINDOW_NAME="$3"
-        EXECUTABLE="$4"
-    else
-        NO_NEW=0
-        SESSION_NAME="$1"
-        WINDOW_NAME="$2"
-        EXECUTABLE="$3"
-    fi
 
-    if [[ -z "$EXECUTABLE" ]]; then
-        EXECUTABLE="$SHELL"
-    fi
+if [ "$1" == "-n" ]; then
+    NO_NEW=1
+    SESSION_NAME="$2"
+    WINDOW_NAME="$3"
+    EXECUTABLE="$4"
+else
+    NO_NEW=0
+    SESSION_NAME="$1"
+    WINDOW_NAME="$2"
+    EXECUTABLE="$3"
+fi
 
-    echo "no new?=$NO_NEW"
-    echo "session=$SESSION_NAME"
-    echo "window=$WINDOW_NAME"
-    echo "executable=$EXECUTABLE"
+echo "no new?=$NO_NEW"
+echo "session=$SESSION_NAME"
+echo "window=$WINDOW_NAME"
+echo "executable=$EXECUTABLE"
 
-    AVAILABLE=$(tmux ls -F "#{session_name}:#{?session_attached,attached,}" | grep "$SESSION_NAME")
+AVAILABLE=$(tmux ls -F "#{session_name}:#{?session_attached,attached,}" | grep "$SESSION_NAME")
+if [ -n "$SESSION_NAME" ]; then
+    TARGET_SESSION=$(echo "$AVAILABLE" | cut -d: -f1)
+    IS_ATTACHED=$(echo "$AVAILABLE" | grep attached | cut -d: -f2)
+else
+    TARGET_SESSION=$(echo "$AVAILABLE" | grep -v -m1 attached | cut -d: -f1)
+fi
+
+echo "available_sessions=\"$AVAILABLE\""
+echo "target_session=\"$TARGET_SESSION\""
+echo "attached?=${IS_ATTACHED:-no}"
+
+WINDOWS=$(tmux list-windows -F "#{window_name}" -t "=$TARGET_SESSION" 2>/dev/null)
+TARGET_WINDOW=$(echo "$WINDOWS" | grep -m1 "$WINDOW_NAME")
+
+echo "available_windows=\"$WINDOWS\""
+echo "target_windows=\"$TARGET_WINDOW\""
+
+if [ -n "$TARGET_SESSION" ]; then
     if [ -n "$SESSION_NAME" ]; then
-        TARGET_SESSION=$(echo "$AVAILABLE" | cut -d: -f1)
-        IS_ATTACHED=$(echo "$AVAILABLE" | grep attached | cut -d: -f2)
-    else
-        TARGET_SESSION=$(echo "$AVAILABLE" | grep -v -m1 attached | cut -d: -f1)
-    fi
-
-    echo "available_sessions=\"$AVAILABLE\""
-    echo "target_session=\"$TARGET_SESSION\""
-    echo "attached?=${IS_ATTACHED:-no}"
-    
-    WINDOWS=$(tmux list-windows -F "#{window_name}" -t "=$TARGET_SESSION" 2>/dev/null)
-    TARGET_WINDOW=$(echo "$WINDOWS" | grep -m1 "$WINDOW_NAME")
-
-    echo "available_windows=\"$WINDOWS\""
-    echo "target_windows=\"$TARGET_WINDOW\""
-
-    if [ -n "$TARGET_SESSION" ]; then
-        if [ -n "$SESSION_NAME" ]; then
-            if [ -n "$TARGET_WINDOW" -a -z "$IS_ATTACHED" ]; then    
-                echo "just attaching : $TARGET_SESSION:$TARGET_WINDOW"
-                $TERMEXE tmux attach -t "$TARGET_SESSION:$TARGET_WINDOW" 
-            elif [ -n "$TARGET_WINDOW" -a -n "$IS_ATTACHED" ]; then
-                echo "selecting window : $TARGET_SESSION:$TARGET_WINDOW"
-                $TERMEXE tmux select-window -t "=$TARGET_SESSION:$TARGET_WINDOW"
-            elif [ -z "$TARGET_WINDOW" -a -n "$WINDOW_NAME" ]; then
-                if [ "$NO_NEW" -eq 0 ]; then
-                    echo "new window : $TARGET_SESSION:$WINDOW_NAME"
-                    $TERMEXE tmux new-window -n "$WINDOW_NAME" -t "$TARGET_SESSION:" "$EXECUTABLE"
-                    if [ -z "$IS_ATTACHED" ]; then 
-                        echo "and attaching"
-                        $TERMEXE tmux attach -t "$TARGET_SESSION:$WINDOW_NAME"
-                    fi
+        if [ -n "$TARGET_WINDOW" -a -z "$IS_ATTACHED" ]; then    
+            echo "just attaching : $TARGET_SESSION:$TARGET_WINDOW"
+            term_execute tmux attach -t "$TARGET_SESSION:$TARGET_WINDOW" 
+        elif [ -n "$TARGET_WINDOW" -a -n "$IS_ATTACHED" ]; then
+            echo "selecting window : $TARGET_SESSION:$TARGET_WINDOW"
+            term_execute tmux select-window -t "=$TARGET_SESSION:$TARGET_WINDOW"
+        elif [ -z "$TARGET_WINDOW" -a -n "$WINDOW_NAME" ]; then
+            if [ "$NO_NEW" -eq 0 ]; then
+                echo "new window : $TARGET_SESSION:$WINDOW_NAME"
+                term_execute tmux new-window -n "$WINDOW_NAME" -t "$TARGET_SESSION:" $EXECUTABLE
+                if [ -z "$IS_ATTACHED" ]; then 
+                    echo "and attaching"
+                    term_execute tmux attach -t "$TARGET_SESSION:$WINDOW_NAME"
                 fi
             fi
-        else
-            echo "just attaching : $TARGET_SESSION:$TARGET_WINDOW"
-            $TERMEXE tmux attach -t "$TARGET_SESSION:$TARGET_WINDOW"
         fi
     else
-        if [ "$NO_NEW" -eq 0 ]; then
+        echo "just attaching : $TARGET_SESSION:$TARGET_WINDOW"
+        term_execute tmux attach -t "$TARGET_SESSION:$TARGET_WINDOW"
+    fi
+else
+    if [ "$NO_NEW" -eq 0 ]; then
 
-            if [ -n "$SESSION_NAME" -a -n "$WINDOW_NAME" ]; then
-                echo "new session : $SESSION_NAME:$WINDOW_NAME"
-                $TERMEXE tmux new-session -s "$SESSION_NAME" -n "$WINDOW_NAME" "$EXECUTABLE"
-            elif [ -n "$SESSION_NAME" -a -z "$WINDOW_NAME" ]; then
-                echo "new session : session $SESSION_NAME" "$EXECUTABLE"
-                $TERMEXE tmux new-session -s "$SESSION_NAME" "$EXECUTABLE"
-            elif [ -z "$SESSION_NAME" -a -n "$WINDOW_NAME" ]; then
-                echo "new session : window $WINDOW_NAME"
-                $TERMEXE tmux new-session -n "$WINDOW_NAME" "$EXECUTABLE"
-            else
-                echo "new session"
-                $TERMEXE tmux new-session "$EXECUTABLE"
-            fi
+        if [ -n "$SESSION_NAME" -a -n "$WINDOW_NAME" ]; then
+            echo "new session : $SESSION_NAME:$WINDOW_NAME"
+            term_execute tmux new-session -s "$SESSION_NAME" -n "$WINDOW_NAME" $EXECUTABLE
+        elif [ -n "$SESSION_NAME" -a -z "$WINDOW_NAME" ]; then
+            echo "new session : session $SESSION_NAME" $EXECUTABLE
+            term_execute tmux new-session -s "$SESSION_NAME" $EXECUTABLE
+        elif [ -z "$SESSION_NAME" -a -n "$WINDOW_NAME" ]; then
+            echo "new session : window $WINDOW_NAME"
+            term_execute tmux new-session -n "$WINDOW_NAME" $EXECUTABLE
+        else
+            echo "new session"
+            term_execute tmux new-session $EXECUTABLE
         fi
     fi
 fi
