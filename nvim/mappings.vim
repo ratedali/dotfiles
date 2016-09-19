@@ -24,7 +24,7 @@ vnoremap <silent> # :call VisualSelection('b', '')<CR>
 " Smart mappings on the command line
 cnoremap $d ~/Desktop/
 cnoremap $j ./
-cnoremap $w ~/Workspace
+cnoremap $w ~/Workspace/
 
 " $q is super useful when browsing on the command line
 " it deletes everything until the last slash 
@@ -40,7 +40,7 @@ map j gj
 map k gk
 
 " Disable highlight when <leader><cr> is pressed
-map <silent> <leader><space> :noh<cr>
+map <silent> <leader><esc> :noh<cr>
 
 " Errors windows
 nnoremap <leader>ln :lne<cr>
