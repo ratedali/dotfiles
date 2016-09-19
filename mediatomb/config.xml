@@ -9,7 +9,7 @@
     </ui>
     <name>SVF13</name>
     <udn>uuid:c70f17ac-b441-49bd-9dab-485755e1d5df</udn>
-    <home>~/.mediatomb</home>
+    <home>/home/ali/.mediatomb</home>
     <webroot>/usr/share/mediatomb/web</webroot>
     <storage>
       <sqlite3 enabled="yes">
