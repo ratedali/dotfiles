@@ -1,2 +1,2 @@
 #!/bin/sh
-[[ -z $TMUX ]] && tmux
+$HOME/.bin/wal -r && [[ -z $TMUX ]] && tmux $@

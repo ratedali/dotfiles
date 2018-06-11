@@ -1,1 +1,1 @@
-/home/ali/.local/share/omf/themes/edan/fish_prompt.fish
+/home/ali/.local/share/omf/themes/bobthefish/fish_prompt.fish

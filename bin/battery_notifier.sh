@@ -24,16 +24,6 @@
 battery_state=$(acpi -b | cut -d: -f2 | cut -d, -f2 | sed -e 's:\s\+::' | sed -e 's:%::')
 ac_connected=$(acpi -a | cut -d: -f2 | sed -e 's:\s\+::')
 
-if [ "$battery_state" -gt 80 -a "$ac_connected" == "on-line" ]; then
-    message="Unplug the charger"
-    notify-send -a "Battery Status" --icon=battery "Battery Level Over 80%" "$message"
-    # notify_device "$message"
-elif [ "$battery_state" -lt 40 -a "$ac_connected" == "off-line" ]; then
-    message="Plug in the charger"
-    notify-send -a "Battery Status" --icon=battery "Battery Level Below 40%" "$message"
-    # notify_device "$message"
-fi
-
 function notify_device {
     # Sends a notification to the first connected device using KDEConnect
     # the first argument is used as the notification message
@@ -43,3 +33,13 @@ function notify_device {
     fi
     return 0
 }
+
+if [ "$battery_state" -gt 80 -a "$ac_connected" == "on-line" ]; then
+    message="Unplug the charger"
+    notify-send -a "Battery Status" --icon=battery "Battery Level Over 80%" "$message"
+    notify_device "$message"
+elif [ "$battery_state" -lt 40 -a "$ac_connected" == "off-line" ]; then
+    message="Plug in the charger"
+    notify-send -a "Battery Status" --icon=battery "Battery Level Below 40%" "$message"
+    notify_device "$message"
+fi

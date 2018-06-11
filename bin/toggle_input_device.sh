@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 #         DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
 #                 Version 2, December 2004
@@ -22,6 +22,7 @@
 #               otherwise the device name will be used for generating a message
 # OPTIONS:
 #     -h        show this help message
+#     -q        disables notifications
 
 print_help() {
    cat >&2 << EOM
@@ -32,22 +33,37 @@ APP_NAME      is optional. If given it's used for notifications as a message,
               otherwise the device name will be used for generating a message
 OPTIONS:
     -h        show this help message
+    -q        disables notifications
 EOM
 }
 
 
-if [[ -z "$1" || "$1" == "-h" || $# -gt 2 ]]; then
+if [[ $# -eq 0 || ("$1" == "-q" && $# -eq 1) ]]; then
     echo "Device name not given" >&2
     print_help
-    exit 1;
+    exit 1
 fi
 
-device_name="$1"
-if [[ -n "$2" ]]; then
-    app_name="$2"
+if [[ "$1" == "-h" ]]; then
+    print_help
+    exit 0
+fi
+
+if [[ "$1" == "-q" ]]; then
+    device_name="$2"
+    app_name_provided=$([[ -n "$3" ]])
+    app_name="$3"
 else
+    notifications=1
+    device_name="$1"
+    app_name_provided=$([[ -n "$2" ]])
+    app_name="$2"
+fi
+
+if [[ ! $app_name_provided ]]; then
     app_name="$device_name Toggler"
 fi
+
 
 state=$(xinput list-props "$device_name" | sed -nre 's/^.*Device Enabled.*:.*([[:digit:]])$/\1/p')
 if [[ -z "$state" ]]; then
@@ -55,9 +71,9 @@ if [[ -z "$state" ]]; then
 fi
 
 if [[ $(($state)) -eq 1 ]]; then
-    notify-send -a "$app_name" --icon=dialog-information "$app_name" "Disabling $device_name" 
+    [[ $notifications ]] && notify-send -a "$app_name" --icon=dialog-information "$app_name" "Disabling $device_name" 
     xinput disable "$device_name"
 else
-    notify-send -a "$app_name" --icon=dialog-information "$app_name"  "Enabling $device_name"
+    [[ $notifications ]] && notify-send -a "$app_name" --icon=dialog-information "$app_name"  "Enabling $device_name"
     xinput enable "$device_name"
 fi
