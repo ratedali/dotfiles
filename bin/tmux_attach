@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # usage: tmux_attach [-n] [TARGET_SESSION] [TARGET_WINDOW] [EXECUTABLE]
 #
@@ -26,10 +26,10 @@
 #  0. You just DO WHAT THE FUCK YOU WANT TO.
 
     # Adjust to your preffered terminal
-TERMCMD=${TERMCMD:-urxvtc}
+TERMCMD=${TERMCMD:-x-terminal-emulator}
 term_execute() {
-    echo executing \"$TERMCMD -e tmux_term $@\"
-    $TERMCMD -e $HOME/.bin/tmux_term $@
+    echo executing \"$TERMCMD -- tmux_term $@\"
+    $TERMCMD -- $HOME/.bin/tmux_term $@
 }
 
 
@@ -45,7 +45,7 @@ else
     EXECUTABLE="$3"
 fi
 
-NEW_EXECUTABLE="/usr/bin/sh -c '$HOME/.bin/wal -r && $EXECUTABLE'"
+NEW_EXECUTABLE="/bin/sh -c '$HOME/.bin/wal -r && $EXECUTABLE'"
 
 echo "no new?=$NO_NEW"
 echo "session=$SESSION_NAME"
