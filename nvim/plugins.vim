@@ -26,6 +26,7 @@ Plug 'lifepillar/vim-solarized8'
 Plug 'pbrisbin/vim-colors-off'
 Plug 'marciomazza/vim-brogrammer-theme'
 Plug 'vim-scripts/molokai'
+Plug 'dylanaraps/wal.vim'
 call plug#end()
 
 source ~/.config/nvim/plugins/YouCompleteMe.vim

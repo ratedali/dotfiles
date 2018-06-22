@@ -33,7 +33,7 @@ set foldcolumn=1
 " => Font and Color
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
-colorscheme molokai
+colorscheme wal
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Folding
