@@ -22,7 +22,7 @@ URxvt*saveLines: 0
 
 !! Font settings
 !!URxvt.font: xft:Consolas:style=Medium:size=14
-URxvt.font: xft:Source Code Pro for Powerline:style=Medium:size=16, xft:FontAwesome:style=Regular:size=14
+URxvt.font: xft:Fira Mono:style=Medium:size=16, xft:FontAwesome:style=Regular:size=14
 
 !! Perl extensions
 !URxvt.perl-ext-common: default,selection-to-clipboard,url-select
