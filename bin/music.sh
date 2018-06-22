@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-~/.bin/tmux_attach mpdc music ncmpcpp
+tmux_attach mpdc music ncmpcpp

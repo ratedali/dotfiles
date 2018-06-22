@@ -28,8 +28,8 @@
     # Adjust to your preffered terminal
 TERMCMD=${TERMCMD:-x-terminal-emulator}
 term_execute() {
-    echo executing \"$TERMCMD -- tmux_term $@\"
-    $TERMCMD -- $HOME/.bin/tmux_term $@
+    echo executing \"$TERMCMD -e tmux_term $@\"
+    $TERMCMD -e $HOME/.bin/tmux_term $@
 }
 
 
