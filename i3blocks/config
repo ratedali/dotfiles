@@ -5,8 +5,8 @@
 #
 # List of valid properties:
 #
-# align
 # color
+# align
 # command
 # full_text
 # instance
@@ -39,48 +39,70 @@ markup=none
 ##########
 
 # CPU #
-#[cpu_usage]
-#label=
-#interval=1
-#separator=false
+# [cpu_usage]
+# label=
+# interval=1
+
+# BATTERY #
+[battery]
+label=
+interval=60
 
 # RAM #
 [memory]
-label=
-interval=1
+label=
+interval=30
+separator=false
 
+# SWAP #
+[memory]
+label=
+instance=swap
+interval=30
 
 
 #########
 # DISKS #
 #########
+#
+# ROOT DIRECTORY
+[disk]
+label=
+instance=/
+interval=30
+separator=false
 
 # HOME DIRECTORY
 [disk]
 label=
+instance=/home
 interval=30
 
 # MOUNTED STORAGE DIRECTORY
 [disk]
-label=
+label=
 instance=/run/media/ali/RR
 interval=30
+separator=false
 
 [disk]
-label=
+label=
 instance=/run/media/ali/Rated.Ali
 interval=30
+
 ################
 # Media player #
 ################
 # This displays "ARTIST - SONG" if a music is playing.
 # Supported players are: spotify, vlc, audacious, xmms2, mplayer, and others.
+#
 # VIDEO PLAYER
 [mediaplayer]
 label=
 instance=smplayer
 interval=3
 signal=10
+
 # MPD 
 [mpd]
 command=~/.bin/mpd_block
@@ -91,31 +113,28 @@ interval=3
 # NETWORK #
 ##########
 
-#[wifi]
-#label=
-#instance=wlp2s0
-#interval=10
-#separator=false
+[wifi]
+label=
+instance=wlp2s0
+interval=10
+separator=false
 
-#[bandwidth]
-#instance=wlp2s0
-#interval=5
+[openvpn]
+interval=20
+separator=false
+
+[bandwidth]
+instance=wlp2s0
+interval=5
 
 ##########
 # Volume #
 ##########
 [volume]
-label=♪
+label=
 interval=1
 signal=10
 
-###########
-# BATTERY #
-###########
-
-[battery]
-label=
-interval=60
 
 
 
@@ -124,8 +143,12 @@ interval=60
 #################
 
 [time]
-#command=date '+ %m-%d-%y    %I:%M:%S%p'
-command=date '+ %I:%M'
+command=date '+ %I:%M%p'
+interval=60
+
+separator=false
+[time]
+command=date '+ %d/%m/%Y'
 interval=60
 
 #####################
