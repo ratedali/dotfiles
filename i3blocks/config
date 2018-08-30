@@ -52,13 +52,12 @@ interval=60
 [memory]
 label=
 interval=30
-separator=false
 
 # SWAP #
-[memory]
-label=
-instance=swap
-interval=30
+# [memory]
+# label=
+# instance=swap
+# interval=30
 
 
 #########
@@ -83,12 +82,11 @@ interval=30
 label=
 instance=/run/media/ali/RR
 interval=30
-separator=false
 
-[disk]
-label=
-instance=/run/media/ali/Rated.Ali
-interval=30
+# [disk]
+# label=
+# instance=/run/media/ali/Rated.Ali
+# interval=30
 
 ################
 # Media player #
@@ -113,19 +111,19 @@ interval=3
 # NETWORK #
 ##########
 
-[wifi]
-label=
-instance=wlp2s0
-interval=10
-separator=false
+# [wifi]
+# label=
+# instance=wlp2s0
+# interval=10
+# separator=false
 
-[openvpn]
-interval=20
-separator=false
+# [openvpn]
+# interval=20
+# separator=false
 
-[bandwidth]
-instance=wlp2s0
-interval=5
+# [bandwidth]
+# instance=wlp2s0
+# interval=5
 
 ##########
 # Volume #

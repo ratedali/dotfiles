@@ -162,9 +162,9 @@ bindsym $mod+Shift+9 move container to workspace $w9, workspace $w9
 bindsym $mod+Shift+0 move container to workspace $w10, workspace $w10
 
 # Volume Controls
-bindsym XF86AudioMute exec --no-startup-id mixer -c 1 set Master toggle; exec amixer -c 1 set Speaker toggle
-bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 1 set Master 5%+ unmute; exec amixer -c 1 set Speaker unmute
-bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 1 set Master 5%- unmute; exec amixer -c 1 set Speaker unmute
+bindsym XF86AudioMute exec --no-startup-id mixer -c 0 set Master toggle; exec amixer -c 0 set Speaker toggle
+bindsym XF86AudioRaiseVolume exec --no-startup-id amixer -c 0 set Master 5%+ unmute; exec amixer -c 0 set Speaker unmute
+bindsym XF86AudioLowerVolume exec --no-startup-id amixer -c 0 set Master 5%- unmute; exec amixer -c 0 set Speaker unmute
 
 # Brightness Controls
 bindsym XF86MonBrightnessUp exec xbacklight +1
@@ -246,8 +246,8 @@ bindsym $mod+e workspace $files, exec --no-startup-id ~/.bin/file_manager.sh
 # Task Manager
 bindsym Shift+Ctrl+Escape workspace $term, exec --no-startup-id ~/.bin/tasks.sh
 
-# Web Mrowser
-bindsym $mod+c workspace $web, exec qutebrowser
+# Web Browser
+bindsym $mod+c workspace $web, exec dex /usr/share/applications/firefox.desktop
 
 # Webapps
 bindsym $mod+t exec google-chrome-beta --app=https://web.telegram.org
@@ -311,7 +311,7 @@ bindsym $mod+r mode "resize"
  # Dark Purple:  #4E59B7
 
  # set color aliases
- set $bg-color            #2f343f70
+ set $bg-color            #2f343f87
  set $inactive-bg-color   #20202070
  set $text-color          #d6dae4ff
  set $inactive-text-color #808080ff
@@ -334,7 +334,7 @@ bar {
     i3bar_command  i3bar -t
     status_command i3blocks
     position top
-    font pango: Font Awesome 5 Free 14
+    font pango: Fira Sans Condensed, Font Awesome 5 Free 14
     strip_workspace_numbers yes
     colors {
         background $bg-color
@@ -354,7 +354,7 @@ assign [class="^qBittorrent$"] → $torrent
 # Startup Applications
 exec --no-startup-id compton -b --backend glx --vsync opengl -cCGf --inactive-dim .5 -i .9 -e .9
 exec --no-startup-id dex -e i3 -a
-exec --no-startup-id nitrogen --restore
+# exec --no-startup-id nitrogen --restore
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
 exec --no-startup-id urxvtd -q -o -f
 # vim:filetype=i3
