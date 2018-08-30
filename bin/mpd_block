@@ -15,22 +15,37 @@
 #  0. You just DO WHAT THE FUCK YOU WANT TO.
 
 
+. "$HOME/.cache/wal/colors.sh"
+
+format="%title% - %album%"
+
 fa_playing=""
 fa_paused=""
 fa_stopped=""
-playing_color="#0A9DFF"
-paused_color="#FD971F"
-stopped_color="#ff0000"
+
+playing_color="$color4"
+paused_color="$color2"
+stopped_color="$color1"
+
 
 host="$BLOCK_INSTANCE"
 if [[ -z "$host" ]]; then
     host="localhost"
 fi
 
-status=$(mpc --host "$host" | head -n 2)
+if [[ -n "$BLOCK_BUTTON"  ]]; then
+    if [[ "$BLOCK_BUTTON" == "1" ]]; then
+        mpc toggle --host "$host" > /dev/null 2>&1
+    elif [[ "$BLOCK_BUTTON" == "2" ]]; then
+        mpc prev --host "$host" > /dev/null 2>&1
+    elif [[ "$BLOCK_BUTTON" == "3" ]]; then
+        mpc next --host "$host" > /dev/null 2>&1
+    fi
+fi
+status=$(mpc -f "$format" --host "$host" | head -n 2)
 len=$(echo "$status" | wc -l)
 
-if [[ len -lt 2 ]]; then
+if [[ $len -lt 2 ]]; then
     echo "$fa_stopped Nothing playing"
     echo
     echo "$stopped_color"
@@ -40,23 +55,12 @@ fi
 current=$(echo "$status" | head -n1)
 play_status=$(echo "$status" | tail -n1 | sed -re 's/^\[(.*)\].*$/\1/')
 
-if [[ -n "$BLOCK_BUTTON" && "$BLOCK_BUTTON" == "1" ]]; then
-    mpc toggle --host "$host" > /dev/null 2>&1
-    if [[ "$play_status" == "playing" ]]; then
-        icon="$fa_paused"
-        color="$paused_color"
-    else
-        icon="$fa_playing"
-        color="$playing_color"
-    fi
+if [[ "$play_status" == "playing" ]]; then
+    icon="$fa_playing"
+    color="$playing_color"
 else
-    if [[ "$play_status" == "playing" ]]; then
-        icon="$fa_playing"
-        color="$playing_color"
-    else
-        icon="$fa_paused"
-        color="$paused_color"
-    fi
+    icon="$fa_paused"
+    color="$paused_color"
 fi
 
 echo "$icon $current"
