@@ -22,7 +22,8 @@ URxvt*saveLines: 0
 
 !! Font settings
 !!URxvt.font: xft:Consolas:style=Medium:size=14
-URxvt.font: xft:Fira Mono:style=Medium:size=16, xft:FontAwesome:style=Regular:size=14
+URxvt.font: xft:Fira Mono:size=16:minspace=False, xft:Sazanami Gothic, xft:Noto Sans Arabic UI, xft:PowerlineSymbols, xft:Font Awesome 5 Free, xft:Noto Color Emoji:minspace=False, xft:Noto Sans
+URxvt.letterSpace: 0
 
 !! Perl extensions
 !URxvt.perl-ext-common: default,selection-to-clipboard,url-select
