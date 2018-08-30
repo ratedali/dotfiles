@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-tmux_attach files files ranger
+~/.bin/tmux_attach files files ranger

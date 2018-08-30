@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-tmux_attach editor editor "${EDITOR:-nvim}"
+~/.bin/tmux_attach editor editor "${EDITOR:-nvim}"
