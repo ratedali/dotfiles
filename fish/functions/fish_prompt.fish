@@ -1,1 +1,1 @@
-/home/ali/.local/share/omf/themes/bobthefish/fish_prompt.fish
+/home/ali/.config/fisherman/l/fish_prompt.fish

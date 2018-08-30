@@ -1,0 +1,1 @@
+/home/ali/.config/fisherman/gitignore/completions/gitignore.fish
