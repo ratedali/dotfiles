@@ -1,0 +1,6 @@
+[user]
+	email = rated.ali.7@gmail.com
+	name = Ali Salah Alddin
+	signingKey = 040138FD
+[commit]
+	gpgSign = true
