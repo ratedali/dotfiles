@@ -1,6 +1,6 @@
 call plug#begin()
 
-Plug 'Valloric/YouCompleteMe', {'do': './install.py --tern-completer --clang-completer'}
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'tpope/vim-fugitive'
 Plug 'terryma/vim-multiple-cursors'
@@ -13,8 +13,11 @@ Plug 'honza/vim-snippets'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-repeat'
+Plug 'jiangmiao/auto-pairs'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux-focus-events'
+Plug 'wellle/tmux-complete.vim'
+Plug 'roxma/vim-tmux-clipboard'
 
 " specific file types
 Plug 'Valloric/MatchTagAlways'
@@ -33,8 +36,8 @@ Plug 'vim-scripts/molokai'
 Plug 'dylanaraps/wal.vim'
 call plug#end()
 
-source ~/.config/nvim/plugins/YouCompleteMe.vim
 source ~/.config/nvim/plugins/deoplete.vim
+source ~/.config/nvim/plugins/tmux-complete.vim
 source ~/.config/nvim/plugins/neomake.vim
 source ~/.config/nvim/plugins/airline.vim
 source ~/.config/nvim/plugins/ultisnips.vim
