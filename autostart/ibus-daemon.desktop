@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=iBus Daemon
+TryExec=ibus-daemon
+Exec=ibus-daemon -drx
+StartupNotify=false

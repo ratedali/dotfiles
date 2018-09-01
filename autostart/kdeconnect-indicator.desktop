@@ -1,0 +1,6 @@
+[Desktop Entry]
+Type=Application
+Name=KDEConnect Status Indicator
+TryExec=kdeconnect-indicator
+Exec=kdeconnect-indicator
+StartupNotify=false
