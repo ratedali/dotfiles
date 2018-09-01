@@ -28,8 +28,8 @@
     # Adjust to your preffered terminal
 TERMCMD=${TERMCMD:-x-terminal-emulator}
 term_execute() {
-    echo executing \"$TERMCMD -e tmux_term $@\"
-    $TERMCMD -e $HOME/.bin/tmux_term $@
+    echo executing \"$TERMCMD -e tmux_term $*\" >&2
+    env TMUX= $TERMCMD -e "$HOME/.bin/tmux_term $*"
 }
 
 
@@ -47,11 +47,11 @@ fi
 
 NEW_EXECUTABLE="/bin/sh -c '$HOME/.bin/wal -r && $EXECUTABLE'"
 
-echo "no new?=$NO_NEW"
-echo "session=$SESSION_NAME"
-echo "window=$WINDOW_NAME"
-echo "executable=$EXECUTABLE"
-echo "new executable=$NEW_EXECUTABLE"
+echo "no new?=$NO_NEW" >&2
+echo "session=$SESSION_NAME" >&2
+echo "window=$WINDOW_NAME" >&2
+echo "executable=$EXECUTABLE" >&2
+echo "new executable=$NEW_EXECUTABLE" >&2
 
 AVAILABLE=$(tmux ls -F "#{session_name}:#{?session_attached,attached,}" | grep "$SESSION_NAME")
 if [ -n "$SESSION_NAME" ]; then
@@ -61,52 +61,52 @@ else
     TARGET_SESSION=$(echo "$AVAILABLE" | grep -v -m1 attached | cut -d: -f1)
 fi
 
-echo "available_sessions=\"$AVAILABLE\""
-echo "target_session=\"$TARGET_SESSION\""
-echo "attached?=${IS_ATTACHED:-no}"
+echo "available_sessions=\"$AVAILABLE\"" >&2
+echo "target_session=\"$TARGET_SESSION\"" >&2
+echo "attached?=${IS_ATTACHED:-no}" >&2
 
 WINDOWS=$(tmux list-windows -F "#{window_name}" -t "=$TARGET_SESSION" 2>/dev/null)
 TARGET_WINDOW=$(echo "$WINDOWS" | grep -m1 "$WINDOW_NAME")
 
-echo "available_windows=\"$WINDOWS\""
-echo "target_windows=\"$TARGET_WINDOW\""
+echo "available_windows=\"$WINDOWS\"" >&2
+echo "target_windows=\"$TARGET_WINDOW\"" >&2
 
 if [ -n "$TARGET_SESSION" ]; then
     if [ -n "$SESSION_NAME" ]; then
         if [ -n "$TARGET_WINDOW" -a -z "$IS_ATTACHED" ]; then    
-            echo "just attaching : $TARGET_SESSION:$TARGET_WINDOW"
+            echo "just attaching : $TARGET_SESSION:$TARGET_WINDOW" >&2
             term_execute attach -t "$TARGET_SESSION:$TARGET_WINDOW" 
         elif [ -n "$TARGET_WINDOW" -a -n "$IS_ATTACHED" ]; then
-            echo "selecting window : $TARGET_SESSION:$TARGET_WINDOW"
+            echo "selecting window : $TARGET_SESSION:$TARGET_WINDOW" >&2
             term_execute select-window -t "=$TARGET_SESSION:$TARGET_WINDOW"
         elif [ -z "$TARGET_WINDOW" -a -n "$WINDOW_NAME" ]; then
             if [ "$NO_NEW" -eq 0 ]; then
-                echo "new window : $TARGET_SESSION:$WINDOW_NAME"
+                echo "new window : $TARGET_SESSION:$WINDOW_NAME" >&2
                 term_execute new-window -n "$WINDOW_NAME" -t "$TARGET_SESSION:" $EXECUTABLE
                 if [ -z "$IS_ATTACHED" ]; then 
-                    echo "and attaching"
+                    echo "and attaching" >&2
                     term_execute attach -t "$TARGET_SESSION:$WINDOW_NAME"
                 fi
             fi
         fi
     else
-        echo "just attaching : $TARGET_SESSION:$TARGET_WINDOW"
+        echo "just attaching : $TARGET_SESSION:$TARGET_WINDOW" >&2
         term_execute attach -t "$TARGET_SESSION:$TARGET_WINDOW"
     fi
 else
     if [ "$NO_NEW" -eq 0 ]; then
 
         if [ -n "$SESSION_NAME" -a -n "$WINDOW_NAME" ]; then
-            echo "new session : $SESSION_NAME:$WINDOW_NAME"
+            echo "new session : $SESSION_NAME:$WINDOW_NAME" >&2
             term_execute new-session -s "$SESSION_NAME" -n "$WINDOW_NAME" $EXECUTABLE
         elif [ -n "$SESSION_NAME" -a -z "$WINDOW_NAME" ]; then
-            echo "new session : session $SESSION_NAME" $EXECUTABLE
+            echo "new session : session $SESSION_NAME" $EXECUTABLE >&2
             term_execute new-session -s "$SESSION_NAME" $EXECUTABLE
         elif [ -z "$SESSION_NAME" -a -n "$WINDOW_NAME" ]; then
-            echo "new session : window $WINDOW_NAME"
+            echo "new session : window $WINDOW_NAME" >&2
             term_execute new-session -n "$WINDOW_NAME" $EXECUTABLE
         else
-            echo "new session"
+            echo "new session" >&2
             term_execute new-session $EXECUTABLE
         fi
     fi
