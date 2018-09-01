@@ -95,15 +95,16 @@ interval=30
 # Supported players are: spotify, vlc, audacious, xmms2, mplayer, and others.
 #
 # VIDEO PLAYER
-[mediaplayer]
-label=
+[smplayer]
+# label=
+command=~/.config/i3blocks/custom/playerctl
 instance=smplayer
 interval=3
-signal=10
 
 # MPD 
 [mpd]
-command=~/.bin/mpd_block
+command=~/.config/i3blocks/custom/playerctl
+instance=mpd
 interval=3
 
 
@@ -148,6 +149,14 @@ separator=false
 [time]
 command=date '+ %d/%m/%Y'
 interval=60
+
+########################
+#  Colroscheme Picker  #
+########################
+[colorscheme-picker]
+command=~/.config/i3blocks/colorscheme-picker -d ~/Pictures/Wallpapers
+full_text=
+
 
 #####################
 # END OF THE CONFIG #

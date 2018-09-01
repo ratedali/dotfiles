@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 #         DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
 #                 Version 2, December 2004
@@ -28,40 +28,37 @@ paused_color="$color2"
 stopped_color="$color1"
 
 
-host="$BLOCK_INSTANCE"
-if [[ -z "$host" ]]; then
-    host="localhost"
+player="$BLOCK_INSTANCE"
+if [[ ( -z "$(pgrep -a $player)" ) || ( -z "$player" ) ]]; then
+    exit 0
 fi
 
 if [[ -n "$BLOCK_BUTTON"  ]]; then
     if [[ "$BLOCK_BUTTON" == "1" ]]; then
-        mpc toggle --host "$host" > /dev/null 2>&1
+        playerctl -p "$player" play-pause > /dev/null 2>&1
     elif [[ "$BLOCK_BUTTON" == "2" ]]; then
-        mpc prev --host "$host" > /dev/null 2>&1
+        playerctl -p "$player" previous > /dev/null 2>&1
     elif [[ "$BLOCK_BUTTON" == "3" ]]; then
-        mpc next --host "$host" > /dev/null 2>&1
+        playerctl -p "$player" next > /dev/null 2>&1
     fi
 fi
-status=$(mpc -f "$format" --host "$host" | head -n 2)
-len=$(echo "$status" | wc -l)
 
-if [[ $len -lt 2 ]]; then
-    echo "$fa_stopped Nothing playing"
+status=$(playerctl -p "$player" status)
+
+if [[ "$status" = "Stopped" ]]; then
+    echo "$fa_stopped $player is stopped"
     echo
     echo "$stopped_color"
     exit 0
-fi
-
-current=$(echo "$status" | head -n1)
-play_status=$(echo "$status" | tail -n1 | sed -re 's/^\[(.*)\].*$/\1/')
-
-if [[ "$play_status" == "playing" ]]; then
+elif [[ "$status" == "Playing" ]]; then
     icon="$fa_playing"
     color="$playing_color"
 else
     icon="$fa_paused"
     color="$paused_color"
 fi
+
+current="$(playerctl -p "$player" metadata title) - $(playerctl -p "$player" metadata album)"
 
 echo "$icon $current"
 echo
