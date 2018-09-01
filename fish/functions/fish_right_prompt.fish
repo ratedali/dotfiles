@@ -1,1 +1,0 @@
-/home/ali/.config/fisherman/l/fish_right_prompt.fish

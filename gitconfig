@@ -4,3 +4,11 @@
 	signingKey = 040138FD
 [commit]
 	gpgSign = true
+[alias]
+	graph = log --graph --pretty=oneline --abbrev-commit
+	d = diff
+	st = status
+	a = add
+	c = commit
+	ca = commit --amend --reuse-message=HEAD
+	p = push
