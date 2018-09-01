@@ -45,8 +45,8 @@ bindsym Mod1+F4 kill
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
 # bindsym Mod1+F1 exec i3-dmenu-desktop --entry-type=name --dmenu="rofi -dmenu -p '' -i"
-bindsym Mod1+F1 exec j4-dmenu-desktop --dmenu="rofi -dmenu -p '' -i"
-bindsym Mod1+F2 exec rofi -show run
+bindsym Mod1+F1 exec j4-dmenu-desktop --dmenu="rofi -dmenu -p 'Search' -i -auto-select"
+bindsym Mod1+F2 exec rofi -show run -terminal $terminal -sidebar-mode
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
