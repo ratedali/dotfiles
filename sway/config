@@ -302,9 +302,9 @@ bindsym $mod+r mode "resize"
 # IO
 output "*" background "$wallpaper" fill
 
-input "DELL0767:00 06CB:7E92 Touchpad" {
+input "1739:32402:DELL0767:00_06CB:7E92_Touchpad" {
     tap enabled
-    click_method clickfinger
+    click_method button_areas
     middle_emulation enabled
     dwt disabled
 }
@@ -330,6 +330,7 @@ input "DELL0767:00 06CB:7E92 Touchpad" {
 # Start i3bar to display a workspace bar (plus the system information i3blocks
 # finds out, if available)
 bar {
+    # swaybar_command waybar
     status_command i3blocks
     position top
     font Fira Sans, Font Awesome 5 Free 14
