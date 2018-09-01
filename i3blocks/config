@@ -154,7 +154,7 @@ interval=60
 #  Colroscheme Picker  #
 ########################
 [colorscheme-picker]
-command=~/.config/i3blocks/colorscheme-picker -d ~/Pictures/Wallpapers
+command=~/.config/i3blocks/custom/colorscheme-picker -d ~/Pictures/Wallpapers
 full_text=
 
 
