@@ -1,0 +1,71 @@
+{
+    "layer": "top", // Waybar at top layer
+    // "position": "bottom", // Waybar at the bottom of your screen
+    // "height": 30, // Waybar height
+    // "width": 1280, // Waybar width
+    // Choose the order of the modules
+    "modules-left": ["sway/workspaces"],
+    "modules-center": ["clock", "custom/mpd"],
+    "modules-right": ["pulseaudio", "network", "cpu", "memory", "battery"],
+    // Modules configuration
+    "sway/workspaces": {
+        // "disable-scroll": true,
+        // "all-outputs": true,
+        // "format-icons": {
+        //     "1": "",
+        //     "2": "",
+        //     "3": "",
+        //     "4": "",
+        //     "5": ""
+        // }
+    },
+    "clock": {
+        "format": "{:%I:%M %p}",
+        "format-alt": "{:%d/%m/%Y}"
+    },
+    "cpu": {
+        "format": " {}%"
+    },
+    "memory": {
+        "format": " {}%"
+    },
+    "battery": {
+        "format": "{icon} {capacity}%",
+        "format-icons": ["", "", "", "", ""]
+    },
+    "network": {
+        // "interface": "wlp2s0", // (Optional) To force the use of this interface
+        "format-wifi": " {essid} ({signalStrength}%)",
+        "format-ethernet": " {ifname}",
+        "format-disconnected": "⚠ Disconnected"
+    },
+    "pulseaudio": {
+        "format": "{icon} {volume}%",
+        "format-bluetooth": "{icon} {volume}%",
+        "format-muted": "",
+        "format-icons": {
+            "headphones": "",
+            "handsfree": "",
+            "headset": "",
+            "phone": "",
+            "portable": "",
+            "car": "",
+            "default": ["", ""]
+        }
+    },
+
+    "custom/mpd": {
+        "format": " {}",
+        "max-length": 40,
+        "exec": "$HOME/.config/waybar/mediaplayer.sh", // Script in resources folder
+        "exec-if": "pgrep mpd"
+    },
+
+    "custom/smplayer": {
+        "format": " {}",
+        "max-length": 40,
+        "exec": "$HOME/.config/waybar/mediaplayer.sh", // Script in resources folder
+        "exec-if": "pgrep smplayer"
+    }
+}
+// vim:filetype=json
