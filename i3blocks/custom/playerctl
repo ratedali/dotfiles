@@ -29,7 +29,10 @@ stopped_color="$color1"
 
 
 player="$BLOCK_INSTANCE"
-if [[ ( -z "$(pgrep -a $player)" ) || ( -z "$player" ) ]]; then
+process="$player"
+name="$player"
+
+if [[ ( -z "$(pgrep -a "$process")" ) || ( -z "$player" ) ]]; then
     exit 0
 fi
 
@@ -44,9 +47,8 @@ if [[ -n "$BLOCK_BUTTON"  ]]; then
 fi
 
 status=$(playerctl -p "$player" status)
-
 if [[ "$status" = "Stopped" ]]; then
-    echo "$fa_stopped $player is stopped"
+    echo "$fa_stopped $name is stopped"
     echo
     echo "$stopped_color"
     exit 0

@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+# Author: Ali Salaheldeen
+# Inspired by:
+# https://github.com/Shuhala/i3blocks-colorscheme-picker
+# Requires pywal and rofi
+
+
+## Config
+#
+pywal_options=(
+    -a 96 \
+    --saturate 0.6 \
+    -g \
+    -i
+)
+
+## Help
+#
+usage="$(basename "$0") [-h] [-d directory] [-p options (optional)] -- display a menu to change your wallpaper and colorscheme with pywal and imv:
+    -h  help
+    -d  wallpapers directory
+    -p  override pywal options"
+
+while getopts "hd:p:" option; do
+  case "${option}" in
+    h) echo "${usage}"
+      exit 0
+      ;;
+	d) wallpapers_dir=${OPTARG}
+      ;;
+	p) pywal_options=${OPTARG}
+      ;;
+    *) echo "Invalid option. Use -h for more informations."
+      exit 1
+      ;;
+  esac
+done
+
+if [ -z ${wallpapers_dir+x} ]; then
+  echo "Please, provide a wallpapers directory with -d"
+  exit 1
+fi
+
+
+## Display menu
+#
+imv -r $wallpapers_dir | while read selection; do
+    if [ ! -z "$selection" ]; then
+       wal ${pywal_options[@]} "$selection" 2>/dev/null >&2
+    fi
+done

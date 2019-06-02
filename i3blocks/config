@@ -99,13 +99,14 @@ interval=30
 # label=
 command=~/.config/i3blocks/custom/playerctl
 instance=smplayer
-interval=3
+interval=5
 
 # MPD 
 [mpd]
 command=~/.config/i3blocks/custom/playerctl
 instance=mpd
-interval=3
+interval=5
+signal=12
 
 
 ##########
@@ -154,7 +155,7 @@ interval=60
 #  Colroscheme Picker  #
 ########################
 [colorscheme-picker]
-command=~/.config/i3blocks/custom/colorscheme-picker -d ~/Pictures/Wallpapers
+command=~/.config/i3blocks/custom/colorscheme-picker-imv -d ~/Pictures/Wallpapers
 full_text=
 
 

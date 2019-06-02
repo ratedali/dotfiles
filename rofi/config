@@ -1,11 +1,11 @@
 rofi.width: 100
 rofi.lines: 3
 rofi.location: 1
-rofi.yoffset: 30
+rofi.yoffset: 29
 rofi.matching: fuzzy
 
 rofi.theme: ~/.cache/wal/colors-rofi-dark.rasi
-rofi.font: Fira Sans 14
+rofi.font: Fira Sans 16
 
 rofi.ssh-command: {terminal} -e '{ssh-client} {host}'
 rofi.run-command: {terminal} -e '/home/ali/.bin/tmux_term -c {cmd}'
