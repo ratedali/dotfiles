@@ -1,1 +1,1 @@
-/home/ali/.config/fisherman/yimmy/fish_prompt.fish
+/home/ali/.config/fisherman/clearance/fish_prompt.fish
