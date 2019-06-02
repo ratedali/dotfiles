@@ -27,7 +27,7 @@ LOWER_LIMIT=45
 function notify_device {
     # Sends a notification to the first connected device using KDEConnect
     # the first argument is used as the notification message
-    if [ -n "$DEVICE_ID" -a -d "$HOME/.config/kdeconnect/$DEVICE_ID" ]; then
+    if [ -n "$DEVICE_ID" -a -d "$HOME/.config/kdeconnect/$DEVICE_ID/ping" ]; then
         kdeconnect-cli -d "$DEVICE_ID" --ping-msg "$1"
     fi
     return 0
