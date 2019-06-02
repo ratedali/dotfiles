@@ -28,8 +28,14 @@
     # Adjust to your preffered terminal
 TERMCMD=${TERMCMD:-x-terminal-emulator}
 term_execute() {
-    echo executing \"$TERMCMD -e tmux_term $*\" >&2
-    env TMUX= $TERMCMD -e "$HOME/.bin/tmux_term $*"
+    echo executing \"env TMUX= $TERMCMD -e $HOME/.bin/tmux_term $*\" >&2
+    case $TERMCMD in
+        urxvt*)
+            exec env TMUX= $TERMCMD -e $HOME/.bin/tmux_term $*
+            ;;
+        *)
+            exec env TMUX= $TERMCMD -e "$HOME/.bin/tmux_term $*"
+    esac
 }
 
 
@@ -45,13 +51,10 @@ else
     EXECUTABLE="$3"
 fi
 
-NEW_EXECUTABLE="/bin/sh -c '$HOME/.bin/wal -r && $EXECUTABLE'"
-
 echo "no new?=$NO_NEW" >&2
 echo "session=$SESSION_NAME" >&2
 echo "window=$WINDOW_NAME" >&2
 echo "executable=$EXECUTABLE" >&2
-echo "new executable=$NEW_EXECUTABLE" >&2
 
 AVAILABLE=$(tmux ls -F "#{session_name}:#{?session_attached,attached,}" | grep "$SESSION_NAME")
 if [ -n "$SESSION_NAME" ]; then

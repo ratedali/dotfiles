@@ -1,2 +1,2 @@
 #!/usr/bin/env bash
-~/.bin/tmux_attach tasks tasks htop
+exec ~/.bin/tmux_attach tasks tasks htop
