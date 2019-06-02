@@ -5,10 +5,16 @@
 [commit]
 	gpgSign = true
 [alias]
+    l = log --graph --pretty="'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'" --abbrev-commit
 	graph = log --graph --pretty=oneline --abbrev-commit
 	d = diff
 	st = status
 	a = add
 	c = commit
-	ca = commit --amend --reuse-message=HEAD
+	ca = commit --amend --no-edit
 	p = push
+    pf = push --force-with-lease
+    co = checkout
+# vim:filetype=gitconfig
+[diff]
+	tool = kdiff3
