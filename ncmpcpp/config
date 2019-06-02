@@ -37,6 +37,9 @@ mpd_music_dir = "~/Music"
 #
 mpd_crossfade_time = 0
 #
+#
+execute_on_song_change = "pkill -SIGRTMIN+12 i3blocks"
+execute_on_player_state_change = "pkill -SIGRTMIN+12 i3blocks"
 ##### song format #####
 ##
 ## For a song format you can use:
@@ -234,7 +237,7 @@ centered_cursor = no
 ## Note: You can specify third character which will
 ## be used to build 'empty' part of progressbar.
 ##
-progressbar_look = ▄▄▁
+progressbar_look = ▄▄▄
 #
 #
 ## Available values: database, playlist.
@@ -435,3 +438,8 @@ window_border_color = cyan
 #
 active_window_border = red
 #
+#
+# visualizer
+visualizer_type = ellipse
+visualizer_in_stereo = yes
+visualizer_look = "▅▉"
