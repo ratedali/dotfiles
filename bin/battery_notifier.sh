@@ -20,26 +20,29 @@
 #  0. You just DO WHAT THE FUCK YOU WANT TO.
 
 
-
-battery_state=$(acpi -b | cut -d: -f2 | cut -d, -f2 | sed -e 's:\s\+::' | sed -e 's:%::')
-ac_connected=$(acpi -a | cut -d: -f2 | sed -e 's:\s\+::')
+DEVICE_ID="c706d2b277c099f6"
+UPPER_LIMIT=90
+LOWER_LIMIT=45
 
 function notify_device {
     # Sends a notification to the first connected device using KDEConnect
     # the first argument is used as the notification message
-    id=$(kdeconnect-cli --id-only -la | head -1)
-    if [ -n "$id" ]; then
-        kdeconnect-cli -d "$id" --ping-msg "$1"
+    if [ -n "$DEVICE_ID" -a -d "$HOME/.config/kdeconnect/$DEVICE_ID" ]; then
+        kdeconnect-cli -d "$DEVICE_ID" --ping-msg "$1"
     fi
     return 0
 }
 
-if [ "$battery_state" -gt 80 -a "$ac_connected" == "on-line" ]; then
+battery_state=$(acpi -b | cut -d: -f2 | cut -d, -f2 | sed -e 's:\s\+::' | sed -e 's:%::')
+ac_connected=$(acpi -a | cut -d: -f2 | sed -e 's:\s\+::')
+
+if [ "$battery_state" -ge $UPPER_LIMIT -a "$ac_connected" == "on-line" ]; then
     message="Unplug the charger"
-    notify-send -a "Battery Status" --icon=battery "Battery Level Over 80%" "$message"
+    notify-send -a "Battery Status" --icon=battery "Battery Level ${battery_state}%" "$message"
     notify_device "$message"
-elif [ "$battery_state" -lt 40 -a "$ac_connected" == "off-line" ]; then
+elif [ "$battery_state" -le $LOWER_LIMIT -a "$ac_connected" == "off-line" ]; then
     message="Plug in the charger"
-    notify-send -a "Battery Status" --icon=battery "Battery Level Below 40%" "$message"
+    notify-send -a "Battery Status" --icon=battery "Battery Level ${battery_state}%" "$message"
     notify_device "$message"
 fi
+echo "$(date -Iminutes): ${battery_state} - ${message}" >&2
