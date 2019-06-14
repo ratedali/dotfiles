@@ -308,12 +308,8 @@ def_key "p"
 
 def_key "L"
   next
-def_key "n"
-  next
 
 def_key "H"
-  previous
-def_key "N"
   previous
 
 def_key "ctrl-h"
