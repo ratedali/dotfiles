@@ -11,7 +11,9 @@ SETUVAR _fish_abbr_RR:cd\x20/run/media/ali/RR/
 SETUVAR _fish_abbr_c:cat
 SETUVAR _fish_abbr_cd_2E_2E_:cd\x20\x2e\x2e
 SETUVAR _fish_abbr_ecto__reset:mix\x20ecto\x2edrop\x3b\x20and\x20mix\x20ecto\x2ecreate\x3b\x20and\x20mix\x20ecto\x2emigrate\x3b\x20and\x20mix\x20ecto\x2esetup
+SETUVAR _fish_abbr_f:fuck
 SETUVAR _fish_abbr_g:git
+SETUVAR _fish_abbr_ipy:ipython
 SETUVAR _fish_abbr_l:ls\x20\x2dalhF
 SETUVAR _fish_abbr_md:mkdir\x20\x2dp
 SETUVAR _fish_abbr_pRns:sudo\x20pacman\x20\x2dRns
@@ -22,8 +24,10 @@ SETUVAR _fish_abbr_pSyu:sudo\x20pacman\x20\x2dSyu
 SETUVAR _fish_abbr_pU:sudo\x20pacman\x20\x2dU
 SETUVAR _fish_abbr_pkS:pikaur\x20\x2dSy
 SETUVAR _fish_abbr_pkSs:pikaur\x20\x2dSs
+SETUVAR _fish_abbr_py:python
 SETUVAR _fish_abbr_rf:rm\x20\x2drf
 SETUVAR _fish_abbr_sc:systemctl
+SETUVAR _fish_abbr_scu:systemctl\x20\x2d\x2duser
 SETUVAR _fish_abbr_syncmusic:rsync\x20\x2druv\x20\x2d\x2dprogress\x20/home/ali/Music/\x20192\x2e168\x2e8\x2e8\x3a/storage/emulated/0/Music
 SETUVAR _fish_abbr_v:nvim
 SETUVAR _fish_abbr_x:aunpack
@@ -56,6 +60,6 @@ SETUVAR fish_pager_color_prefix:white\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_user_abbreviations:pSs\x20pacman\x20\x2dSs\x1epS\x20sudo\x20pacman\x20\x2dSy\x1epSy\x20sudo\x20pacman\x20\x2dSy\x1epU\x20sudo\x20pacman\x20\x2dU\x1epRns\x20sudo\x20pacman\x20\x2dRns\x1ev\x20nvim\x1eg\x20git\x1erf\x20rm\x20\x2drf\x1emd\x20mkdir\x20\x2dp\x1epkS\x20pikaur\x20\x2dSy\x1epkSs\x20pikaur\x20\x2dSs\x1ecd\x2e\x2e\x20cd\x20\x2e\x2e\x1epSyu\x20sudo\x20pacman\x20\x2dSyu\x1esc\x20systemctl\x1el\x20ls\x20\x2dalhF\x1ec\x20cat\x1esyncmusic\x20rsync\x20\x2druv\x20\x2d\x2dprogress\x20/home/ali/Music/\x20192\x2e168\x2e8\x2e8\x3a/storage/emulated/0/Music\x1ex\x20aunpack\x1eecto_reset\x20mix\x20ecto\x2edrop\x3b\x20and\x20mix\x20ecto\x2ecreate\x3b\x20and\x20mix\x20ecto\x2emigrate\x3b\x20and\x20mix\x20ecto\x2esetup
 SETUVAR fish_user_paths:/home/ali/\x2ebin\x1e/home/ali/\x2eyarn/bin/\x1e/home/ali/\x2elocal/bin/
-SETUVAR fisher_active_prompt:clearance
-SETUVAR fisher_dependency_count:done\x1eautoenvstack\x1egetopts\x1espin\x1egitignore\x1ethefuck\x1ehumanize_duration\x1eclearance
+SETUVAR fisher_active_prompt:agnoster
+SETUVAR fisher_dependency_count:done\x1eautoenvstack\x1egetopts\x1espin\x1egitignore\x1ethefuck\x1ehumanize_duration\x1eagnoster
 SETUVAR yimmy_solarized:true
