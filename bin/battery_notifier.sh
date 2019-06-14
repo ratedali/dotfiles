@@ -25,9 +25,9 @@ UPPER_LIMIT=90
 LOWER_LIMIT=45
 
 function notify_device {
-    # Sends a notification to the first connected device using KDEConnect
+    # Sends a notification to the specified device using KDEConnect
     # the first argument is used as the notification message
-    if [ -n "$DEVICE_ID" -a -d "$HOME/.config/kdeconnect/$DEVICE_ID/ping" ]; then
+    if [ -n "$DEVICE_ID" -a -n "$(kdeconnect-cli --refresh --id-only -a | sed -ne s/$DEVICE_ID/1/p)" ]; then
         kdeconnect-cli -d "$DEVICE_ID" --ping-msg "$1"
     fi
     return 0
@@ -45,4 +45,3 @@ elif [ "$battery_state" -le $LOWER_LIMIT -a "$ac_connected" == "off-line" ]; the
     notify-send -a "Battery Status" --icon=battery "Battery Level ${battery_state}%" "$message"
     notify_device "$message"
 fi
-echo "$(date -Iminutes): ${battery_state} - ${message}" >&2
