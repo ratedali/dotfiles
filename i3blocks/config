@@ -143,12 +143,12 @@ signal=10
 #################
 
 [time]
-command=date '+ %I:%M%p'
-interval=60
-
-separator=false
-[time]
 command=date '+ %d/%m/%Y'
+interval=60
+separator=false
+
+[time]
+command=date '+ %I:%M%p'
 interval=60
 
 ########################
