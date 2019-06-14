@@ -1,5 +1,5 @@
 rofi.width: 100
-rofi.lines: 3
+rofi.lines: 9
 rofi.location: 1
 rofi.yoffset: 29
 rofi.matching: fuzzy
@@ -7,7 +7,7 @@ rofi.matching: fuzzy
 rofi.theme: ~/.cache/wal/colors-rofi-dark.rasi
 rofi.font: Fira Sans 16
 
-rofi.ssh-command: {terminal} -e '{ssh-client} {host}'
+rofi.ssh-command: {terminal} -e '/home/ali/.bin/tmux_term {ssh-client} {host}'
 rofi.run-command: {terminal} -e '/home/ali/.bin/tmux_term -c {cmd}'
 rofi.run-shell-command: env TERMCMD={terminal} /home/ali/.bin/tmux_attach rofi-run exec '{cmd}'
 disable-history: enabled
