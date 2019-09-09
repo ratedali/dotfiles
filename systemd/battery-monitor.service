@@ -1,0 +1,7 @@
+[Unit]
+Description=Monitors battery level and charging status
+ConditionFileIsExecutable=%h/.bin/battery_notifier.sh
+
+[Service]
+Type=oneshot
+ExecStart=%h/.bin/battery_notifier.sh >/dev/null
