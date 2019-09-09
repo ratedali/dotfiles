@@ -1,2 +1,18 @@
-host 192.168.8.8
+AddKeysToAgent yes
+
+Host 192.168.8.8
     Port 2222
+
+Host ai-stream.org
+    User ec2-user
+    StrictHostKeyChecking no
+    UserKnownHostsFile=/dev/null
+
+Host *.compute.amazonaws.com
+    User ubuntu
+    StrictHostKeyChecking no
+    UserKnownHostsFile=/dev/null
+
+Host git-codecommit.*.amazonaws.com
+    User APKASUXAWMYZW6KY3BCY 
+    IdentityFile ~/.ssh/id_rsa
