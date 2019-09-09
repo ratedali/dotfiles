@@ -15,7 +15,7 @@ font = Fira Mono 16
 scrollback_lines = 0
 #search_wrap = true
 #urgent_on_bell = true
-#hyperlinks = false
+hyperlinks = true
 
 # $BROWSER is used by default if set, with xdg-open as a fallback
 #browser = xdg-open
