@@ -11,6 +11,7 @@
 
 set $mod Mod4
 set $terminal termite
+set $browser /usr/share/applications/firefox.desktop
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -19,17 +20,6 @@ font pango: Fira Sans 10, FontAwesome 10
 # borders width, must use `pixel` for gaps to work
 for_window [class="^.*"] border pixel 0
 smart_borders no_gaps
-
-# This font is widely installed, provides lots of unicode glyphs, right-to-left
-# text rendering and scalability on retina/hidpi displays (thanks to pango).
-#font pango:DejaVu Sans Mono 8
-
-# Before i3 v4.8, we used to recommend this one as the default:
-# font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-# The font above is very space-efficient, that is, it looks good, sharp and
-# clear in small sizes. However, its unicode glyph coverage is limited, the old
-# X core fonts rendering does not support right-to-left and this being a bitmap
-# font, it doesn’t scale on retina/hidpi displays.
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -47,11 +37,6 @@ bindsym $mod+d exec dmenu_run
 # bindsym Mod1+F1 exec i3-dmenu-desktop --entry-type=name --dmenu="rofi -dmenu -p '' -i"
 bindsym Mod1+F1 exec j4-dmenu-desktop --dmenu="rofi -dmenu -p 'Search' -i"
 bindsym Mod1+F2 exec rofi -show run -terminal $terminal -sidebar-mode
-
-# There also is the (new) i3-dmenu-desktop which only displays applications
-# shipping a .desktop file. It is a wrapper around dmenu, so you need that
-# installed.
-# bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
 # change focus
 bindsym $mod+h focus left
@@ -165,8 +150,8 @@ bindsym $mod+Shift+0 move container to workspace $w10, workspace $w10
 
 # Volume Controls
 bindsym XF86AudioMute exec pactl set-sink-mute 'alsa_output.pci-0000_00_1f.3.analog-stereo' toggle, exec pkill -SIGRTMIN+10 i3blocks
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 'alsa_output.pci-0000_00_1f.3.analog-stereo' +2%, exec pkill -SIGRTMIN+10 i3blocks
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 'alsa_output.pci-0000_00_1f.3.analog-stereo' -2%, exec pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 'alsa_output.pci-0000_00_1f.3.analog-stereo' +1%, exec pkill -SIGRTMIN+10 i3blocks
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume 'alsa_output.pci-0000_00_1f.3.analog-stereo' -1%, exec pkill -SIGRTMIN+10 i3blocks
 
 # Brightness Controls
 bindsym XF86MonBrightnessUp exec brightnessctl s 1%+
@@ -187,15 +172,13 @@ bindsym Scroll_Lock exec --no-startup-id ~/.bin/toggle_touchpad.sh
 # bindsym $mod+F1 exec --no-startup-id ~/.bin/toggle_touchscreen.sh
 
 # Lock Screen
-set $Locker ~/.bin/lock
-
-#exec xautolock -time 10 -locker $Locker
+#exec xautolock -time 10 -locker ~/.bin/lock
 
 set $power_mode  (D)im    (L)ock    L(e)ave    (S)hutdown     (H)ibernate    (R)eboot    S(u)spend
 
 mode "$power_mode" {
     bindsym d exec --no-startup-id xset dpms force off, mode "default"
-    bindsym l exec --no-startup-id $Locker && xset dpms force off, mode "default"
+    bindsym l exec --no-startup-id ~/.bin/lock && xset dpms force off, mode "default"
     bindsym e exec --no-startup-id i3-msg exit, mode "default"
     bindsym r exec --no-startup-id systemctl reboot, mode "default"
     bindsym s exec --no-startup-id systemctl poweroff -i, mode "default"
@@ -256,21 +239,20 @@ bindsym $mod+e workspace $files, exec env TERMCMD=$terminal ~/.bin/file_manager.
 bindsym Shift+Ctrl+Escape workspace $admin, exec env TERMCMD=$terminal ~/.bin/tasks.sh
 
 # Web Browser
-bindsym $mod+c workspace $web, exec dex /usr/share/applications/firefox.desktop
+bindsym $mod+c workspace $web, exec dex $browser
 
 # Webapps
-bindsym $mod+t exec google-chrome-beta --app=https://web.telegram.org
-bindsym $mod+w exec google-chrome-beta --app=https://web.whatsapp.com
+bindsym $mod+t exec firefox --new-window https://web.telegram.org
+bindsym $mod+w exec firefox --new-window https://web.whatsapp.com
 
 # Editor
 bindsym $mod+v workspace $editor, exec dex /usr/share/applications/visual-studio-code.desktop
 
 # Vedio Player
-bindsym $mod+s workspace $video, exec smplayer
+bindsym $mod+s workspace $video, exec /usr/share/applications/smplayer.desktop
 
 # Music Player
 bindsym $mod+m workspace $music, exec env TERMCMD=$terminal ~/.bin/music.sh
-bindsym $mod+Shift+m workspace $music, exec cantata
 
 # Torrent Client
 bindsym $mod+q workspace $torrent, exec qbittorrent
@@ -359,11 +341,18 @@ bar {
 assign [class="^smplayer$"] → $video
 assign [class="^MultiMC$"] → $games
 assign [class="^qBittorrent$"] → $torrent
+assign [class="^calibre$"] → $reading
+assign [class="^Evince$"] → $reading
+assign [class="^okular$"] → $reading
 for_window [class="^mcedit.py$"] floating enable
 
 # Startup Applications
+exec --no-startup-id nitrogen --restore
 exec --no-startup-id wal -R
-exec --no-startup-id compton -b --backend glx --vsync opengl -cCGf --inactive-dim .5 -i .9 -e .9
+exec --no-startup-id compton -bcCf --inactive-dim .15 -i .95 --vsync --backend glx --glx-no-stencil
 exec --no-startup-id dex -e i3 -a
 exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
+exec --no-startup-id xinput set-prop "DELL0767:00 06CB:7E92 Touchpad" "libinput Disable While Typing Enabled" 0
+exec --no-startup-id xinput set-prop "DELL0767:00 06CB:7E92 Touchpad" "libinput Tapping Enabled" 1
+exec --no-startup-id xinput set-prop "DELL0767:00 06CB:7E92 Touchpad" "libinput Middle Emulation Enabled" 1
 # vim:filetype=i3

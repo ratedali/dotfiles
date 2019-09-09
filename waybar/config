@@ -1,70 +1,82 @@
 {
-    "layer": "top", // Waybar at top layer
-    // "position": "bottom", // Waybar at the bottom of your screen
-    // "height": 30, // Waybar height
-    // "width": 1280, // Waybar width
-    // Choose the order of the modules
-    "modules-left": ["sway/workspaces"],
-    "modules-center": ["clock", "custom/mpd"],
-    "modules-right": ["pulseaudio", "network", "cpu", "memory", "battery"],
-    // Modules configuration
+    "layer": "top",
+    "position": "top",
+    "modules-left": ["sway/workspaces","clock","mpd", "sway/mode"],
+    "modules-center": ["idle_inhibitor", "sway/window"],
+    "modules-right": ["tray", "pulseaudio", "network", "cpu", "memory", "backlight", "battery"],
+    "sway/mode": {
+        "format": " {}",
+        "max-length": "15"
+    },
     "sway/workspaces": {
-        // "disable-scroll": true,
-        // "all-outputs": true,
-        // "format-icons": {
-        //     "1": "",
-        //     "2": "",
-        //     "3": "",
-        //     "4": "",
-        //     "5": ""
-        // }
+        "format": "{name}",
+        "disable-scroll": true,
+        "all-outputs": true
+    },
+    "sway/window": {
+        "max-length": 40,
+        "tooltip": false
     },
     "clock": {
         "format": "{:%I:%M %p}",
-        "format-alt": "{:%d/%m/%Y}"
+        "format-alt": "{:%d/%m/%Y}",
+        "tooltip-format": "{:%H:%M:%S %d-%m-%Y %Z}"
     },
     "cpu": {
-        "format": " {}%"
+        "format": "{}% "
     },
     "memory": {
-        "format": " {}%"
+        "format": "{}% "
     },
     "battery": {
-        "format": "{icon} {capacity}%",
+        "format": "{capacity}% {icon}",
         "format-icons": ["", "", "", "", ""]
     },
-    "network": {
-        // "interface": "wlp2s0", // (Optional) To force the use of this interface
-        "format-wifi": " {essid} ({signalStrength}%)",
-        "format-ethernet": " {ifname}",
+    "backlight": {
+        "format": "{percent}% {icon}",
+        "format-icons": ["", ""]
+    },
+    "network": {   
+        "format-wifi": "{essid} ({signalStrength}%) ",
+        "format-ethernet": " {ipaddr}@{ifname} ",
+        "tooltip-format": "{bandwidthUpBits}  {bandwidthDownBits}  ",
         "format-disconnected": "⚠ Disconnected"
     },
     "pulseaudio": {
-        "format": "{icon} {volume}%",
-        "format-bluetooth": "{icon} {volume}%",
-        "format-muted": "",
+        "format": "{volume}% {icon}",
+        "format-bluetooth": " {volume}% {icon}",
+        "format-muted": "",
         "format-icons": {
-            "headphones": "",
-            "handsfree": "",
-            "headset": "",
-            "phone": "",
-            "portable": "",
-            "car": "",
-            "default": ["", ""]
+            "phone": [" ", " ", " "],
+            "default": ["", "", ""]
+        },
+        "on-click": "pavucontrol",
+        "tooltip": false
+    },
+    "idle_inhibitor": {
+        "format": "{icon}",
+        "format-icons": {
+            "activated": "",
+            "deactivated": ""
         }
     },
-
-    "custom/mpd": {
-        "format": " {}",
-        "max-length": 40,
-        "exec": "$HOME/.config/waybar/mediaplayer.sh", // Script in resources folder
-        "exec-if": "pgrep mpd"
+    "mpd": {
+        "format": "{artist} - {title} | {stateIcon} ",
+        "format-stopped": "Stopped ",
+        "tooltip-format": "{artist} - {album} - {title} {singleIcon} {randomIcon}",
+        "state-icons": {
+            "playing": "",
+            "paused": ""
+        },
+        "random-icons": {"on": ""},
+        "single-icons": {"on": ""},
+        "max-length": 40
     },
 
     "custom/smplayer": {
-        "format": " {}",
+        "format": "{} ",
         "max-length": 40,
-        "exec": "$HOME/.config/waybar/mediaplayer.sh", // Script in resources folder
+        "exec": "$HOME/.config/waybar/mediaplayer.sh",
         "exec-if": "pgrep smplayer"
     }
 }
