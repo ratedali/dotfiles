@@ -1,4 +1,4 @@
-#!/usr/bin/env -vS bash -xv
+#!/usr/bin/env bash
 
 # usage: tmux_attach [-n] [TARGET_SESSION] [TARGET_WINDOW] [EXECUTABLE]
 #
