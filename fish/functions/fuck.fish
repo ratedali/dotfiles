@@ -1,1 +1,0 @@
-/home/ali/.config/fisherman/thefuck/functions/fuck.fish

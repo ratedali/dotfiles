@@ -1,8 +1,7 @@
-oh-my-fish/theme-agnoster
-fisherman/autoenvstack
-fisherman/done
-fisherman/getopts
-fisherman/gitignore
-fisherman/humanize_duration
-fisherman/spin
-oh-my-fish/plugin-thefuck
+oh-my-fish/theme-clearance
+jethrokuan/z
+franciscolourenco/done
+joseluisq/gitnow
+fishpkg/fish-humanize-duration
+oh-my-fish/plugin-bang-bang
+sijad/gitignore
