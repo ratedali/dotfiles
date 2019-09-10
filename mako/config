@@ -1,0 +1,12 @@
+max-visible=3
+default-timeout=20000
+group-by=app-name
+font="Fira Sans 14"
+icons=1
+icon-path=/usr/share/icons/breeze-dark:/usr/share/icons/breeze
+markup=1
+actions=1
+border-size=0
+border-radius=8
+margin=32
+padding=16
