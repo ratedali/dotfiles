@@ -1,16 +1,18 @@
+@import url("/home/ali/.cache/wal/colors-waybar.css");
+
 * {
     border:        none;
     border-radius: 0;
-    font-family:   Sans;
-    font-size:     15px;
+    font-family:   'Fira Sans';
+    font-size:     17px;
     box-shadow:    none;
     text-shadow:   none;
     transition-duration: 0s;
 }
 
 window {
-    color:      rgba(217, 216, 216, 1);
-    background: rgba(35, 31, 32, 0.0);
+    color: @foreground;
+    background: alpha(@background, 0.65);
 }
 
 #workspaces {
@@ -19,23 +21,23 @@ window {
 
 #workspaces button {
     padding:    0 5px;
-    color:      rgba(217, 216, 216, 0.4);
+    color:      alpha(@foreground, 0.4);
 }
 
 #workspaces button.visible {
-    color:      rgba(217, 216, 216, 1);
+    color:      @foreground;
 }
 
 #workspaces button.focused {
-    border-top: 3px solid rgba(217, 216, 216, 1);
-    border-bottom: 3px solid rgba(217, 216, 216, 0);
+    border-top: 3px solid @foreground;
+    border-bottom: 3px solid alpha(@foreground, 0);
 }
 
 #workspaces button.urgent {
     color:      rgba(238, 46, 36, 1);
 }
 
-#mode, #battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #mpd {
+#mode, #battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #mpd, #tray {
     margin:     0px 6px 0px 10px;
     min-width:  25px;
 }

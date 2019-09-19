@@ -3,7 +3,7 @@
     "position": "top",
     "modules-left": ["sway/workspaces","clock","mpd", "sway/mode"],
     "modules-center": ["idle_inhibitor", "sway/window"],
-    "modules-right": ["tray", "pulseaudio", "network", "cpu", "memory", "backlight", "battery"],
+    "modules-right": ["pulseaudio", "network", "cpu", "memory", "backlight", "battery", "tray"],
     "sway/mode": {
         "format": " {}",
         "max-length": "15"
@@ -22,6 +22,10 @@
         "format-alt": "{:%d/%m/%Y}",
         "tooltip-format": "{:%H:%M:%S %d-%m-%Y %Z}"
     },
+    "tray": {
+        "icon-size": 20,
+        "spacing": 8
+    },
     "cpu": {
         "format": "{}% "
     },
@@ -30,6 +34,10 @@
     },
     "battery": {
         "format": "{capacity}% {icon}",
+        "states": {
+            "warning": "30",
+            "critical": "15"
+        },
         "format-icons": ["", "", "", "", ""]
     },
     "backlight": {
@@ -37,8 +45,8 @@
         "format-icons": ["", ""]
     },
     "network": {   
-        "format-wifi": "{essid} ({signalStrength}%) ",
-        "format-ethernet": " {ipaddr}@{ifname} ",
+        "format-wifi": "{ipaddr} @ {essid} ({signalStrength}%) ",
+        "format-ethernet": " {ipaddr} @ {ifname} ",
         "tooltip-format": "{bandwidthUpBits}  {bandwidthDownBits}  ",
         "format-disconnected": "⚠ Disconnected"
     },
@@ -47,11 +55,11 @@
         "format-bluetooth": " {volume}% {icon}",
         "format-muted": "",
         "format-icons": {
-            "phone": [" ", " ", " "],
+            "headset": [" ", " ", " "],
             "default": ["", "", ""]
         },
         "on-click": "pavucontrol",
-        "tooltip": false
+        "tooltip": "{format_source}"
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -61,7 +69,7 @@
         }
     },
     "mpd": {
-        "format": "{artist} - {title} | {stateIcon} ",
+        "format": "{title} {stateIcon} ",
         "format-stopped": "Stopped ",
         "tooltip-format": "{artist} - {album} - {title} {singleIcon} {randomIcon}",
         "state-icons": {
