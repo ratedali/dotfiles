@@ -8,8 +8,8 @@ Host ai-stream.org
     StrictHostKeyChecking no
     UserKnownHostsFile=/dev/null
 
-Host *.compute.amazonaws.com
-    User ubuntu
+Host *.compute-*.amazonaws.com
+    User ec2-user
     StrictHostKeyChecking no
     UserKnownHostsFile=/dev/null
 
