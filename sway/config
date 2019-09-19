@@ -9,9 +9,10 @@
 #
 # Please see http://i3wm.org/docs/userguide.html for a complete reference!
 
+xwayland enable
 set $mod Mod4
 set $terminal termite
-set $browser dex /home/ali/.local/share/applications/firefox.desktop
+set $browser dex /usr/share/applications/firefox.desktop
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
@@ -36,7 +37,7 @@ bindsym Mod1+F4 kill
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
 # bindsym Mod1+F1 exec i3-dmenu-desktop --entry-type=name --dmenu="rofi -dmenu -p '' -i"
-bindsym Mod1+F1 exec j4-dmenu-desktop --dmenu="rofi -dmenu -p 'Search' -i -auto-select"
+bindsym Mod1+F1 exec j4-dmenu-desktop --dmenu='bemenu -i -b -l 10 --nb "$background" --nf "$foreground" --fn "pango:Fira Mono 12"' --term='termite'
 bindsym Mod1+F2 exec rofi -show run -terminal $terminal -sidebar-mode
 
 # change focus
@@ -150,9 +151,9 @@ bindsym $mod+Shift+9 move container to workspace $w9, workspace $w9
 bindsym $mod+Shift+0 move container to workspace $w10, workspace $w10
 
 # Volume Controls
-bindsym XF86AudioMute exec pactl set-sink-mute 'alsa_output.pci-0000_00_1f.3.analog-stereo' toggle
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 'alsa_output.pci-0000_00_1f.3.analog-stereo' +1%
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 'alsa_output.pci-0000_00_1f.3.analog-stereo' -1%
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +1%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -1%
 
 # Brightness Controls
 bindsym XF86MonBrightnessUp exec brightnessctl s 1%+
@@ -165,6 +166,7 @@ bindsym XF86AudioPlay exec playerctl -p mpd play-pause
 
 # Print Screen
 bindsym Print exec grim ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
+bindsym Shift+Print exec grim -g "$(slurp)" ~/Pictures/Screenshots/$(date +%Y-%m-%d_%H-%m-%s).png
 
 # Input Control
 # bindsym Scroll_Lock exec ~/.bin/toggle_touchpad.sh
@@ -180,7 +182,7 @@ set $power_mode  (D)im    (L)ock    L(e)ave    (S)hutdown     (H)
 mode "$power_mode" {
     # bindsym d exec xset dpms force off, mode "default"
     bindsym l exec $Locker, mode "default"
-	bindsym d exec pkill -SIGUSR1 swayidle, mode "default"
+	bindsym d exec sleep 0.1 && pkill -SIGUSR1 swayidle, mode "default"
     bindsym e exec swaymsg exit, mode "default"
     bindsym r exec systemctl reboot, mode "default"
     bindsym s exec systemctl poweroff -i, mode "default"
@@ -290,11 +292,17 @@ bindsym $mod+r mode "resize"
 # IO
 output "*" background "$wallpaper" fill
 
-input "1739:32402:DELL0767:00_06CB:7E92_Touchpad" {
+input type:touchpad {
     tap enabled
     click_method button_areas
     middle_emulation enabled
     dwt disabled
+}
+
+input type:keyboard {
+    xkb_layout us,ara
+    xkb_options grp:win_space_toggle
+    xkb_numlock enabled
 }
 
 # Style
@@ -332,7 +340,7 @@ assign [class="^okular$"] → $reading
 for_window [class="^mcedit.py$"] floating enable
 
 # Startup Applications
-exec dex -e sway -a
-exec mako --background-color="$background"e0 --text-color=$foreground
+exec dex -e Unity -a
+exec mako --background-color="$background"c0 --text-color=$foreground
 exec swayidle timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' &
 # vim:filetype=i3
