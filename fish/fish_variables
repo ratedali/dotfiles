@@ -35,7 +35,6 @@ SETUVAR _fish_abbr_rf:rm\x20\x2drf
 SETUVAR _fish_abbr_sc:systemctl
 SETUVAR _fish_abbr_scu:systemctl\x20\x2d\x2duser
 SETUVAR _fish_abbr_st:status
-SETUVAR _fish_abbr_syncmusic:rsync\x20\x2druv\x20\x2d\x2dprogress\x20/home/ali/Music/\x20192\x2e168\x2e8\x2e8\x3a/storage/emulated/0/Music
 SETUVAR _fish_abbr_v:nvim
 SETUVAR _fish_abbr_x:aunpack
 SETUVAR fish_color_autosuggestion:555\x1ebrblack
