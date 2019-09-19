@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=MPRIS support for MPD
-TryExec=mpDris2
-Exec=mpDris2
-StartupNotify=false

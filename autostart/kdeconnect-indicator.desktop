@@ -4,4 +4,4 @@ Name=KDEConnect Status Indicator
 TryExec=kdeconnect-indicator
 Exec=kdeconnect-indicator
 StartupNotify=false
-Hidden=true
+OnlyShowIn=Unity;

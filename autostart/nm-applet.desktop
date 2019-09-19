@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Network Manager Applet
-TryExec=nm-applet
-Exec=nm-applet
-StartupNotify=false

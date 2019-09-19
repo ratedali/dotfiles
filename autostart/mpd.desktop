@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=MPD
-TryExec=mpd
-Exec=mpd
-StartupNotify=false
