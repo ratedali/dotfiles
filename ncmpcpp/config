@@ -38,8 +38,8 @@ mpd_music_dir = "~/Music"
 mpd_crossfade_time = 0
 #
 #
-execute_on_song_change = "pkill -SIGRTMIN+12 i3blocks"
-execute_on_player_state_change = "pkill -SIGRTMIN+12 i3blocks"
+#execute_on_song_change = "pkill -SIGRTMIN+12 i3blocks"
+#execute_on_player_state_change = "pkill -SIGRTMIN+12 i3blocks"
 ##### song format #####
 ##
 ## For a song format you can use:
