@@ -29,6 +29,7 @@ browserpass
 browserpass-firefox
 bzip2
 calibre
+celluloid
 cmake
 coreutils
 cpupower
@@ -37,16 +38,15 @@ cups
 device-mapper
 dex
 dhcpcd
+dia
 diffutils
 dmenu
-dnsmasq
 docker
 docker-compose
-docker-machine-driver-kvm2
 e2fsprogs
-ebtables
 efibootmgr
 etcher-bin
+ethtool
 evince
 fakeroot
 ffmpeg
@@ -83,8 +83,10 @@ imv
 indicator-kdeconnect
 inetutils
 inotify-tools
+intel-media-driver
 intel-ucode
 iproute2
+iptables-nft
 iputils
 j4-dmenu-desktop
 jdk-jetbrains
@@ -96,16 +98,13 @@ jre8-openjdk
 kdeconnect
 kdiff3
 ksshaskpass
-kubectl
 less
 libappindicator-gtk2
 libqalculate
 libreoffice-fresh
 libtool
-libva-intel-driver
+libva-mesa-driver
 libva-utils
-libvdpau-va-gl
-libvirt
 licenses
 linux
 logrotate
@@ -120,7 +119,6 @@ mcedit
 mdadm
 mesa-demos
 minecraft-technic-launcher
-minikube
 mobile-broadband-provider-info
 modemmanager
 mpd
@@ -137,7 +135,6 @@ networkmanager
 networkmanager-openvpn
 networkmanager-strongswan
 nftables
-nitrogen
 nm-connection-editor
 noto-fonts-emoji
 npm
@@ -165,7 +162,7 @@ perl-rename
 pikaur
 pkgconf
 playerctl
-polkit-kde-agent
+polkit-gnome
 powerline-fonts
 procps-ng
 profile-sync-daemon
@@ -193,7 +190,6 @@ s-nail
 sed
 shadow
 slurp
-smplayer
 source-highlight
 sshfs
 strongswan
@@ -217,7 +213,6 @@ unzip
 usb_modeswitch
 usbutils
 util-linux
-vdpauinfo
 vi
 visual-studio-code-bin
 vulkan-intel
