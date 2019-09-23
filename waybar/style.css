@@ -4,7 +4,7 @@
     border:        none;
     border-radius: 0;
     font-family:   'Fira Sans';
-    font-size:     17px;
+    font-size:     19px;
     box-shadow:    none;
     text-shadow:   none;
     transition-duration: 0s;
@@ -12,15 +12,16 @@
 
 window {
     color: @foreground;
-    background: alpha(@background, 0.65);
+    background: alpha(@background, 0.40);
 }
 
 #workspaces {
-    margin: 0 5px;
+    margin: 0 4px;
 }
 
 #workspaces button {
-    padding:    0 5px;
+    margin: 0;
+    padding: 0;
     color:      alpha(@foreground, 0.4);
 }
 
@@ -34,7 +35,7 @@ window {
 }
 
 #workspaces button.urgent {
-    color:      rgba(238, 46, 36, 1);
+    color:      alpha(@color2, 1);
 }
 
 #mode, #battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #mpd, #tray {
@@ -48,15 +49,15 @@ window {
 }
 
 #battery.warning {
-    color:       rgba(255, 210, 4, 1);
+    color:       alpha(@color15, 1);
 }
 
 #battery.critical {
-    color:      rgba(238, 46, 36, 1);
+    animation: blink 1s linear;
 }
 
 #battery.charging {
-    color:      rgba(217, 216, 216, 1);
+    color:      alpha(@color12, 1);
 }
 
 #custom-storage.warning {
@@ -65,4 +66,13 @@ window {
 
 #custom-storage.critical {
     color:      rgba(238, 46, 36, 1);
+}
+
+@keyframes blink {
+    from {
+        color: @foreground;
+    }
+    to {
+        color: @color10;
+    }
 }
