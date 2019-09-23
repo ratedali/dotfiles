@@ -19,7 +19,6 @@ set $browser dex /usr/share/applications/firefox.desktop
 font pango: Fira Sans 10, FontAwesome 10
 
 include "$HOME/.cache/wal/colors-sway"
-set $wallpaper /home/ali/Pictures/Wallpapers/Simon_MinimalWithEVERYTHING.png
 
 default_border pixel 0
 
@@ -79,7 +78,7 @@ gaps inner 10
 gaps outer 0
 
 # change container layout (stacked, tabbed, toggle split)
-set $layout_mode  Til(e)d   (S)tacking   (T)abbed   To(g)gle Split
+set $layout_mode E  S  T  G 
 mode "$layout_mode" {
     bindsym e layout default, mode "default"
     bindsym s layout stacking, mode "default"
@@ -177,15 +176,14 @@ set $Locker ~/.bin/lock
 
 #exec xautolock -time 10 -locker $Locker
 
-set $power_mode  (D)im    (L)ock    L(e)ave    (S)hutdown     (H)ibernate    (R)eboot    S(u)spend
+set $power_mode D E S H R U
 
 mode "$power_mode" {
     # bindsym d exec xset dpms force off, mode "default"
-    bindsym l exec $Locker, mode "default"
 	bindsym d exec sleep 0.1 && pkill -SIGUSR1 swayidle, mode "default"
     bindsym e exec swaymsg exit, mode "default"
     bindsym r exec systemctl reboot, mode "default"
-    bindsym s exec systemctl poweroff -i, mode "default"
+    bindsym s exec systemctl poweroff, mode "default"
     bindsym h exec systemctl hibernate, mode "default"
     bindsym u exec systemctl suspend, mode "default"
 
@@ -196,10 +194,10 @@ mode "$power_mode" {
 bindsym --release Mod1+Ctrl+Delete mode "$power_mode"
 
 
-set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps (o)uter (i)nner
 mode "$mode_gaps" {
-        bindsym o      mode "$mode_gaps_outer"
-        bindsym i      mode "$mode_gaps_inner"
+        bindsym o      mode $mode_gaps_outer
+        bindsym i      mode $mode_gaps_inner
         bindsym Return mode "default"
         bindsym Escape mode "default"
 }
@@ -247,7 +245,7 @@ bindsym $mod+t exec firefox --new-window https://web.telegram.org
 bindsym $mod+w exec firefox --new-window https://web.whatsapp.com
 
 # Editor
-bindsym $mod+v workspace $editor, exec dex /usr/share/applications/visual-studio-code.desktop
+bindsym $mod+v workspace $editor, exec dex ~/.local/share/applications/visual-studio-code.desktop
 
 # Vedio Player
 bindsym $mod+s workspace $video, exec dex /usr/share/applications/smplayer.desktop
@@ -301,7 +299,7 @@ input type:touchpad {
 
 input type:keyboard {
     xkb_layout us,ara
-    xkb_options grp:win_space_toggle
+    xkb_options grp:lalt_lshift_toggle
     xkb_numlock enabled
 }
 
@@ -342,5 +340,5 @@ for_window [class="^mcedit.py$"] floating enable
 # Startup Applications
 exec dex -e Unity -a
 exec mako --background-color="$background"c0 --text-color=$foreground
-exec swayidle timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' &
+exec swayidle timeout 600 'brightnessctl -d dell::kbd_backlight -s set 0 && swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on" && brightnessctl -d dell::kbd_backlight -r' &
 # vim:filetype=i3
