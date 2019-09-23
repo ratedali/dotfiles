@@ -21,6 +21,7 @@ SETUVAR _fish_abbr_g:git
 SETUVAR _fish_abbr_ipy:ipython
 SETUVAR _fish_abbr_l:ls\x20\x2dalhF
 SETUVAR _fish_abbr_md:mkdir\x20\x2dp
+SETUVAR _fish_abbr_myip:curl\x20\x2dfSs\x20https\x3a//1\x2e1\x2e1\x2e1/cdn\x2dcgi/trace\x20\x7c\x20awk\x20\x2dF\x3d\x20\x27/ip/\x20\x7b\x20print\x20\x242\x20\x7d\x27
 SETUVAR _fish_abbr_pRns:sudo\x20pacman\x20\x2dRns
 SETUVAR _fish_abbr_pS:sudo\x20pacman\x20\x2dSy
 SETUVAR _fish_abbr_pSs:pacman\x20\x2dSs
