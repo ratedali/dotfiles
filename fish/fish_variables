@@ -1,6 +1,7 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR --export EDITOR:nvim
+SETUVAR PHONE_SSHFS:/run/user/1000/083feadcbaf909b4
 SETUVAR RBENV_SHELL:fish
 SETUVAR ZO_CMD:zo
 SETUVAR Z_CMD:z
