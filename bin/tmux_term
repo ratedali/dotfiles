@@ -1,3 +1,2 @@
 #!/usr/bin/env sh
-(cat ~/.cache/wal/sequences &)
-[[ -z $TMUX ]] && exec tmux "$@"
+[ -z $TMUX ] && exec tmux "$@"
