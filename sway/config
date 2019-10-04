@@ -16,11 +16,11 @@ set $browser dex /usr/share/applications/firefox.desktop
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango: Fira Sans 10, FontAwesome 10
+font pango: Liberation Sans 14
 
 include "$HOME/.cache/wal/colors-sway"
 
-default_border pixel 0
+default_border pixel 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -36,7 +36,7 @@ bindsym Mod1+F4 kill
 # start dmenu (a program launcher)
 bindsym $mod+d exec dmenu_run
 # bindsym Mod1+F1 exec i3-dmenu-desktop --entry-type=name --dmenu="rofi -dmenu -p '' -i"
-bindsym Mod1+F1 exec j4-dmenu-desktop --dmenu='bemenu -i -b -l 10 --nb "$background" --nf "$foreground" --fn "pango:Fira Mono 12"' --term='termite'
+bindsym Mod1+F1 exec j4-dmenu-desktop --dmenu='bemenu -p "Applications" -i -b -l 10 --nb "$background" --nf "$foreground" --fn "pango:Fira Mono 12"' --term='termite'
 bindsym Mod1+F2 exec rofi -show run -terminal $terminal -sidebar-mode
 
 # change focus
@@ -313,15 +313,15 @@ input type:keyboard {
  set $highlight-color     $color3
 
  # window colors
- #                       border              background         text                 indicator      child_border
- client.focused          $bg-color           $bg-color          $text-color          #00ff00        $bg-color
- client.unfocused        $bg-color           $bg-color          $inactive-text-color #00ff00        $bg-color
- client.focused_inactive $bg-color           $bg-color          $inactive-text-color #00ff00        $bg-color
- client.urgent           $urgent-color       $urgent-color      $text-color          #00ff00        $urgent-color
+ #state                     border                 background       text                    indicator           child_border
+ client.focused             $bg-color              $bg-color        $text-color             $highlight-color    $bg-color
+ client.unfocused           $bg-color              $bg-color        $inactive-text-color    $highlight-color    $bg-color
+ client.focused_inactive    $bg-color              $bg-color        $inactive-text-color    $highlight-color    $bg-color
+ client.urgent              $urgent-color          $urgent-color    $text-color             $highlight-color    $urgent-color
 
  # hide edge indicator
 
- hide_edge_borders both
+ hide_edge_borders smart
 # Start i3bar to display a workspace bar (plus the system information i3blocks
 # finds out, if available)
 bar {
@@ -329,7 +329,7 @@ bar {
 }
 
 # Window Rules
-assign [class="^smplayer$"] → $video
+assign [class="^celluloid$"] → $video
 assign [class="^MultiMC$"] → $games
 assign [class="^qBittorrent$"] → $torrent
 assign [class="^calibre$"] → $reading

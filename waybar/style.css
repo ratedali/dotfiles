@@ -3,8 +3,8 @@
 * {
     border:        none;
     border-radius: 0;
-    font-family:   'Fira Sans';
-    font-size:     19px;
+    font-family:   'Liberation Sans';
+    font-size:     12pt;
     box-shadow:    none;
     text-shadow:   none;
     transition-duration: 0s;
@@ -22,7 +22,7 @@ window {
 #workspaces button {
     margin: 0;
     padding: 0;
-    color:      alpha(@foreground, 0.4);
+    color: alpha(@foreground, 0.40);
 }
 
 #workspaces button.visible {
@@ -35,29 +35,52 @@ window {
 }
 
 #workspaces button.urgent {
-    color:      alpha(@color2, 1);
+    color:      @color2;
 }
 
 #mode, #battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #mpd, #tray {
-    margin:     0px 6px 0px 10px;
+    margin:     0px 8px;
     min-width:  25px;
 }
 
+#idle_inhibitor.deactivated {
+    color: alpha(@foreground, 0.40)
+}
+
 #clock {
-    margin:     0px 16px 0px 10px;
-    min-width:  140px;
+    margin:     0px 16px;
+    min-width:  120px;
+}
+
+#network {
+    font-family: 'Fira Code';
+    font-size: 0.9em;
+}
+
+#mpd {
+    font-weight: bold;
 }
 
 #battery.warning {
-    color:       alpha(@color15, 1);
+    color:       @color15;
 }
 
 #battery.critical {
-    animation: blink 1s linear;
+    color: @color9;
+    animation: blink 800ms linear;  
+    animation-iteration-count:infinite;
+    animation-direction: alternate;
 }
 
 #battery.charging {
-    color:      alpha(@color12, 1);
+    color:      @color10;
+}
+
+#battery.charging.full {
+    color: @color10;
+    animation: blink 800ms linear;  
+    animation-iteration-count:infinite;
+    animation-direction: alternate;
 }
 
 #custom-storage.warning {
@@ -69,10 +92,7 @@ window {
 }
 
 @keyframes blink {
-    from {
-        color: @foreground;
-    }
     to {
-        color: @color10;
+        color: @foreground;
     }
 }

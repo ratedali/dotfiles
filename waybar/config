@@ -29,6 +29,8 @@
     "battery": {
         "format": "{capacity}% {icon}",
         "states": {
+            "full": 100,
+            "normal": 95,
             "warning": 30,
             "critical": 15
         },
@@ -39,8 +41,8 @@
         "format-icons": ["", ""]
     },
     "network": {   
-        "format-wifi": "{ipaddr} @ {essid} ({signalStrength}%) ",
-        "format-ethernet": " {ipaddr} @ {ifname} ",
+        "format-wifi": "{ipaddr}::{essid} ({signalStrength}%) ",
+        "format-ethernet": " {ipaddr}::{ifname} ",
         "tooltip-format": "{bandwidthUpBits}  {bandwidthDownBits}  ",
         "format-disconnected": "⚠ Disconnected"
     },
@@ -75,11 +77,11 @@
         "max-length": 40
     },
 
-    "custom/smplayer": {
+    "custom/celluloid": {
         "format": "{} ",
         "max-length": 40,
         "exec": "$HOME/.config/waybar/mediaplayer.sh",
-        "exec-if": "pgrep smplayer"
+        "exec-if": "pgrep celluloid"
     }
 }
 // vim:filetype=json
