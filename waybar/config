@@ -66,7 +66,7 @@
     },
     "mpd": {
         "format": "{stateIcon} {title}",
-        "format-stopped": "Stopped ",
+        "format-stopped": " STOPPED",
         "tooltip-format": "{artist} - {album} - {title} {singleIcon} {randomIcon}",
         "state-icons": {
             "playing": "",

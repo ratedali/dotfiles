@@ -1,18 +1,14 @@
 @import url("/home/ali/.cache/wal/colors-waybar.css");
 
-* {
-    border:        none;
-    border-radius: 0;
-    font-family:   'Liberation Sans';
-    font-size:     12pt;
-    box-shadow:    none;
-    text-shadow:   none;
-    transition-duration: 0s;
-}
-
 window {
     color: @foreground;
     background: alpha(@background, 0.40);
+    font-family:   'Liberation Sans';
+    font-size:     12pt;
+}
+
+window#waybar.solo #window {
+    opacity: 0;
 }
 
 #workspaces {
@@ -48,37 +44,46 @@ window {
 }
 
 #clock {
-    margin:     0px 16px;
+    margin:     0px 12px;
     min-width:  120px;
+    font-family: 'Liberation Mono';
+}
+
+#mpd.playing {
+    font-style: italic;
+}
+
+#mpd.stopped {
+    color: @color2;
 }
 
 #network {
-    font-family: 'Fira Code';
+    font-family: 'Liberation Mono';
     font-size: 0.9em;
 }
 
-#mpd {
-    font-weight: bold;
+#network.wifi, #network.ethernet {
+    color: @color13;
 }
 
 #battery.warning {
-    color:       @color15;
+    color:       @color12;
 }
 
 #battery.critical {
-    color: @color9;
-    animation: blink 800ms linear;  
+    color: @color10;
+    animation: blink 800ms ease-in-out;
     animation-iteration-count:infinite;
     animation-direction: alternate;
 }
 
 #battery.charging {
-    color:      @color10;
+    color:      @color11;
 }
 
 #battery.charging.full {
-    color: @color10;
-    animation: blink 800ms linear;  
+    color: @color11;
+    animation: blink 800ms ease-in-out;
     animation-iteration-count:infinite;
     animation-direction: alternate;
 }
