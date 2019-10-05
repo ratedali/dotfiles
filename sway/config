@@ -11,7 +11,7 @@
 
 xwayland enable
 set $mod Mod4
-set $terminal termite
+set $terminal kitty
 set $browser dex /usr/share/applications/firefox.desktop
 
 # Font for window titles. Will also be used by the bar unless a different font
@@ -26,18 +26,16 @@ default_border pixel 10
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec env TERMCMD=$terminal ~/.bin/tmux_attach
-bindsym $mod+Shift+Return exec env TERMCMD=$terminal ~/.bin/tmux_attach -n
+bindsym $mod+Return exec env TERMCMD=$terminal ~/.bin/tmux_attach -n
+bindsym $mod+Shift+Return exec env TERMCMD=$terminal ~/.bin/tmux_attach -a
 
 # kill focused window
 bindsym $mod+Shift+q kill
 bindsym Mod1+F4 kill
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
-# bindsym Mod1+F1 exec i3-dmenu-desktop --entry-type=name --dmenu="rofi -dmenu -p '' -i"
+# program launcher
 bindsym Mod1+F1 exec j4-dmenu-desktop --dmenu='bemenu -p "Applications" -i -b -l 10 --nb "$background" --nf "$foreground" --fn "pango:Fira Mono 12"' --term='termite'
-bindsym Mod1+F2 exec rofi -show run -terminal $terminal -sidebar-mode
+# bindsym Mod1+F2 exec rofi -show run -terminal $terminal -sidebar-mode
 
 # change focus
 bindsym $mod+h focus left
@@ -248,7 +246,7 @@ bindsym $mod+w exec firefox --new-window https://web.whatsapp.com
 bindsym $mod+v workspace $editor, exec dex ~/.local/share/applications/visual-studio-code.desktop
 
 # Vedio Player
-bindsym $mod+s workspace $video, exec dex /usr/share/applications/smplayer.desktop
+bindsym $mod+s workspace $video, exec dex /usr/share/applications/io.github.celluloid_player.Celluloid.desktop
 
 # Music Player
 bindsym $mod+m workspace $music, exec env TERMCMD=$terminal ~/.bin/music.sh
@@ -329,13 +327,18 @@ bar {
 }
 
 # Window Rules
-assign [class="^celluloid$"] → $video
-assign [class="^MultiMC$"] → $games
-assign [class="^qBittorrent$"] → $torrent
-assign [class="^calibre$"] → $reading
-assign [class="^Evince$"] → $reading
-assign [class="^okular$"] → $reading
-for_window [class="^mcedit.py$"] floating enable
+assign [app_id="^firefox$"] →  $web
+assign [app_id="^io.github.celluloid_player.Celluloid$"] → $video
+assign [app_id="^org.multimc.multimc$"] → $games
+assign [app_id="^org.qbittorrent.qBittorrent$"] → $torrent
+assign [app_id="^calibre-gui$"] → $reading
+assign [app_id="^evince$"] → $reading
+assign [app_id="^org.kde.okular$"] → $reading
+
+# Per window config
+for_window [app_id="^io.github.celluloid_player.Celluloid$"] inhibit_idle visible
+for_window [app_id="^org.kde.okular$"] inhibit_idle visible
+for_window [app_id="^evince$"] inhibit_idle visible
 
 # Startup Applications
 exec dex -e Unity -a
