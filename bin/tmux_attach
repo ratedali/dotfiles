@@ -33,24 +33,26 @@ TERMCMD=${TERMCMD:-kitty}
 term_execute() {
     case $TERMCMD in
         urxvt*)
-            exec env TMUX= $TERMCMD -e -- $HOME/.bin/tmux_term "$*";;
+            exec env TMUX= $TERMCMD -e -- tmux $1 ${2:+"$2"};;
         kitty)
-            exec env TMUX= $TERMCMD --title "$TITLE" -- /bin/sh -c "$HOME/.bin/tmux_term $*";;
+            exec env TMUX= $TERMCMD --title "$TITLE" -- /usr/bin/tmux $1 ${2:+"$2"};;
         *)
-            exec env TMUX= $TERMCMD -e "$HOME/.bin/tmux_term $*";;
+            exec env TMUX= $TERMCMD -e tmux\ "$1"${2:+" $2"};;
     esac
 }
 
 function new_session() {
+    set -x
     if [ -n "$SESSION_NAME" -a -n "$WINDOW_NAME" ]; then
-        term_execute new-session -s "$SESSION_NAME" -n "$WINDOW_NAME" ${EXECUTABLE:+\"$EXECUTABLE\"}
+        term_execute "new-session -s $SESSION_NAME -n $WINDOW_NAME" ${EXECUTABLE:+"$EXECUTABLE"}
     elif [ -n "$SESSION_NAME" -a -z "$WINDOW_NAME" ]; then
-        term_execute new-session -s "$SESSION_NAME" ${EXECUTABLE:+\"$EXECUTABLE\"}
+        term_execute "new-session -s $SESSION_NAME" ${EXECUTABLE:+"$EXECUTABLE"}
     elif [ -z "$SESSION_NAME" -a -n "$WINDOW_NAME" ]; then
-        term_execute new-session -n "$WINDOW_NAME" ${EXECUTABLE:+\"$EXECUTABLE\"}
+        term_execute "new-session -n $WINDOW_NAME" ${EXECUTABLE:+"$EXECUTABLE"}
     else
-        term_execute new-session ${EXECUTABLE:+\"$EXECUTABLE\"}
+        term_execute "new-session" ${EXECUTABLE:+"$EXECUTABLE"}
     fi
+    set +x
 }
 
 NEW_ONLY=0
@@ -72,9 +74,9 @@ while getopts :t:an opt; do
 done
 shift $[ $OPTIND - 1 ]
 
-SESSION_NAME="$1"
-WINDOW_NAME="$2"
-EXECUTABLE="$3"
+SESSION_NAME=$1
+WINDOW_NAME=$2
+EXECUTABLE=$3
 
 if [ -z "$TITLE" ]; then
     TITLE="${EXECUTABLE:-${WINDOW_NAME:-${SESSION_NAME:-${EXECUTABLE:-Terminal}}}}"
@@ -114,18 +116,18 @@ main() {
                 # only switch the window on the session if requested by name
                 tmux select-window -t "=$TARGET_SESSION:$TARGET_WINDOW"
             elif [ "$TARGET_ATTACHED" = 0 ]; then
-                term_execute attach -t "$TARGET_SESSION:$WINDOW_NAME"
+                term_execute "attach -t $TARGET_SESSION:$WINDOW_NAME"
             fi
 
         elif [ $ATTACH_ONLY = 0 ]; then
             if [ -n "$WINDOW_NAME" ]; then
-                tmux new-window -n "$WINDOW_NAME" -t "$TARGET_SESSION:" ${EXECUTABLE:+"$EXECUTABLE"}
+                tmux new-window -n "$WINDOW_NAME" -t "$TARGET_SESSION:" $EXECUTABLE
             else
-                tmux new-window -t "$TARGET_SESSION:" ${EXECUTABLE:+"$EXECUTABLE"}
+                tmux new-window -t "$TARGET_SESSION:" $EXECUTABLE
             fi
 
             if [ "$TARGET_ATTACHED" = 0 ]; then
-                term_execute attach -t "$TARGET_SESSION:$WINDOW_NAME"
+                term_execute "attach -t $TARGET_SESSION:$WINDOW_NAME"
             fi
         fi
     elif [ $ATTACH_ONLY = 0 ]; then
