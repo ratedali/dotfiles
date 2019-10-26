@@ -5,10 +5,10 @@ PAGER                                   DEFAULT=less
 GDK_SCALE                               DEFAULT=2
 GDK_DPI_SCALE                           DEFAULT=1.2
 MOZ_ENABLE_WAYLAND                      DEFAULT=1
-EMENU_BACKEND                           DEFAULT=wayland OVERRIDE=wayland
-QT_QPA_PLATFORMTHEME                    DEFAULT=qt5ct OVERRIDE=qt5ct
+BEMENU_BACKEND                          DEFAULT=wayland
+QT_QPA_PLATFORMTHEME                    DEFAULT=qt5ct
 QT_WAYLAND_DISABLE_WINDOWDECORATION     DEFAULT=1 OVERRIDE=1
 QT_WAYLAND_FORCE_DPI                    DEFAULT=physical OVERRIDE=physical
-SDL_VIDEODRIVER                         DEFAULT=wayland OVERRIDE=wayland
-_JAVA_AWT_WM_NONREPARENTING             DEFAULT=1 OVERRIDE=1
+SDL_VIDEODRIVER                         DEFAULT=wayland
+_JAVA_AWT_WM_NONREPARENTING             DEFAULT=1
 LIBVA_DRIVER_NAME                       DEFAULT=iHD
