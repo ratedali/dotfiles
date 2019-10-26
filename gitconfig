@@ -1,21 +1,25 @@
 [user]
-	email = rated.ali.7@gmail.com
-	name = Ali Salah Alddin
-	signingKey = 040138FD
-	github = ratedali
+    email = rated.ali.7@gmail.com
+    name = Ali Salaheldin
+    signingKey = 040138FD
+    github = ratedali
 [commit]
-	gpgSign = true
+    gpgSign = true
 [alias]
-    l = log --graph --pretty="'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'" --abbrev-commit
-	graph = log --graph --pretty=oneline --abbrev-commit
-	d = diff
-	st = status
-	a = add
-	c = commit
-	ca = commit --amend --no-edit
-	p = push
-    pf = push --force-with-lease
+    a = add
+    br = branch
+    c = commit
     co = checkout
-# vim:filetype=gitconfig
+    d = diff
+    p = push
+    s = status
+    l = log --graph --pretty="'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'" --abbrev-commit
+    graph = log --graph --pretty=oneline --abbrev-commit
+    last = log -1 HEAD
+    cm = commit -m
+    cane = commit --amend --no-edit
+    pr = push --rebase
+    pf = push --force-with-lease
 [diff]
-	tool = kdiff3
+    tool = kdiff3
+# vim:filetype=gitconfig
