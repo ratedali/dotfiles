@@ -1,0 +1,7 @@
+[Desktop Entry]
+Exec=/usr/bin/wpg
+Icon=wpgtk
+Terminal=false
+Type=Application
+Name=wpGTK
+Comment=A GUI wallpaper chooser that changes your Openbox theme, GTK theme and Tint2 theme
