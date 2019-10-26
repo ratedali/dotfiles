@@ -1,10 +1,17 @@
 @import url("/home/ali/.cache/wal/colors-waybar.css");
 
+* {
+    border: none;
+    border-radius: 0;
+    font-family: 'Liberation Sans';
+    font-size: 12pt;
+    box-shadow: none;
+    text-shadow: none;
+}
+
 window {
     color: @foreground;
-    background: alpha(@background, 0.40);
-    font-family:   'Liberation Sans';
-    font-size:     12pt;
+    background: alpha(@background, 0.90);
 }
 
 window#waybar.solo #window {
@@ -16,9 +23,10 @@ window#waybar.solo #window {
 }
 
 #workspaces button {
-    margin: 0;
-    padding: 0;
+    margin: 0 4px;
+    padding: 4px 4px;
     color: alpha(@foreground, 0.40);
+    background: inherit;
 }
 
 #workspaces button.visible {
@@ -47,6 +55,7 @@ window#waybar.solo #window {
     margin:     0px 12px;
     min-width:  120px;
     font-family: 'Liberation Mono';
+    font-size: 0.95em;
 }
 
 #mpd.playing {
@@ -59,7 +68,7 @@ window#waybar.solo #window {
 
 #network {
     font-family: 'Liberation Mono';
-    font-size: 0.9em;
+    font-size: 0.95em;
 }
 
 #network.wifi, #network.ethernet {
