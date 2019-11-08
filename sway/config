@@ -70,6 +70,9 @@ bindsym $mod+Ctrl+v split v
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen toggle
 
+# browse wallpapers
+bindsym $mod+w exec imv -f -r $HOME/Pictures/Wallpapers
+
 # Gaps
 # smart_gaps on
 gaps inner 7
@@ -238,12 +241,9 @@ bindsym Shift+Ctrl+Escape workspace $admin, exec env TERMCMD=$terminal ~/.bin/ta
 # Web Browser
 bindsym $mod+c workspace $web, exec dex $browser
 
-# Webapps
-bindsym $mod+t exec firefox --new-window https://web.telegram.org
-bindsym $mod+w exec firefox --new-window https://web.whatsapp.com
-
 # Editor
-bindsym $mod+v workspace $editor, exec dex ~/.local/share/applications/visual-studio-code.desktop
+bindsym $mod+Shift+v workspace $editor, exec dex ~/.local/share/applications/visual-studio-code.desktop
+bindsym $mod+v workspace $editor, exec TERMCMD=$terminal ~/.bin/editor.sh
 
 # Vedio Player
 bindsym $mod+s workspace $video, exec dex /usr/share/applications/io.github.celluloid_player.Celluloid.desktop
@@ -321,7 +321,8 @@ bar {
 
 # Window Rules
 assign [app_id="^firefox$"] → $web
-assign [title="- Android Studio$"] → $editor
+assign [app_id="^kitty$" title="^[Ff]iles$"] → $files
+assign [class="^jetbrains-studio$"] → $editor
 assign [class="^[Cc]ode$"] → $editor
 assign [app_id="^org.multimc.multimc$"] → $games
 assign [class="^[Mm]inecraft"] → $games
@@ -337,7 +338,6 @@ assign [app_id="^org.qbittorrent.qBittorrent$"] → $torrent
 for_window [app_id="^io.github.celluloid_player.Celluloid$"] inhibit_idle visible
 for_window [app_id="^org.kde.okular$"] inhibit_idle visible
 for_window [app_id="^evince$"] inhibit_idle visible
-for_window [app_id="^kitty$" title="^[Mm]usic$"] fullscreen enable
 # XWayland windows
 for_window [class="^[Mm]inecraft"] layout tabbed
 for_window [class="^jetbrains-studio$" title="^Welcome to Android Studio$"] floating enable
@@ -345,6 +345,6 @@ for_window [class="^sun-awt-X11-XWindowPeer$"] floating enable
 
 # Startup Applications
 exec dex -e Unity -a
-exec mako --background-color="$background"e6 --text-color=$foreground --icon-path "$HOME/.icons/wal"
+exec mako --background-color="$background"e6 --text-color=$foreground --icon-path "$HOME/.icons/wal/"
 exec swayidle timeout 600 'brightnessctl -d dell::kbd_backlight -s set 0 && swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on" && brightnessctl -d dell::kbd_backlight -r' &
 # vim:filetype=i3
