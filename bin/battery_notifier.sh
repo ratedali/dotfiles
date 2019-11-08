@@ -38,10 +38,10 @@ ac_connected=$(acpi -a | cut -d: -f2 | sed -e 's:\s\+::')
 
 if [ "$battery_state" -ge $UPPER_LIMIT -a "$ac_connected" == "on-line" ]; then
     message="Unplug the charger"
-    notify-send -a "Battery Status" --icon=battery "Battery Level ${battery_state}%" "$message"
+    notify-send -a "Battery Status" --icon=battery-full-charged "Battery Level ${battery_state}%" "$message"
     notify_device "$message"
 elif [ "$battery_state" -le $LOWER_LIMIT -a "$ac_connected" == "off-line" ]; then
     message="Plug in the charger"
-    notify-send -a "Battery Status" --icon=battery "Battery Level ${battery_state}%" "$message"
+    notify-send -a "Battery Status" --icon=battery-low "Battery Level ${battery_state}%" "$message"
     notify_device "$message"
 fi
