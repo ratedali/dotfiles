@@ -1,6 +1,5 @@
 acpi
 alsa-utils
-android-tools
 android-udev
 anki
 atool
@@ -15,9 +14,6 @@ bemenu
 binutils
 bluez-hid2hci
 bluez-utils
-breeze
-breeze-gtk
-breeze-icons
 brightnessctl
 browserpass
 browserpass-firefox
@@ -34,15 +30,12 @@ device-mapper
 dex
 dhcpcd
 diffutils
-dmenu
 docker
 docker-compose
 e2fsprogs
 efibootmgr
 egl-wayland
 ethtool
-evince
-evolution
 fakeroot
 ffmpeg
 file
@@ -60,8 +53,6 @@ gettext
 git
 glfw-wayland
 glibc
-gnome-control-center
-gnome-shell
 grep
 grim
 groff
@@ -78,7 +69,6 @@ intel-ucode
 iproute2
 iptables-nft
 iputils
-jdk-openjdk
 jdk8-openjdk
 jfsutils
 jq
@@ -87,9 +77,7 @@ kdeconnect
 kitty
 ksshaskpass
 less
-libappindicator-gtk2
 libqalculate
-libreoffice-fresh
 libtool
 libva-mesa-driver
 libva-utils
@@ -98,6 +86,7 @@ linux
 logrotate
 lshw
 lvm2
+lwm
 m4
 make
 mako
@@ -108,10 +97,8 @@ mesa-demos
 mobile-broadband-provider-info
 modemmanager
 mpd
-mplayer
 mpv
 ncmpcpp
-nemo
 neovim
 netctl
 networkmanager
@@ -123,7 +110,9 @@ noto-fonts-emoji
 npm
 ntfs-3g
 ntp
+obconf
 okular
+openbox
 openssh
 otf-fira-code
 otf-fira-mono
@@ -162,6 +151,7 @@ qutebrowser
 ranger
 reflector
 reiserfsprogs
+ripgrep
 rsync
 s-nail
 sed
@@ -189,7 +179,6 @@ usbutils
 util-linux
 vi
 vulkan-intel
-vulkan-radeon
 which
 whois
 wireless_tools
