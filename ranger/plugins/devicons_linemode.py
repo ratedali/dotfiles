@@ -1,0 +1,1 @@
+devicons/__init__.py
