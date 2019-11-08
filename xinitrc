@@ -40,4 +40,4 @@ export MOZ_ENABLE_WAYLAND=0
 export BEMENU_BACKEND=x11
 export SDL_VIDEODRIVER=x11
 export XDG_SESSION_TYPE=x11
-exec gnome-session
+exec openbox-session
