@@ -11,7 +11,7 @@
 #
 # use -a for attach only mode (i.e. no new session or window will be created)
 # use -n for new only mode (i.e. no existing session will be used)
-# 
+#
 
 #         DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE
 #                 Version 2, December 2004
@@ -121,9 +121,9 @@ main() {
 
         elif [ $ATTACH_ONLY = 0 ]; then
             if [ -n "$WINDOW_NAME" ]; then
-                tmux new-window -n "$WINDOW_NAME" -t "$TARGET_SESSION:" $EXECUTABLE
+                tmux new-window -n "$WINDOW_NAME" -t "$TARGET_SESSION:" ${EXECUTABLE:+"$EXECUTABLE"}
             else
-                tmux new-window -t "$TARGET_SESSION:" $EXECUTABLE
+                tmux new-window -t "$TARGET_SESSION:" ${EXECUTABLE:+"$EXECUTABLE"}
             fi
 
             if [ "$TARGET_ATTACHED" = 0 ]; then
