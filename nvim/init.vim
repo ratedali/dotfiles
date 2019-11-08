@@ -1,8 +1,7 @@
 if &shell =~# 'fish$'
-    set shell=sh
+    set shell=bash
 endif
 
-source ~/.config/nvim/plugins.vim
 source ~/.config/nvim/ui.vim
 source ~/.config/nvim/mappings.vim
 
@@ -11,7 +10,7 @@ set wildignore=*.o,*~,*.pyc
 set wildignore+=.git\*,.hg\*,.svn\*,__pycache__\*
 
 " A buffer becomes hidden when it is abandoned
-set hid
+set hidden
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw 
@@ -21,7 +20,7 @@ set magic
 
 
 " Use Unix as the standard file type
-set ffs=unix,dos,mac
+set fileformats=unix,dos,mac
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -29,7 +28,7 @@ set ffs=unix,dos,mac
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Turn backup off, since most stuff is in SVN, git etc anyway...
 set nobackup
-set nowb
+set nowritebackup
 set noswapfile
 
 " Turn persistent undo on 
@@ -53,11 +52,14 @@ set shiftwidth=4
 set tabstop=4
 
 " Linebreak on 500 characters
-set lbr
-set tw=500
+set linebreak
+set textwidth=500
 
 set smartindent " Copy last line indention
 set wrap "Wrap lines
 
 " Mappings input timeout
 set timeoutlen=350
+
+" Load plugins last for overrides
+source ~/.config/nvim/plugins.vim

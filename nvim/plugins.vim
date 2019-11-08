@@ -1,11 +1,13 @@
 call plug#begin()
 
+Plug 'francoiscabrol/ranger.vim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'scrooloose/nerdtree', {'on': 'NERDTreeToggle'}
 Plug 'tpope/vim-fugitive'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'neomake/neomake'
-Plug 'kien/ctrlp.vim'
+Plug '/usr/share/vim/vimfiles/plugin/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'gabesoft/vim-ags'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'SirVer/ultisnips'
@@ -18,27 +20,21 @@ Plug 'christoomey/vim-tmux-navigator'
 Plug 'tmux-plugins/vim-tmux-focus-events'
 Plug 'wellle/tmux-complete.vim'
 Plug 'roxma/vim-tmux-clipboard'
+" ranger.vim dependency
+Plug 'rbgrouleff/bclose.vim'
 
 " specific file types
 Plug 'Valloric/MatchTagAlways'
-Plug 'derekwyatt/vim-scala'
-Plug 'dag/vim-fish'
-Plug 'PotatoesMaster/i3-vim-syntax'
-Plug 'tmux-plugins/vim-tmux'
+Plug 'dag/vim-fish', { 'for': 'scala' }
+Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }
+Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
 
 
 " themes
-Plug 'dracula/vim'
-Plug 'lifepillar/vim-solarized8'
-Plug 'pbrisbin/vim-colors-off'
-Plug 'marciomazza/vim-brogrammer-theme'
-Plug 'vim-scripts/molokai'
-Plug 'dylanaraps/wal.vim'
+Plug 'deviantfero/wpgtk.vim'
 call plug#end()
 
-source ~/.config/nvim/plugins/deoplete.vim
-source ~/.config/nvim/plugins/tmux-complete.vim
-source ~/.config/nvim/plugins/neomake.vim
-source ~/.config/nvim/plugins/airline.vim
-source ~/.config/nvim/plugins/ultisnips.vim
-source ~/.config/nvim/plugins/vim-tmux-navigator.vim
+" per-plugin configuration
+for plugconf in globpath(expand('<sfile>:h') . '/plugins.d', '*.vim', 1, 1)
+   exec 'source ' . plugconf
+endfor

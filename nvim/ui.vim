@@ -1,7 +1,7 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => User Interface
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set so=7
+set scrolloff=7
 
 " Show line numbers
 set number
@@ -20,7 +20,7 @@ set smartcase
 set showmatch 
 
 " How many tenths of a second to blink when matching brackets
-set mat=2
+set matchtime=2
 
 " No annoying sound on errors
 set noerrorbells
@@ -33,7 +33,7 @@ set foldcolumn=1
 " => Font and Color
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
-colorscheme wal
+colorscheme slate
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Folding

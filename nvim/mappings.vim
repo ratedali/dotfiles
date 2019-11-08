@@ -1,13 +1,18 @@
+" vint: -ProhibitAutocmdWithNoGroup
+" vint: -ProhibitCommandRelyOnUser
 " With a map leader it's possible to do extra key combinations
 let mapleader = "\<space>"
 let g:mapleader = "\<space>"
 
 " Command button as ';'
 nnoremap ; :
+nmap q; q:
 
 " Switch CWD to the directory of the open buffer
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
+" Disable Ex mode
+nmap Q <nop>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Visual Mode
@@ -64,7 +69,7 @@ map <leader>h :bprevious<cr>
 " Specify the behavior when switching between buffers 
 try
   set switchbuf=useopen,usetab,newtab
-  set stal=2
+  set showtabline=2
 catch
 endtry
 
@@ -83,7 +88,7 @@ map <leader>tm :tabmove
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
 nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
-au TabLeave * let g:lasttab = tabpagenr()
+autocmd TabLeave * let g:lasttab = tabpagenr()
 
 " Opens a new tab with the current buffer's path
 " Super useful when editing files in the same directory
@@ -116,9 +121,11 @@ vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 " Delete trailing white space on save, useful for some scripting languages
 func! DeleteTrailingWS()
-  exe "normal mz"
+  exe 'normal mz'
+  " vint: -ProhibitCommandWithUnintendedSideEffect
   %s/\s\+$//ge
-  exe "normal `z"
+  " vint: +ProhibitCommandWithUnintendedSideEffect
+  exe 'normal `z'
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
 autocmd BufWrite *.coffee :call DeleteTrailingWS()
@@ -174,19 +181,19 @@ nnoremap <leader>t :call ToggleNumber()<cr>
 
 function! VisualSelection(direction, extra_filter) range
     let l:saved_reg = @"
-    execute "normal! vgvy"
+    execute 'normal! vgvy'
 
     let l:pattern = escape(@", '\\/.*$^~[]')
-    let l:pattern = substitute(l:pattern, "\n$", "", "")
+    let l:pattern = substitute(l:pattern, "\n$", '', '')
 
-    if a:direction == 'b'
-        execute "normal ?" . l:pattern . "^M"
-    elseif a:direction == 'gv'
+    if a:direction ==# 'b'
+        execute 'normal ?' . l:pattern . '^M'
+    elseif a:direction ==# 'gv'
         call CmdLine("Ag \"" . l:pattern . "\" " )
-    elseif a:direction == 'replace'
-        call CmdLine("%s" . '/'. l:pattern . '/')
-    elseif a:direction == 'f'
-        execute "normal /" . l:pattern . "^M"
+    elseif a:direction ==# 'replace'
+        call CmdLine('%s' . '/'. l:pattern . '/')
+    elseif a:direction ==# 'f'
+        execute 'normal /' . l:pattern . '^M'
     endif
 
     let @/ = l:pattern
@@ -194,7 +201,7 @@ function! VisualSelection(direction, extra_filter) range
 endfunction
 
 function! CmdLine(str)
-    exe "menu Foo.Bar :" . a:str
+    exe 'menu Foo.Bar :' . a:str
     emenu Foo.Bar
     unmenu Foo
 endfunction 
@@ -202,8 +209,8 @@ endfunction
 " Don't close window, when deleting a buffer
 command! Bclose call <SID>BufcloseCloseIt()
 function! <SID>BufcloseCloseIt()
-   let l:currentBufNum = bufnr("%")
-   let l:alternateBufNum = bufnr("#")
+   let l:currentBufNum = bufnr('%')
+   let l:alternateBufNum = bufnr('#')
 
    if buflisted(l:alternateBufNum)
      buffer #
@@ -211,29 +218,29 @@ function! <SID>BufcloseCloseIt()
      bnext
    endif
 
-   if bufnr("%") == l:currentBufNum
+   if bufnr('%') == l:currentBufNum
      new
    endif
 
    if buflisted(l:currentBufNum)
-     execute("bdelete! ".l:currentBufNum)
+     execute('bdelete! '.l:currentBufNum)
    endif
 endfunction
 
 func! DeleteTillSlash()
     let g:cmd = getcmdline()
 
-    if has("win16") || has("win32")
-        let g:cmd_edited = substitute(g:cmd, "\\(.*\[\\\\]\\).*", "\\1", "")
+    if has('win16') || has('win32')
+        let g:cmd_edited = substitute(g:cmd, "\\(.*\[\\\\]\\).*", "\\1", '')
     else
-        let g:cmd_edited = substitute(g:cmd, "\\(.*\[/\]\\).*", "\\1", "")
+        let g:cmd_edited = substitute(g:cmd, "\\(.*\[/\]\\).*", "\\1", '')
     endif
 
     if g:cmd == g:cmd_edited
-        if has("win16") || has("win32")
-            let g:cmd_edited = substitute(g:cmd, "\\(.*\[\\\\\]\\).*\[\\\\\]", "\\1", "")
+        if has('win16') || has('win32')
+            let g:cmd_edited = substitute(g:cmd, "\\(.*\[\\\\\]\\).*\[\\\\\]", "\\1", '')
         else
-            let g:cmd_edited = substitute(g:cmd, "\\(.*\[/\]\\).*/", "\\1", "")
+            let g:cmd_edited = substitute(g:cmd, "\\(.*\[/\]\\).*/", "\\1", '')
         endif
     endif   
 
