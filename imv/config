@@ -1,0 +1,2 @@
+[binds]
+ww = exec setsid $HOME/.bin/set_wallpaper $imv_current_file suruplus_aspromauros >& /dev/null &
