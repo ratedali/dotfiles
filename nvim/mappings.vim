@@ -33,9 +33,15 @@ cnoremap $w ~/Workspace/
 
 " $q is super useful when browsing on the command line
 " it deletes everything until the last slash 
-cno $q <C-\>eDeleteTillSlash()<cr>
 
-
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" => Neovim Terminal
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+tnoremap <ESC> <C-\><C-n>
+tnoremap <C-h> <C-\><C-n><C-w>h
+tnoremap <C-j> <C-\><C-n><C-w>j
+tnoremap <C-k> <C-\><C-n><C-w>k
+tnoremap <C-l> <C-\><C-n><C-w>l
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around

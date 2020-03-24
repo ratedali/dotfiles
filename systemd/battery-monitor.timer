@@ -2,7 +2,7 @@
 Description=Monitors battery level and charging status
 
 [Timer]
-OnActiveSec=1min
+OnStartupSec=3min
 OnUnitActiveSec=5min
 
 [Install]

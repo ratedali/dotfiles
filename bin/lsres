@@ -1,0 +1,17 @@
+#!/bin/env bash
+if [[ -z "$1" ]]; then
+    echo "Usage: $0 WIDTH_LIMIT [HEIGHT_LIMIT [SIZE_LIMIT]]" >&2
+    exit 1
+fi
+
+WIDTH_LIMIT=$1
+HEIGHT_LIMIT=${2:-$WIDTH_LIMIT}
+SIZE_LIMIT=-${3:-59k}
+
+find -type f -size $SIZE_LIMIT -iregex '.*\(jpg\|png\|gif\)$' -exec identify -quiet '{}' ';' |
+    sed -nre 's/^(.*+\.(png|jpg|gif))[[:space:]].*[[:space:]]([[:digit:]]+)x([[:digit:]]+)[[:space:]].*/\1,\3,\4/p' |
+    while IFS=, read -r file width height; do
+        if [[ $width -lt $WIDTH_LIMIT && $height -lt $HEIGHT_LIMIT ]]; then
+            echo $file
+        fi
+    done 

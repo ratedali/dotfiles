@@ -355,4 +355,4 @@ exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
 exec --no-startup-id xinput set-prop "DELL0767:00 06CB:7E92 Touchpad" "libinput Disable While Typing Enabled" 0
 exec --no-startup-id xinput set-prop "DELL0767:00 06CB:7E92 Touchpad" "libinput Tapping Enabled" 1
 exec --no-startup-id xinput set-prop "DELL0767:00 06CB:7E92 Touchpad" "libinput Middle Emulation Enabled" 1
-# vim:filetype=i3
+# vim:filetype=i3config

@@ -1,2 +1,8 @@
 [binds]
+<Shift+D> = exec rm $imv_current_file
 ww = exec setsid $HOME/.bin/set_wallpaper $imv_current_file suruplus_aspromauros >& /dev/null &
+wh = exec setsid $HOME/.bin/set_wallpaper $imv_current_file suruplus_aspromauros haishoku >& /dev/null &
+wz = exec setsid $HOME/.bin/set_wallpaper $imv_current_file suruplus_aspromauros colorz >& /dev/null &
+wc = exec setsid $HOME/.bin/set_wallpaper $imv_current_file suruplus_aspromauros colorthief >& /dev/null &
+wl = exec setsid $HOME/.bin/set_wallpaper $imv_current_file suruplus_aspromauros wal >& /dev/null &
+ws = exec setsid $HOME/.bin/set_wallpaper $imv_current_file suruplus_aspromauros schemer2 >& /dev/null &

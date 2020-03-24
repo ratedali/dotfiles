@@ -5,6 +5,7 @@ Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'tpope/vim-fugitive'
 Plug 'terryma/vim-multiple-cursors'
 Plug 'neomake/neomake'
+Plug 'janko/vim-test'
 Plug '/usr/share/vim/vimfiles/plugin/fzf'
 Plug 'junegunn/fzf.vim'
 Plug 'gabesoft/vim-ags'
@@ -24,11 +25,8 @@ Plug 'roxma/vim-tmux-clipboard'
 Plug 'rbgrouleff/bclose.vim'
 
 " specific file types
+Plug 'sheerun/vim-polyglot'
 Plug 'Valloric/MatchTagAlways'
-Plug 'dag/vim-fish', { 'for': 'scala' }
-Plug 'PotatoesMaster/i3-vim-syntax', { 'for': 'i3' }
-Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }
-
 
 " themes
 Plug 'deviantfero/wpgtk.vim'

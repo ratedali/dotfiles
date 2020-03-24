@@ -34,8 +34,7 @@ bindsym $mod+Shift+q kill
 bindsym Mod1+F4 kill
 
 # program launcher
-bindsym Mod1+F1 exec j4-dmenu-desktop --term="$terminal" --dmenu="bemenu -p 'Applications' -i -b -l 15 --tb '$color10' --tf '$foreground' --nb '$background' --nf '$foreground' --hb '$color11' --hf '$foreground' --fb '$background' --ff '$color10' --fn 'pango:Fira Mono 14'"
-# bindsym Mod1+F2 exec rofi -show run -terminal $terminal -sidebar-mode
+bindsym Mod1+F1 exec setsid -f synapse
 
 # change focus
 bindsym $mod+h focus left
@@ -68,7 +67,7 @@ bindsym $mod+Ctrl+h split h
 bindsym $mod+Ctrl+v split v
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+bindsym $mod+F11 fullscreen toggle
 
 # browse wallpapers
 bindsym $mod+w exec imv -f -r $HOME/Pictures/Wallpapers
@@ -181,7 +180,7 @@ set $power_mode D E S H R U
 
 mode "$power_mode" {
     # bindsym d exec xset dpms force off, mode "default"
-	bindsym d exec sleep 0.1 && pkill -SIGUSR1 swayidle, mode "default"
+    bindsym d exec sleep 0.1 && pkill -SIGUSR1 swayidle, mode "default"
     bindsym e exec swaymsg exit, mode "default"
     bindsym r exec systemctl reboot, mode "default"
     bindsym s exec systemctl poweroff, mode "default"
@@ -194,56 +193,25 @@ mode "$power_mode" {
 }
 bindsym --release Mod1+Ctrl+Delete mode "$power_mode"
 
-
-set $mode_gaps (o)uter (i)nner
-mode "$mode_gaps" {
-        bindsym o      mode $mode_gaps_outer
-        bindsym i      mode $mode_gaps_inner
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-bindsym $mod+Shift+g mode "$mode_gaps"
-
-set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
-mode "$mode_gaps_inner" {
-        bindsym plus  gaps inner current plus 5
-        bindsym minus gaps inner current minus 5
-        bindsym 0     gaps inner current set 0
-
-        bindsym Shift+plus  gaps inner all plus 5
-        bindsym Shift+minus gaps inner all minus 5
-        bindsym Shift+0     gaps inner all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-
-set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
-mode "$mode_gaps_outer" {
-        bindsym plus  gaps outer current plus 5
-        bindsym minus gaps outer current minus 5
-        bindsym 0     gaps outer current set 0
-
-        bindsym Shift+plus  gaps outer all plus 5
-        bindsym Shift+minus gaps outer all minus 5
-        bindsym Shift+0     gaps outer all set 0
-
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
+# Web Browser
+bindsym $mod+f workspace $web, exec dex $browser
 
 # File Manager
 bindsym $mod+e workspace $files, exec env TERMCMD=$terminal ~/.bin/file_manager.sh
 
-# Task Manager
-bindsym Shift+Ctrl+Escape workspace $admin, exec env TERMCMD=$terminal ~/.bin/tasks.sh
-
-# Web Browser
-bindsym $mod+c workspace $web, exec dex $browser
-
 # Editor
 bindsym $mod+Shift+v workspace $editor, exec dex ~/.local/share/applications/visual-studio-code.desktop
 bindsym $mod+v workspace $editor, exec TERMCMD=$terminal ~/.bin/editor.sh
+
+# Task Manager
+bindsym Shift+Ctrl+Escape workspace $admin, exec env TERMCMD=$terminal ~/.bin/tasks.sh
+
+# Book reader
+bindsym $mod+c workspace $reading, exec dex /usr/share/applications/org.kde.okular.desktop
+bindsym $mod+b workspace $reading, exec dex /usr/share/applications/calibre-gui.desktop
+
+# Communication
+bindsym $mod+t workspace $chat, exec telegram-desktop-bin
 
 # Vedio Player
 bindsym $mod+s workspace $video, exec dex /usr/share/applications/io.github.celluloid_player.Celluloid.desktop
@@ -324,20 +292,26 @@ assign [app_id="^firefox$"] → $web
 assign [app_id="^kitty$" title="^[Ff]iles$"] → $files
 assign [class="^jetbrains-studio$"] → $editor
 assign [class="^[Cc]ode$"] → $editor
+assign [app_id="^org.kde.kile$"] → $editor
 assign [app_id="^org.multimc.multimc$"] → $games
 assign [class="^[Mm]inecraft"] → $games
 assign [app_id="^calibre-gui$"] → $reading
 assign [app_id="^evince$"] → $reading
 assign [app_id="^org.kde.okular$"] → $reading
+assign [app_id="^anki$"] → $reading
 assign [app_id="^evolution$"] → $chat
+assign [app_id="^telegramdesktop$"] → $chat
 assign [app_id="^io.github.celluloid_player.Celluloid$"] → $video
 assign [app_id="^kitty$" title="^[Mm]usic$"] → $music
 assign [app_id="^org.qbittorrent.qBittorrent$"] → $torrent
 
 # Per window config
+for_window [app_id="^synapse$"] border pixel 1
 for_window [app_id="^io.github.celluloid_player.Celluloid$"] inhibit_idle visible
 for_window [app_id="^org.kde.okular$"] inhibit_idle visible
 for_window [app_id="^evince$"] inhibit_idle visible
+for_window [app_id="^org.octave.Octave$" title="^[Ff]igure"] floating enable
+for_window [title="^Graphics Lecture -"] floating enable
 # XWayland windows
 for_window [class="^[Mm]inecraft"] layout tabbed
 for_window [class="^jetbrains-studio$" title="^Welcome to Android Studio$"] floating enable
@@ -347,4 +321,5 @@ for_window [class="^sun-awt-X11-XWindowPeer$"] floating enable
 exec dex -e Unity -a
 exec mako --background-color="$background"e6 --text-color=$foreground --icon-path "$HOME/.icons/wal/"
 exec swayidle timeout 600 'brightnessctl -d dell::kbd_backlight -s set 0 && swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on" && brightnessctl -d dell::kbd_backlight -r' &
-# vim:filetype=i3
+
+# vim:filetype=i3config
