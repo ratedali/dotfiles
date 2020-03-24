@@ -1,0 +1,28 @@
+{
+    "wallpaper": "/home/ali/.config/wpg/wallpapers/NGNL_Jibril.jpg",
+    "alpha": "90",
+
+    "special": {
+        "background": "#2a0f25",
+        "foreground": "#fff6fb",
+        "cursor": "#fff6fb"
+    },
+    "colors": {
+        "color0": "#2a0f25",
+        "color1": "#AB6999",
+        "color2": "#F398D2",
+        "color3": "#D2A1AA",
+        "color4": "#7E3D82",
+        "color5": "#CB7CE2",
+        "color6": "#FAB2E4",
+        "color7": "#f0e1e5",
+        "color8": "#4f1b45",
+        "color9": "#f076cf",
+        "color10": "#ffaaff",
+        "color11": "#ffb9cd",
+        "color12": "#ae42b5",
+        "color13": "#ff8aff",
+        "color14": "#ffbaff",
+        "color15": "#fff6fb"
+    }
+}
