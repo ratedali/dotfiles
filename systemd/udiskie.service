@@ -1,0 +1,11 @@
+[Unit]
+Description=Handle automounting of usb devices
+
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/udiskie --appindicator --tray
+
+
+[Install]
+WantedBy=default.target

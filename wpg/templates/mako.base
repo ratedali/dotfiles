@@ -9,5 +9,5 @@ border-size=0
 border-radius=8
 margin=32
 padding=16
-background-color=#160c13e6
-text-color=#ffd3ff
+background-color={background}e6
+text-color={foreground}

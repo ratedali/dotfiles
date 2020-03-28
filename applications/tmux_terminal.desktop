@@ -1,0 +1,7 @@
+[Desktop Entry]
+Version=1.0
+Type=Application
+Name=TMUX Terminal
+Exec=/usr/bin/sh -c "$HOME/.bin/tmux_attach -n %U"
+Icon=kitty
+Categories=System;TerminalEmulator;

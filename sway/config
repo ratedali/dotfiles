@@ -34,7 +34,7 @@ bindsym $mod+Shift+q kill
 bindsym Mod1+F4 kill
 
 # program launcher
-bindsym Mod1+F1 exec setsid -f synapse
+bindsym Mod1+F1 exec synapse
 
 # change focus
 bindsym $mod+h focus left
@@ -198,6 +198,7 @@ bindsym $mod+f workspace $web, exec dex $browser
 
 # File Manager
 bindsym $mod+e workspace $files, exec env TERMCMD=$terminal ~/.bin/file_manager.sh
+bindsym $mod+Shift+e workspace $files, exec pcmanfm
 
 # Editor
 bindsym $mod+Shift+v workspace $editor, exec dex ~/.local/share/applications/visual-studio-code.desktop
@@ -211,7 +212,7 @@ bindsym $mod+c workspace $reading, exec dex /usr/share/applications/org.kde.okul
 bindsym $mod+b workspace $reading, exec dex /usr/share/applications/calibre-gui.desktop
 
 # Communication
-bindsym $mod+t workspace $chat, exec telegram-desktop-bin
+bindsym $mod+t workspace $chat, exec telegram-desktop
 
 # Vedio Player
 bindsym $mod+s workspace $video, exec dex /usr/share/applications/io.github.celluloid_player.Celluloid.desktop
@@ -290,6 +291,7 @@ bar {
 # Window Rules
 assign [app_id="^firefox$"] → $web
 assign [app_id="^kitty$" title="^[Ff]iles$"] → $files
+assign [app_id="^pcmanfm$"] → $files
 assign [class="^jetbrains-studio$"] → $editor
 assign [class="^[Cc]ode$"] → $editor
 assign [app_id="^org.kde.kile$"] → $editor

@@ -14,6 +14,7 @@ beets
 binutils
 bison
 blender
+blueman
 bluez-hid2hci
 bluez-utils
 breeze
@@ -23,6 +24,7 @@ browserpass
 browserpass-firefox
 bzip2
 calibre
+cantata
 celluloid
 clang
 cmake
@@ -39,9 +41,12 @@ docker-compose
 dotnet-sdk
 e2fsprogs
 efibootmgr
+eog
 fakeroot
 ffmpeg
+ffmpegthumbnailer
 file
+file-roller
 filesystem
 findutils
 firefox
@@ -61,6 +66,8 @@ glm
 grep
 grim
 groff
+gvfs
+gvfs-mtp
 gzip
 hdparm
 htop
@@ -82,6 +89,7 @@ kdeconnect
 kile
 kitty
 less
+libappindicator-gtk2
 libqalculate
 libreoffice-still
 libtool
@@ -129,6 +137,7 @@ pass
 patch
 pavucontrol
 pciutils
+pcmanfm-gtk3
 perl
 perl-rename
 pkgconf
@@ -152,6 +161,7 @@ python-pywal
 python-scipy
 python-xlrd
 qbittorrent
+qemu
 qt5-script
 qt5-styleplugins
 qt5-wayland
@@ -172,6 +182,8 @@ sshfs
 strace
 strongswan
 sudo
+swayidle
+swaylock
 synapse
 sysfsutils
 systemd
@@ -187,6 +199,7 @@ texlive-science
 tmux
 ttf-liberation
 ttf-sazanami
+udiskie
 unrar
 unzip
 usb_modeswitch
@@ -194,10 +207,13 @@ usbutils
 util-linux
 vulkan-intel
 vulkan-radeon
+waybar
 which
 whois
 wireless_tools
 wireshark-qt
+wl-clipboard
+wlroots
 xdg-user-dirs
 xfsprogs
 xinetd
@@ -206,5 +222,6 @@ xorg-xeyes
 xorg-xprop
 xorg-xrandr
 yarn
+yasm
 youtube-dl
 zip
