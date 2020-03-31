@@ -26,12 +26,13 @@ SETUVAR _fish_abbr_pQs:pacman\x20\x2dQs
 SETUVAR _fish_abbr_pRns:sudo\x20pacman\x20\x2dRns
 SETUVAR _fish_abbr_pS:sudo\x20pacman\x20\x2dS
 SETUVAR _fish_abbr_pSs:pacman\x20\x2dSs
-SETUVAR _fish_abbr_pSu:pikaur\x20\x2dSyu
+SETUVAR _fish_abbr_pSu:sudo\x20pacman\x20\x2dSyu
 SETUVAR _fish_abbr_pU:sudo\x20pacman\x20\x2dU
 SETUVAR _fish_abbr_pk:pikaur
 SETUVAR _fish_abbr_pkG:pikaur\x20\x2dG
 SETUVAR _fish_abbr_pkS:pikaur\x20\x2dSa
 SETUVAR _fish_abbr_pkSs:pikaur\x20\x2dSsa
+SETUVAR _fish_abbr_pkSu:pikaur\x20\x2dSyu
 SETUVAR _fish_abbr_py:python
 SETUVAR _fish_abbr_rf:rm\x20\x2drf
 SETUVAR _fish_abbr_sc:systemctl

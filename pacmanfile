@@ -137,7 +137,6 @@ pass
 patch
 pavucontrol
 pciutils
-pcmanfm-gtk3
 perl
 perl-rename
 pkgconf
@@ -196,9 +195,13 @@ texlive-core
 texlive-langextra
 texlive-pictures
 texlive-science
+thunar
+thunar-archive-plugin
+thunar-media-tags-plugin
 tmux
 ttf-liberation
 ttf-sazanami
+tumbler
 udiskie
 unrar
 unzip

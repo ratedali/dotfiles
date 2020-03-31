@@ -1,6 +1,6 @@
 #!/bin/sh
 bg=$(mktemp XXXXX.png -p /tmp)
-grim -s 0.05 "$bg"
+grim -s 0.2 "$bg"
 [[ -f $1 ]] && convert "$bg" $1 -gravity center -composite -matte "$bg"
 swaylock -i "$bg"
 rm "$bg"
