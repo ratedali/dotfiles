@@ -15,13 +15,9 @@ window {
     min-height: 36px;
 }
 
-#battery, #cpu, #memory, #network, #pulseaudio, #idle_inhibitor, #backlight, #mpd, #tray {
+#battery, #network, #pulseaudio, #backlight, #mpd, #tray {
     margin:     0px 8px;
     min-width:  25px;
-}
-
-#idle_inhibitor.deactivated {
-    color: alpha(@foreground, 0.40)
 }
 
 #clock {
