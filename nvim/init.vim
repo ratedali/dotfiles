@@ -9,6 +9,13 @@ source ~/.config/nvim/mappings.vim
 set wildignore=*.o,*~,*.pyc
 set wildignore+=.git\*,.hg\*,.svn\*,__pycache__\*
 
+" Having longer updatetime (default is 4000 ms = 4 s) leads to noticeable
+" delays and poor user experience.
+set updatetime=300
+
+set nobackup
+set nowritebackup
+
 " A buffer becomes hidden when it is abandoned
 set hidden
 

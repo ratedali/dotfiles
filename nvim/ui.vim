@@ -12,6 +12,10 @@ set ruler
 " the command bar height
 set cmdheight=2
 
+" Always show the signcolumn, otherwise it would shift the text each time
+" diagnostics appear/become resoled
+set signcolumn=yes
+
 " Ignore case when searching
 set ignorecase
 set smartcase

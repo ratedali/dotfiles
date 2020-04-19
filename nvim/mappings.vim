@@ -1,8 +1,8 @@
 " vint: -ProhibitAutocmdWithNoGroup
 " vint: -ProhibitCommandRelyOnUser
 " With a map leader it's possible to do extra key combinations
-let mapleader = "\<space>"
-let g:mapleader = "\<space>"
+let mapleader = ";"
+let g:mapleader = ";"
 
 " Command button as ';'
 nnoremap ; :
@@ -24,17 +24,6 @@ vnoremap <silent> * :call VisualSelection('f', '')<CR>
 vnoremap <silent> # :call VisualSelection('b', '')<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Command mode related
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Smart mappings on the command line
-cnoremap $d ~/Desktop/
-cnoremap $j ./
-cnoremap $w ~/Workspace/
-
-" $q is super useful when browsing on the command line
-" it deletes everything until the last slash 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Neovim Terminal
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 tnoremap <ESC> <C-\><C-n>
@@ -50,29 +39,30 @@ tnoremap <C-l> <C-\><C-n><C-w>l
 map j gj
 map k gk
 
-" Disable highlight when <leader><cr> is pressed
-map <silent> <leader><esc> :noh<cr>
+" Disable highlight when <leader><ESC> is pressed
+map <silent> <leader><ESC> :noh<CR>
 
 " Errors windows
-nnoremap <leader>ln :lne<cr>
-nnoremap <leader>lp :lpr<cr>
+nnoremap <leader>o :lopen<CR>
+nnoremap <leader>J :lne<CR>
+nnoremap <leader>K :lpr<CR>
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
+" Buffer navigation
+map gn :bnext<cr>
+map gp :bprevious<cr>
+
 " Close the current buffer
-map <leader>bd :Bclose<cr>:tabclose<cr>gT
+map <leader>d :Bclose<cr>:tabclose<cr>gT
 
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
 
-" Buffer navigation
-map <leader>l :bnext<cr>
-map <leader>h :bprevious<cr>
-
-" Specify the behavior when switching between buffers 
+" Specify the behavior when switching between buffers
 try
   set switchbuf=useopen,usetab,newtab
   set showtabline=2
@@ -88,12 +78,12 @@ endtry
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-"map <leader>t<leader> :tabnext 
+map <leader>tm :tabmove
+"map <leader>t<leader> :tabnext
 
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
-nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
+nmap <leader>tl :exe "tabn ".g:lasttab<CR>
 autocmd TabLeave * let g:lasttab = tabpagenr()
 
 " Opens a new tab with the current buffer's path
@@ -134,34 +124,20 @@ func! DeleteTrailingWS()
   exe 'normal `z'
 endfunc
 autocmd BufWrite *.py :call DeleteTrailingWS()
-autocmd BufWrite *.coffee :call DeleteTrailingWS()
 
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
-" Toggle paste mode on and off
-map <leader>pp :setlocal paste!<cr>
-
 " System clipboard
 vmap <leader>y "+y
 nmap <leader>yy "+yy
+nmap <leader>ye "+ye
 vmap <leader>d "+d
 nmap <leader>dd "+dd
 nmap <leader>p "+p
 nmap <leader>P "+P
 vmap <leader>p "+p
 vmap <leader>P "+P
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Parenthesis/bracket
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Map auto complete of (, ", ', [
-inoremap $9 ()<esc>i
-inoremap $2 []<esc>i
-inoremap $3 {}<esc>i
-inoremap $4 {<esc>o}<esc>O
-inoremap $' ''<esc>i
-inoremap $" ""<esc>i
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
@@ -175,11 +151,6 @@ map <leader>sp [s
 map <leader>sa zg
 map <leader>s? z=
 
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Function Calling
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <leader>t :call ToggleNumber()<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper Functions
@@ -210,7 +181,7 @@ function! CmdLine(str)
     exe 'menu Foo.Bar :' . a:str
     emenu Foo.Bar
     unmenu Foo
-endfunction 
+endfunction
 
 " Don't close window, when deleting a buffer
 command! Bclose call <SID>BufcloseCloseIt()
@@ -232,33 +203,3 @@ function! <SID>BufcloseCloseIt()
      execute('bdelete! '.l:currentBufNum)
    endif
 endfunction
-
-func! DeleteTillSlash()
-    let g:cmd = getcmdline()
-
-    if has('win16') || has('win32')
-        let g:cmd_edited = substitute(g:cmd, "\\(.*\[\\\\]\\).*", "\\1", '')
-    else
-        let g:cmd_edited = substitute(g:cmd, "\\(.*\[/\]\\).*", "\\1", '')
-    endif
-
-    if g:cmd == g:cmd_edited
-        if has('win16') || has('win32')
-            let g:cmd_edited = substitute(g:cmd, "\\(.*\[\\\\\]\\).*\[\\\\\]", "\\1", '')
-        else
-            let g:cmd_edited = substitute(g:cmd, "\\(.*\[/\]\\).*/", "\\1", '')
-        endif
-    endif   
-
-    return g:cmd_edited
-endfunc
-
-" Toggles between number and relative number
-function! ToggleNumber()
-    if(&relativenumber == 1)
-        set norelativenumber
-        set number
-    else
-        set relativenumber
-    endif
-endfunc
