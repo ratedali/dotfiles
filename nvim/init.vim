@@ -4,6 +4,7 @@ endif
 
 source ~/.config/nvim/ui.vim
 source ~/.config/nvim/mappings.vim
+source ~/.config/nvim/autocmd.vim
 
 " Ignore compiled and temporary files on completions
 set wildignore=*.o,*~,*.pyc
@@ -66,7 +67,7 @@ set smartindent " Copy last line indention
 set wrap "Wrap lines
 
 " Mappings input timeout
-set timeoutlen=350
+set timeoutlen=500
 
 " Load plugins last for overrides
 source ~/.config/nvim/plugins.vim

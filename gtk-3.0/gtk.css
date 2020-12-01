@@ -17,3 +17,4 @@ window decoration {
 .solid-csd headerbar .title {
     font-size: 0;
 }
+@import 'colors.css';

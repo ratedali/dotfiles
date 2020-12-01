@@ -1,8 +1,8 @@
 " vint: -ProhibitAutocmdWithNoGroup
 " vint: -ProhibitCommandRelyOnUser
 " With a map leader it's possible to do extra key combinations
-let mapleader = ";"
-let g:mapleader = ";"
+let mapleader = "\\"
+let g:mapleader = "\\"
 
 " Command button as ';'
 nnoremap ; :
@@ -27,10 +27,14 @@ vnoremap <silent> # :call VisualSelection('b', '')<CR>
 " => Neovim Terminal
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 tnoremap <ESC> <C-\><C-n>
-tnoremap <C-h> <C-\><C-n><C-w>h
-tnoremap <C-j> <C-\><C-n><C-w>j
-tnoremap <C-k> <C-\><C-n><C-w>k
-tnoremap <C-l> <C-\><C-n><C-w>l
+tnoremap <M-h> <C-\><C-n><C-w>h
+tnoremap <M-j> <C-\><C-n><C-w>j
+tnoremap <M-k> <C-\><C-n><C-w>k
+tnoremap <M-l> <C-\><C-n><C-w>l
+nnoremap <M-h> <C-w>h
+nnoremap <M-j> <C-w>j
+nnoremap <M-k> <C-w>k
+nnoremap <M-l> <C-w>l
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around
@@ -39,8 +43,8 @@ tnoremap <C-l> <C-\><C-n><C-w>l
 map j gj
 map k gk
 
-" Disable highlight when <leader><ESC> is pressed
-map <silent> <leader><ESC> :noh<CR>
+" Disable highlight when <leader><CR> is pressed
+map <silent> <leader><CR> :noh<CR>
 
 " Errors windows
 nnoremap <leader>o :lopen<CR>
@@ -108,12 +112,6 @@ nmap <leader>w :w!<cr>
 " Enter saves all files and repeats last command
 " Useful for testing
 nnoremap <CR> :wa<CR>:!!<CR>
-
-" Move a line of text using ALT+[jk] or Comamnd+[jk] on mac
-nmap <M-j> mz:m+<cr>`z
-nmap <M-k> mz:m-2<cr>`z
-vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
-vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 " Delete trailing white space on save, useful for some scripting languages
 func! DeleteTrailingWS()

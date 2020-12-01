@@ -33,6 +33,8 @@ set novisualbell
 " Add a bit extra margin to the left
 set foldcolumn=1
 
+" diff options
+set diffopt=internal,filler,vertical
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Font and Color
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

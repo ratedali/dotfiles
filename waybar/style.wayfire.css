@@ -13,6 +13,7 @@ window {
     color: @foreground;
     background: alpha(@background, 0.40);
     min-height: 36px;
+    font-size: 14pt;
 }
 
 #battery, #network, #pulseaudio, #backlight, #mpd, #tray {
@@ -24,7 +25,7 @@ window {
     margin:     0px 12px;
     min-width:  120px;
     font-family: 'Fira Mono';
-    font-size: 0.95em;
+    font-size: 0.95rem;
 }
 
 #mpd.playing {

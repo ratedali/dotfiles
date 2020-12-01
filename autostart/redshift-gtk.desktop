@@ -1,9 +1,0 @@
-[Desktop Entry]
-Type=Application
-Terminal=false
-Name=Redshift
-Icon=redshift
-Categories=Utility;
-TryExec=redshift-gtk
-Exec=redshift-gtk
-StartupNotify=true

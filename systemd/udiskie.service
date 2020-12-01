@@ -4,7 +4,7 @@ Description=Handle automounting of usb devices
 
 [Service]
 Type=simple
-ExecStart=/usr/bin/udiskie --appindicator --tray
+ExecStart=/usr/bin/udiskie
 
 
 [Install]

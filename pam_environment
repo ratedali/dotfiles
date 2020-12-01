@@ -1,14 +1,2 @@
-SSH_AGENT_PID                           DEFAULT=
-SSH_AUTH_SOCK	                        DEFAULT="${XDG_RUNTIME_DIR}/gnupg/S.gpg-agent.ssh"
 EDITOR                                  DEFAULT=nvim
-PAGER                                   DEFAULT=less 
-GDK_SCALE                               DEFAULT=2
-GDK_DPI_SCALE                           DEFAULT=1.2
-MOZ_ENABLE_WAYLAND                      DEFAULT=1
-BEMENU_BACKEND                          DEFAULT=wayland
-QT_QPA_PLATFORMTHEME                    DEFAULT=qt5ct
-QT_WAYLAND_DISABLE_WINDOWDECORATION     DEFAULT=1 OVERRIDE=1
-QT_WAYLAND_FORCE_DPI                    DEFAULT=physical OVERRIDE=physical
-SDL_VIDEODRIVER                         DEFAULT=wayland
-_JAVA_AWT_WM_NONREPARENTING             DEFAULT=1
-LIBVA_DRIVER_NAME                       DEFAULT=iHD
+PAGER                                   DEFAULT=less

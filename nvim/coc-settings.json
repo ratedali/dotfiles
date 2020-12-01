@@ -1,3 +1,6 @@
 {
-    "clangd.semanticHighlighting": true
+    "clangd.semanticHighlighting": true,
+    "latex.build.onSave": true,
+    "latex.forwardSearch.executable": "okular",
+    "latex.forwardSearch.args": ["--unique", "file:%p#src:%1%f"]
 }

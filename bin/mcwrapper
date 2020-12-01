@@ -1,0 +1,4 @@
+#!/bin/sh
+export vblank_mode=0
+export mesa_glthread=true 
+gamemoderun "$@"

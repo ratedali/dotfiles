@@ -1,18 +1,8 @@
 AddKeysToAgent yes
 
+Host homeserver
+    User server
+    LocalForward localhost:9090 localhost:8384
+
 Host 192.168.8.8
     Port 2222
-
-Host ai-stream.org
-    User ec2-user
-    StrictHostKeyChecking no
-    UserKnownHostsFile=/dev/null
-
-Host *.compute-*.amazonaws.com
-    User ec2-user
-    StrictHostKeyChecking no
-    UserKnownHostsFile=/dev/null
-
-Host git-codecommit.*.amazonaws.com
-    User APKASUXAWMYZW6KY3BCY 
-    IdentityFile ~/.ssh/id_rsa

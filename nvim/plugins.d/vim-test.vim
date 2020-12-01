@@ -1,3 +1,3 @@
 nmap <silent> <F7> :TestSuite<CR>
 
-let test#strategy = 'neovim'
+let test#strategy = 'neomake'

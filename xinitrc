@@ -34,10 +34,8 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  unset f
 fi
 
-export GDK_SCALE=1
-export GDK_DPI_SCALE=1.5
 export MOZ_ENABLE_WAYLAND=0
-export BEMENU_BACKEND=x11
 export SDL_VIDEODRIVER=x11
-export XDG_SESSION_TYPE=x11
-exec openbox-session
+export _JAVA_AWT_WM_NONREPARENTING=0
+export DESKTOP_SESSION=plasma
+exec startplasma-x11
