@@ -1,5 +1,6 @@
 call plug#begin()
 
+Plug 'dstein64/vim-startuptime'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
@@ -18,7 +19,6 @@ Plug 'jiangmiao/auto-pairs'
 
 " specific file types
 Plug 'sheerun/vim-polyglot'
-Plug 'Valloric/MatchTagAlways'
 Plug 'jackguo380/vim-lsp-cxx-highlight'
 
 " Colorschemes

@@ -6,3 +6,6 @@ Host homeserver
 
 Host 192.168.8.8
     Port 2222
+
+Host ebu-chatbot
+    User ebu

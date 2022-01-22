@@ -22,6 +22,11 @@
     pf = push --force-with-lease
 [diff]
     tool = kdiff3
+	submodule = log
 # vim:filetype=gitconfig
 [pull]
-	ff = only
+    rebase = merges
+[init]
+	defaultBranch = main
+[status]
+	submoduleSummary = true
