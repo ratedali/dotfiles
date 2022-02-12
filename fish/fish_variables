@@ -18,7 +18,6 @@ SETUVAR __tf_func:function\x20__tf_alias\x20\x2dd\x20\x22Correct\x20your\x20prev
 SETUVAR __tf_vers:The\x20Fuck\x203\x2e29\x20using\x20Python\x203\x2e7\x2e4\x20and\x20Fish\x20Shell\x203\x2e0\x2e2
 SETUVAR _fish_abbr_c:cat
 SETUVAR _fish_abbr_g:git
-SETUVAR _fish_abbr_gh:github
 SETUVAR _fish_abbr_ipy:ipython
 SETUVAR _fish_abbr_l:ls\x20\x2dalhF
 SETUVAR _fish_abbr_myip:curl\x20\x2dfSs\x20https\x3a//1\x2e1\x2e1\x2e1/cdn\x2dcgi/trace\x20\x7c\x20awk\x20\x2dF\x3d\x20\x27/ip/\x20\x7b\x20print\x20\x242\x20\x7d\x27
@@ -69,5 +68,6 @@ SETUVAR fish_user_paths:/home/ali/\x2ebin\x1e/home/ali/\x2eyarn/bin/\x1e/home/al
 SETUVAR fisher_active_prompt:clearance
 SETUVAR fisher_dependency_count:done\x1eautoenvstack\x1egetopts\x1espin\x1egitignore\x1ethefuck\x1ehumanize_duration\x1eclearance
 SETUVAR nvm_data:/home/ali/\x2elocal/share/nvm
+SETUVAR nvm_mirror:https\x3a//nodejs\x2eorg/dist
 SETUVAR pure_version:2\x2e1\x2e8
 SETUVAR yimmy_solarized:true

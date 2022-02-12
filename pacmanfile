@@ -7,7 +7,6 @@ android-udev
 anki
 asp
 assimp
-atool
 autoconf
 automake
 axel
@@ -17,7 +16,6 @@ bash
 beets
 binutils
 bison
-blender
 bluez-hid2hci
 bluez-plugins
 bluez-utils
@@ -80,6 +78,7 @@ geary
 gettext
 gimp
 git
+github-cli
 glfw-wayland
 glibc
 gnome-backgrounds
@@ -96,6 +95,7 @@ gnome-screenshot
 gnome-session
 gnome-settings-daemon
 gnome-shell
+gnome-shell-extension-appindicator
 gnome-shell-extensions
 gnome-system-monitor
 gnome-terminal
@@ -103,6 +103,7 @@ gnome-themes-extra
 gnome-tweaks
 gnome-usage
 gnome-video-effects
+gnu-netcat
 google-cloud-sdk
 gparted
 grep
@@ -167,6 +168,7 @@ mdadm
 mesa-demos
 mobile-broadband-provider-info
 modemmanager
+mongodb-compass
 mpd
 mpv
 multimc5
@@ -181,7 +183,6 @@ noto-fonts-emoji
 npm
 ntfs-3g
 ntp
-octave
 okular
 opengl-man-pages
 openssh
@@ -199,6 +200,7 @@ pciutils
 peek
 perl
 perl-rename
+pinta
 pkgconf
 podman
 podman-compose
@@ -233,9 +235,8 @@ scrcpy
 sed
 shadow
 siege
-silo-netflix
-silos
 simple-scan
+slack-electron
 smartmontools
 source-highlight
 spotify
@@ -254,6 +255,7 @@ telegram-desktop
 texinfo
 tk
 tmux
+traceroute
 tracker
 tracker-miners
 ttf-fira-code
@@ -271,6 +273,7 @@ visual-studio-code-bin
 vulkan-intel
 vulkan-radeon
 vulkan-tools
+wget
 which
 whois
 wine-gecko
@@ -297,6 +300,5 @@ xorg-xlsclients
 xorg-xprop
 xorg-xrandr
 xorg-xwayland
-yarn
 youtube-dl
 zip

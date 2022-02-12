@@ -1,6 +1,3 @@
 {
-    "clangd.semanticHighlighting": true,
-    "latex.build.onSave": true,
-    "latex.forwardSearch.executable": "okular",
-    "latex.forwardSearch.args": ["--unique", "file:%p#src:%1%f"]
+    "coc.preferences.formatOnSaveFiletypes": ["js",  "json", "yml", "css", "md"]
 }
