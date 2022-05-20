@@ -30,3 +30,5 @@
 	defaultBranch = main
 [status]
 	submoduleSummary = true
+[core]
+	editor = code --wait

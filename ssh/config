@@ -9,3 +9,7 @@ Host 192.168.8.8
 
 Host ebu-*
     User ebu
+
+Host *.compute-1.amazonaws.com
+    User ec2-user
+    IdentityFile ~/.ssh/aws-ec2.pem
