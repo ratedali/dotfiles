@@ -21,14 +21,11 @@
     pr = push --rebase
     pf = push --force-with-lease
 [diff]
-    tool = kdiff3
 	submodule = log
-# vim:filetype=gitconfig
 [pull]
     rebase = merges
 [init]
 	defaultBranch = main
 [status]
 	submoduleSummary = true
-[core]
-	editor = code --wait
+# vim:filetype=gitconfig
