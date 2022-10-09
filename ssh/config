@@ -11,5 +11,11 @@ Host ebu-*
     User ebu
 
 Host *.compute-1.amazonaws.com
-    User ec2-user
-    IdentityFile ~/.ssh/aws-ec2.pem
+    User ubuntu
+    IdentityFile ~/.ssh/mukhtar_aws.pem
+    StrictHostKeyChecking no
+    UserKnownHostsFile=/dev/null
+
+Host *.uni-saarland.de
+    User musaeed
+    IdentityFile ~/.ssh/id-saarland

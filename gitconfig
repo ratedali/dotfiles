@@ -24,8 +24,14 @@
 	submodule = log
 [pull]
     rebase = merges
+[merge]
+    tool = code
 [init]
 	defaultBranch = main
 [status]
 	submoduleSummary = true
+[core]
+	editor = "flatpak run --file-forwarding re.sonny.Commit @@"
+[mergetool "code"]
+    cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 # vim:filetype=gitconfig
