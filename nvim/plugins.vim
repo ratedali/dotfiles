@@ -16,6 +16,7 @@ Plug 'janko/vim-test'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'jiangmiao/auto-pairs'
+Plug 'github/copilot.vim'
 
 " specific file types
 Plug 'sheerun/vim-polyglot'

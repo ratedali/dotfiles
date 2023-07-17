@@ -31,7 +31,7 @@
 [status]
 	submoduleSummary = true
 [core]
-	editor = "flatpak run --file-forwarding re.sonny.Commit @@"
+	editor = "/usr/bin/re.sonny.Commit"
 [mergetool "code"]
     cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
 # vim:filetype=gitconfig
