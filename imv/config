@@ -1,2 +1,0 @@
-[binds]
-<Shift+D> = exec rm $imv_current_file
