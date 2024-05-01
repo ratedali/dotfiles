@@ -1,10 +1,8 @@
 call plug#begin()
 
 Plug 'dstein64/vim-startuptime'
-Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-rhubarb'
-Plug 'shumphrey/fugitive-gitlab.vim'
 Plug 'tpope/vim-commentary'
 Plug 'tpope/vim-surround'
 Plug 'honza/vim-snippets'
@@ -16,7 +14,6 @@ Plug 'janko/vim-test'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'jiangmiao/auto-pairs'
-Plug 'github/copilot.vim'
 
 " specific file types
 Plug 'sheerun/vim-polyglot'
