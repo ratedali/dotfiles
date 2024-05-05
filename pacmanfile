@@ -21,12 +21,10 @@ calibre
 celluloid
 chaotic-keyring
 chaotic-mirrorlist
-clonezilla
 cmake
 cni-plugins
 commit
 coq
-coqide
 cpupower
 cpupower-gui
 crun
@@ -106,7 +104,6 @@ gvfs-mtp
 handbrake
 hdparm
 helvum
-hexchat
 htop
 hunspell-en_gb
 icoextract
@@ -124,8 +121,6 @@ jfsutils
 jq
 jre
 jre-openjdk
-kodi
-kodi-addon-inputstream-adaptive
 lib32-gamemode
 lib32-gnutls
 lib32-mangohud
@@ -151,7 +146,6 @@ man-db
 man-pages
 mangohud
 mesa-demos
-mongosh
 mpv
 mutter
 nautilus
@@ -191,9 +185,7 @@ podman
 podman-compose
 podman-docker
 polkit-gnome
-powershell-bin
 profile-sync-daemon
-pwgen
 python-more-itertools
 python-nautilus
 python-pip
@@ -203,7 +195,6 @@ python-pyclip
 python-pynvim
 python-pyqt5
 qalculate-gtk
-qbittorrent
 qt5-script
 qt5-wayland
 rclone
@@ -212,7 +203,6 @@ reflector
 reiserfsprogs
 rsync
 s-nail
-scrcpy
 simple-scan
 smartmontools
 source-highlight
@@ -225,11 +215,9 @@ syncthing
 syncthing-gtk
 sysfsutils
 systemd-resolvconf
-teams
 telegram-desktop
 texinfo
 tk
-tmux
 traceroute
 ttf-fira-code
 ttf-firacode-nerd
@@ -255,10 +243,6 @@ wget
 which
 whois
 wimlib
-wine-gecko
-wine-mono
-wine-tkg-staging-fsync-git
-winetricks
 wireless_tools
 wireplumber
 wl-clipboard
