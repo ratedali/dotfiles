@@ -1,0 +1,6 @@
+[user]
+	email = ali@enigma-ai.com
+	name = Ali Salaheldin
+	signingkey = 6E49D8BEE0F9C8D20C7E08EC402BE5B066F63E04
+[commit]
+	gpgsign = true

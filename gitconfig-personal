@@ -1,0 +1,7 @@
+[user]
+    email = rated.ali.7@gmail.com
+    name = Ali Salaheldin
+    signingKey = 040138FD
+    github = ratedali
+[commit]
+    gpgSign = true

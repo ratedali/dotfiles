@@ -1,0 +1,6 @@
+[user]
+	email = alsa00006@stud.uni-saarland.de
+	name = Ali Salaheldin Ali Ahmed
+	signingkey = 6E49D8BEE0F9C8D20C7E08EC402BE5B066F63E04
+[commit]
+	gpgsign = true
