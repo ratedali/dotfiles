@@ -1,3 +1,28 @@
+[core]
+	autocrlf = input
+	editor = \"C:/Program Files (x86)/GitExtensions/GitExtensions.exe\" fileeditor
+[i18n]
+	filesEncoding = utf-8
+    
+[init]
+    defaultBranch = main
+[status]
+    submoduleSummary = true
+[fetch]
+	prune = true    
+[pull]
+    rebase = true
+[diff]
+    guitool = code
+    submodule = log
+[merge]
+    tool = code
+[rebase]
+	autoStash = true
+	autosquash = true
+	updateRefs = false
+
+ 
 [alias]
     a = add
     br = branch
@@ -13,26 +38,27 @@
     cane = commit --amend --no-edit
     pr = push --rebase
     pf = push --force-with-lease
-[diff]
-    submodule = log
-[pull]
-    rebase = merges
-[merge]
-    tool = code
-[init]
-    defaultBranch = main
-[status]
-    submoduleSummary = true
-[core]
-	editor = "/usr/bin/re.sonny.Commit"
-[mergetool "code"]
-    cmd = code --wait --merge $REMOTE $LOCAL $BASE $MERGED
+
 [gpg]
-    program = /mnt/c/Program Files (x86)/GnuPG/bin/gpg.exe
-[IncludeIf "gitdir:~/Workspace/AWSi/"]
+	program = "C:/Program Files (x86)/GnuPG/bin/gpg.exe"
+[gpg "ssh"]
+	program = ssh-keygen
+	allowedSignersFile = ""
+[safe]
+	directory = C:/Users/rated/password-store
+
+[difftool "code"]
+	path = C:/Users/rated/AppData/Local/Programs/Microsoft VS Code/Code.exe
+	cmd = \"C:/Users/rated/AppData/Local/Programs/Microsoft VS Code/Code.exe\" --new-window --wait --diff \"$LOCAL\" \"$REMOTE\"
+[mergetool "code"]
+    path = C:/Users/rated/AppData/Local/Programs/Microsoft VS Code/Code.exe
+    cmd = \"C:/Users/rated/AppData/Local/Programs/Microsoft VS Code/Code.exe\" --new-window --wait --merge \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\"
+
+[IncludeIf "gitdir:~/source/AWSi/"]
 	path = .gitconfig-awsi
-[IncludeIf "gitdir:~/Workspace/Personal/"]
+[IncludeIf "gitdir:~/source/repos/"]
 	path = .gitconfig-personal
-[IncludeIf "gitdir:~/Workspace/UdS/"]
+[IncludeIf "gitdir:~/source/UdS/"]
 	path = .gitconfig-uds
+
 # vim:filetype=gitconfig

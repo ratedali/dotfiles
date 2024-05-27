@@ -3,15 +3,6 @@ AddKeysToAgent yes
 Host 192.168..
     HostKeyAlgorithms +ssh-rsa
 
-Host ebu-*
-    User ebu
-
-Host *.compute-1.amazonaws.com
+Host 18.198.104.248
     User ubuntu
-    IdentityFile ~/.ssh/mukhtar_aws.pem
-    StrictHostKeyChecking no
-    UserKnownHostsFile=/dev/null
-
-Host *.uni-saarland.de
-    User musaeed
-    IdentityFile ~/.ssh/id-saarland
+    IdentityFile ~/.ssh/AWSi/id_mockservice
