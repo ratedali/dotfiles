@@ -30,9 +30,11 @@
 [gpg]
     program = /mnt/c/Program Files (x86)/GnuPG/bin/gpg.exe
 [IncludeIf "gitdir:~/Workspace/AWSi/"]
-	path = .gitconfig-awsi
+	path = ~/dotfiles/gitconfig-awsi
 [IncludeIf "gitdir:~/Workspace/Personal/"]
-	path = .gitconfig-personal
+	path = ~/dotfiles/gitconfig-personal
+[IncludeIf "gitdir:~/dotfiles/"]
+	path = ~/dotfiles/gitconfig-personal
 [IncludeIf "gitdir:~/Workspace/UdS/"]
-	path = .gitconfig-uds
+	path = ~/dotfiles/gitconfig-uds
 # vim:filetype=gitconfig

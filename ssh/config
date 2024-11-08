@@ -1,5 +1,8 @@
 AddKeysToAgent yes
 
+Host github.com
+    IdentityFile ~/.ssh/id_ghcli
+
 Host 192.168..
     HostKeyAlgorithms +ssh-rsa
 
