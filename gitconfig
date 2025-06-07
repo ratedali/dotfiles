@@ -1,64 +1,57 @@
 [core]
 	autocrlf = input
-	editor = \"C:/Program Files (x86)/GitExtensions/GitExtensions.exe\" fileeditor
+	editor = \"C:/Program Files/GitExtensions/GitExtensions.exe\" fileeditor
 [i18n]
 	filesEncoding = utf-8
-    
 [init]
-    defaultBranch = main
+	defaultBranch = main
 [status]
-    submoduleSummary = true
+	submoduleSummary = true
 [fetch]
-	prune = true    
+	prune = true
 [pull]
-    rebase = true
+	rebase = true
 [diff]
-    guitool = code
-    submodule = log
+	guitool = code
+	submodule = log
 [merge]
-    tool = code
+	tool = code
+	guitool = code
 [rebase]
 	autoStash = true
 	autosquash = true
 	updateRefs = false
-
- 
 [alias]
-    a = add
-    br = branch
-    c = commit
-    co = checkout
-    d = diff
-    p = push
-    s = status
-    l = log --graph --pretty="'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'" --abbrev-commit
-    graph = log --graph --pretty=oneline --abbrev-commit
-    last = log -1 HEAD
-    cm = commit -m
-    cane = commit --amend --no-edit
-    pr = push --rebase
-    pf = push --force-with-lease
-
+	a = add
+	br = branch
+	c = commit
+	co = checkout
+	d = diff
+	p = push
+	s = status
+	l = log --graph --pretty='%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'--abbrev-commit
+	graph = log --graph --pretty=oneline --abbrev-commit
+	last = log -1 HEAD
+	cm = commit -m
+	cane = commit --amend --no-edit
+	pr = push --rebase
+	pf = push --force-with-lease
 [gpg]
-	program = "C:/Program Files (x86)/GnuPG/bin/gpg.exe"
+	program = C:/Program Files (x86)/GnuPG/bin/gpg.exe
 [gpg "ssh"]
 	program = ssh-keygen
-	allowedSignersFile = ""
+	allowedSignersFile = 
 [safe]
 	directory = C:/Users/rated/password-store
-
 [difftool "code"]
 	path = C:/Users/rated/AppData/Local/Programs/Microsoft VS Code/Code.exe
 	cmd = \"C:/Users/rated/AppData/Local/Programs/Microsoft VS Code/Code.exe\" --new-window --wait --diff \"$LOCAL\" \"$REMOTE\"
 [mergetool "code"]
-    path = C:/Users/rated/AppData/Local/Programs/Microsoft VS Code/Code.exe
-    cmd = \"C:/Users/rated/AppData/Local/Programs/Microsoft VS Code/Code.exe\" --new-window --wait --merge \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\"
-
+	path = C:/Users/rated/AppData/Local/Programs/Microsoft VS Code/Code.exe
+	cmd = \"C:/Users/rated/AppData/Local/Programs/Microsoft VS Code/Code.exe\" --new-window --wait --merge \"$REMOTE\" \"$LOCAL\" \"$BASE\" \"$MERGED\"
 [IncludeIf "gitdir:~/source/AWSi/"]
 	path = .gitconfig-awsi
-[IncludeIf "gitdir:~/source/repos/"]
+[IncludeIf "gitdir:~/source/Personal/"]
 	path = .gitconfig-personal
 [IncludeIf "gitdir:~/source/UdS/"]
 	path = .gitconfig-uds
-
-# vim:filetype=gitconfig

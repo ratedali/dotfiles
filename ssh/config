@@ -1,8 +1,22 @@
 AddKeysToAgent yes
 
+Host ssh.dev.azure.com
+    IdentityFile ~/.ssh/AWSi/id_azuredevops
+
 Host 192.168..
     HostKeyAlgorithms +ssh-rsa
 
 Host 18.198.104.248
     User ubuntu
     IdentityFile ~/.ssh/AWSi/id_mockservice
+    
+Host conduit.hpc.uni-saarland.de
+    User alsa00006
+    IdentityFile ~/.ssh/UdS/id_ed25519
+
+Host tmux.hpc.uni-saarland.de
+    HostName conduit.hpc.uni-saarland.de
+    User alsa00006
+    IdentityFile ~/.ssh/UdS/id_ed25519
+    RequestTTY yes
+    RemoteCommand tmux new -A -s remote

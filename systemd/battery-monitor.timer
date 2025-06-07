@@ -1,9 +1,0 @@
-[Unit]
-Description=Monitors battery level and charging status
-
-[Timer]
-OnStartupSec=3min
-OnUnitActiveSec=5min
-
-[Install]
-WantedBy=timers.target
