@@ -1,2 +1,3 @@
 EDITOR                                  DEFAULT=nvim
 PAGER                                   DEFAULT=less
+NVM_DIR                                 DEFAULT=/home/ali/.nvm
