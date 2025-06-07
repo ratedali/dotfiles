@@ -18,6 +18,13 @@ Host *.compute-1.amazonaws.com
     StrictHostKeyChecking no
     UserKnownHostsFile=/dev/null
 
-Host *.uni-saarland.de
-    User musaeed
-    IdentityFile ~/.ssh/id-saarland
+Host *.hpc.uni-saarland.de
+    User alsa00006
+    IdentityFile ~/.ssh/id_uds_ed25519
+
+Host tmux.hpc.uni-saarland.de
+    HostName conduit.hpc.uni-saarland.de
+    User alsa00006
+    IdentityFile ~/.ssh/id_uds_ed25519
+    RequestTTY yes
+    RemoteCommand tmux new -A -s remote
