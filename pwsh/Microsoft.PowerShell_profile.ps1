@@ -651,5 +651,8 @@ if ($host.Name -eq 'ConsoleHost')
 
 Import-Module -Name Terminal-Icons
 Import-Module PSCompletions
-    
-oh-my-posh --init --shell pwsh --config $PSScriptRoot\default.omp.json | Invoke-Expression
+
+if (Test-Path -Path $PSScriptRoot\default.omp.json -PathType Leaf)
+{
+    oh-my-posh --init --shell pwsh --config $PSScriptRoot\default.omp.json | Invoke-Expression
+}
