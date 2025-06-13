@@ -1,10 +1,11 @@
 #region Aliases
 New-Alias -Name g -Value git
-New-Alias -Name v -Value notepad++.exe
+New-Alias -Name v -Value nvim
+New-Alias -Name vim -Value nvim
 #endregion Aliases
 
 #region Shortcuts
-$global:workspace = "$HOME\source"
+$global:workspace = "$HOME\Workspace"
 function workspace
 {
   Set-Location -Path $workspace

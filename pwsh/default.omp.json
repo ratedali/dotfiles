@@ -53,7 +53,9 @@
             "folder_icon": "\udb83\uddcf",
             "folder_separator_icon": " \udb80\udd42",
             "mapped_locations": {
-            "C:\\Users\\rated\\source": "\udb83\udd09"
+                "/home/ali/Workspace": "\udb83\udd09",
+                "/mnt/c": "\ue70f",
+		"/home/ali/.config": "\ue615"
             }
           },
           "style": "plain",
