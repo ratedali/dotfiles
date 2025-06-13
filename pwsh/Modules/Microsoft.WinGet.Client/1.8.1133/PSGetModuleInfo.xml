@@ -22,7 +22,7 @@
       <S N="CompanyName">Microsoft Corporation</S>
       <S N="Copyright">(c) Microsoft Corporation. All rights reserved.</S>
       <DT N="PublishedDate">2024-04-24T21:18:45.813</DT>
-      <DT N="InstalledDate">2025-06-13T18:09:28.4252369+02:00</DT>
+      <DT N="InstalledDate">2025-06-13T21:11:08.7081747+02:00</DT>
       <B N="IsPrerelease">false</B>
       <Nil N="UpdatedDate" />
       <Nil N="LicenseUri" />
@@ -90,7 +90,7 @@
         </TN>
         <DCT>
           <En>
-            <S N="Key">Cmdlet</S>
+            <S N="Key">Command</S>
             <Obj N="Value" RefId="4">
               <TNRef RefId="2" />
               <LST>
@@ -121,6 +121,14 @@
             <Nil N="Value" />
           </En>
           <En>
+            <S N="Key">RoleCapability</S>
+            <Nil N="Value" />
+          </En>
+          <En>
+            <S N="Key">Workflow</S>
+            <Nil N="Value" />
+          </En>
+          <En>
             <S N="Key">DscResource</S>
             <Obj N="Value" RefId="5">
               <TNRef RefId="2" />
@@ -128,11 +136,7 @@
             </Obj>
           </En>
           <En>
-            <S N="Key">RoleCapability</S>
-            <Nil N="Value" />
-          </En>
-          <En>
-            <S N="Key">Command</S>
+            <S N="Key">Cmdlet</S>
             <Obj N="Value" RefId="6">
               <TNRef RefId="2" />
               <LST>
@@ -157,10 +161,6 @@
                 <S>Export-WinGetPackage</S>
               </LST>
             </Obj>
-          </En>
-          <En>
-            <S N="Key">Workflow</S>
-            <Nil N="Value" />
           </En>
         </DCT>
       </Obj>

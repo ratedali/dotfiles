@@ -2,12 +2,59 @@
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "blocks": [
     {
+      "alignment": "right",
+      "overflow": "hide",
+      "segments": [
+        {
+          "foreground": "#44FFD2",
+          "properties": {
+            "fetch_version": true
+          },
+          "style": "plain",
+          "template": "\ue718 {{ .Full }} ",
+          "type": "node"
+        },
+        {
+          "foreground": "#FE4A49",
+          "style": "plain",
+          "template": "\ue71e {{.Full}} ",
+          "type": "npm"
+        },
+        {
+          "foreground": "#FFD43B",
+          "properties": {
+            "display_mode": "context",
+            "fetch_version": true
+          },
+          "style": "plain",
+          "template": "\ue73c {{ .Full }} {{if .Venv}}({{ .Venv }}) {{end}}",
+          "type": "python"
+        },
+        {
+          "foreground": "#D600AA",
+          "properties": {
+            "fetch_version": true
+          },
+          "style": "plain",
+          "template": "\udb82\udeae {{ .Full }}",
+          "type": "dotnet"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
       "alignment": "left",
       "segments": [
         {
           "foreground": "#15C2CB",
           "properties": {
-            "style": "folder"
+            "style": "mixed",
+            "home_icon": "\udb84\udcb5",
+            "folder_icon": "\udb83\uddcf",
+            "folder_separator_icon": " \udb80\udd42",
+            "mapped_locations": {
+            "C:\\Users\\rated\\source": "\udb83\udd09"
+            }
           },
           "style": "plain",
           "template": "{{ .Path }} ",
@@ -27,21 +74,6 @@
           "style": "plain",
           "template": "{{if .Version}}<#F3EFF5>is</> \uf487 {{.Version}} {{end}}",
           "type": "project"
-        },
-        {
-          "foreground": "#44FFD2",
-          "properties": {
-            "fetch_version": true
-          },
-          "style": "plain",
-          "template": "<#F3EFF5>via</> \ue718 {{ .Full }} ",
-          "type": "node"
-        },
-        {
-          "foreground": "#FE4A49",
-          "style": "plain",
-          "template": "<#F3EFF5>and</> \ue71e {{.Full}} ",
-          "type": "npm"
         }
       ],
       "type": "prompt"
@@ -50,6 +82,12 @@
       "alignment": "left",
       "newline": true,
       "segments": [
+        {
+          "foreground": "#ef3f28",
+          "style": "plain",
+          "template": "\uf49c ",
+          "type": "root"
+        },
         {
           "foreground": "#FFE45E",
           "style": "plain",
