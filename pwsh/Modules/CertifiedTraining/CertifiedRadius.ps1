@@ -11,16 +11,16 @@ function Measure-CertifiedRadius
 
     process {
         $dir = Split-Path -Path $Path 
-        $values = @(Import-Csv -Path $Path)
-        $count = $values.Count
+        $all = @(Import-Csv -Path $Path)
+        $correct = @($all | Where-Object -Property Correct -EQ 1)
         
-        $radius = 0.0
-        $acc = ($values | Measure-Object -Property correct -Sum).Sum / $count 
         $result = @{
             Directory = Resolve-Path -Path $dir -Relative
-            ACR = [double]($values | Measure-Object -Property radius -Average).Average
+            ACR = [double]($correct | Measure-Object -Property radius -Sum).Sum / $all.Count
         }
         
+        $radius = 0.0
+        $acc = $correct.Count / $all.Count 
         $radii = [System.Collections.ArrayList]::new()
         do
         {
@@ -28,8 +28,8 @@ function Measure-CertifiedRadius
             $result.Add("{0:F2}" -f $radius, $acc)
             
             $radius = $radius + $StepSize
-            $values = @($values | Where-Object radius -GE $radius)
-            $acc = $values.Count / $count
+            $correct = @($correct | Where-Object radius -GE $radius)
+            $acc = $correct.Count / $all.Count
         }
         until([Math]::Round($acc, 4) -EQ 0.0)
         
