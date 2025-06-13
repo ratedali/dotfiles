@@ -7,11 +7,11 @@ New-Alias -Name v -Value notepad++.exe
 $global:workspace = "$HOME\source"
 function workspace
 {
-  cd $workspace
+  Set-Location -Path $workspace
 }
 
 function psdir
 {
-  cd (Split-Path $PROFILE.CurrentUserCurrentHost)
+  Set-Location -Path (Split-Path $PROFILE.CurrentUserCurrentHost)
 }
 #endregion
