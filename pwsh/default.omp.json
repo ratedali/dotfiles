@@ -2,50 +2,101 @@
   "$schema": "https://raw.githubusercontent.com/JanDeDobbeleer/oh-my-posh/main/themes/schema.json",
   "blocks": [
     {
-      "type": "prompt",
+      "alignment": "right",
+      "overflow": "hide",
+      "segments": [
+        {
+          "foreground": "#44FFD2",
+          "properties": {
+            "fetch_version": true
+          },
+          "style": "plain",
+          "template": "\ue718 {{ .Full }} ",
+          "type": "node"
+        },
+        {
+          "foreground": "#FE4A49",
+          "style": "plain",
+          "template": "\ue71e {{.Full}} ",
+          "type": "npm"
+        },
+        {
+          "foreground": "#FFD43B",
+          "properties": {
+            "display_mode": "context",
+            "fetch_version": true
+          },
+          "style": "plain",
+          "template": "\ue73c {{ .Full }} {{if .Venv}}({{ .Venv }}) {{end}}",
+          "type": "python"
+        },
+        {
+          "foreground": "#D600AA",
+          "properties": {
+            "fetch_version": true
+          },
+          "style": "plain",
+          "template": "\udb82\udeae {{ .Full }}",
+          "type": "dotnet"
+        }
+      ],
+      "type": "prompt"
+    },
+    {
       "alignment": "left",
       "segments": [
         {
-          "style": "plain",
-          "template": "{{ .UserName }} ",
-          "foreground": "lightYellow",
-          "type": "session"
-        },
-        {
+          "foreground": "#15C2CB",
           "properties": {
-            "style": "folder"
+            "style": "mixed",
+            "home_icon": "\udb84\udcb5",
+            "folder_icon": "\udb83\uddcf",
+            "folder_separator_icon": " \udb80\udd42",
+            "mapped_locations": {
+            "C:\\Users\\rated\\source": "\udb83\udd09"
+            }
           },
           "style": "plain",
-          "template": "<#ffffff>in</> {{ .Path }} ",
-          "foreground": "cyan",
+          "template": "{{ .Path }} ",
           "type": "path"
         },
         {
+          "foreground": "#F141A8",
           "properties": {
-            "branch_icon": " <#ff94df><b>\ue0a0 </b></>",
-            "fetch_stash_count": true
+            "branch_icon": "\ue0a0 "
           },
           "style": "plain",
-          "template": "<#ffffff>on</> {{ .HEAD }}{{ if gt .StashCount 0 }} \ueb4b {{ .StashCount }}{{ end }} ",
-          "foreground": "#ff94df",
+          "template": "<#F3EFF5>on</> {{ .HEAD }}{{if .BranchStatus }} {{ .BranchStatus }}{{ end }}{{ if .Working.Changed }} \uf044 {{ .Working.String }}{{ end }}{{ if and (.Working.Changed) (.Staging.Changed) }} |{{ end }}{{ if .Staging.Changed }} \uf046 {{ .Staging.String }}{{ end }} ",
           "type": "git"
+        },
+        {
+          "foreground": "#5EADF2",
+          "style": "plain",
+          "template": "{{if .Version}}<#F3EFF5>is</> \uf487 {{.Version}} {{end}}",
+          "type": "project"
         }
-      ]
+      ],
+      "type": "prompt"
     },
     {
-      "type": "prompt",
       "alignment": "left",
+      "newline": true,
       "segments": [
         {
+          "foreground": "#ef3f28",
           "style": "plain",
-          "template": "❯",
-          "foreground": "lightGreen",
+          "template": "\uf49c ",
+          "type": "root"
+        },
+        {
+          "foreground": "#FFE45E",
+          "style": "plain",
+          "template": "\u276f ",
           "type": "text"
         }
       ],
-      "newline": true
+      "type": "prompt"
     }
   ],
-  "version": 3,
-  "final_space": true
+  "version": 3
 }
