@@ -5,10 +5,6 @@ if (Test-Path -Path "$PSScriptRoot\Config" -PathType Container)
     | Sort-Object -Property Name
     | ForEach-Object -Process { . $_ }
 }
-#f45873b3-b655-43a6-b217-97c00aa0db58 PowerToys CommandNotFound module
-
-Import-Module -Name Microsoft.WinGet.CommandNotFound
-#f45873b3-b655-43a6-b217-97c00aa0db58
 
 Import-Module -Name Terminal-Icons
 Import-Module PSCompletions
