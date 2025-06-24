@@ -1,9 +1,12 @@
 if (Test-Path -Path "$PSScriptRoot\Config" -PathType Container)
 {
-  Get-ChildItem -Path "$PSScriptRoot\Config" -Recurse -Include *.ps1
-    | Where-Object -FilterScript { $_.Name[0] -NE '.' }
-    | Sort-Object -Property Name
-    | ForEach-Object -Process { . $_ }
+  $conf = @(Get-ChildItem -Path "$PSScriptRoot\Config" -Recurse -Include *.ps1
+            | Where-Object -FilterScript { $_.Name[0] -NE '.' }
+            | Sort-Object -Property Name)
+  foreach($conf_script in $conf)
+  {
+    . $conf_script
+  }
 }
 #f45873b3-b655-43a6-b217-97c00aa0db58 PowerToys CommandNotFound module
 

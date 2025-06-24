@@ -34,14 +34,22 @@ function Expand-ResultsArchive
       throw "Invalid results archive path: $Path"
     }
     
-    $dir = Split-Path -Path $Path -LeafBase
-    New-Item -Path $dir -Type Directory
+    $dir = (Split-Path -Path $Path -Leaf) -Split '\.' | Select-Object -First 1
+    if (!(Test-Path -Path $dir -PathType Container))
+    { 
+      [void](New-Item -Path $dir -Type Directory)
+    }
     
-    tar -tvf $Path
-    if($PSCmdlet.ShouldProcess($Path, "extract"))
+    if($PSCmdlet.ShouldProcess($Path, "Extract TAR archive to new directory $dir"))
     {
       tar -C $dir -xf $Path
     }
+    else
+    {
+      Write-Verbose "Archive contents:"
+      tar -tf $Path
+    }
+      
     
     Move-Item -Path $Path -Destination $dir
   }
