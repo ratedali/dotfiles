@@ -1,17 +1,11 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2025-06-14T00:02:05.172-00:00",
+	"CreationDate" : "2025-07-01T13:25:52.022-00:00",
 	"Sources" : 
 	[
 		{
 			"Packages" : 
 			[
-				{
-					"PackageIdentifier" : "MullvadVPN.MullvadVPN"
-				},
-				{
-					"PackageIdentifier" : "NexusMods.Vortex"
-				},
 				{
 					"PackageIdentifier" : "7zip.7zip"
 				},
@@ -34,7 +28,7 @@
 					"PackageIdentifier" : "Microsoft.OneDrive"
 				},
 				{
-					"PackageIdentifier" : "VideoLAN.VLC"
+					"PackageIdentifier" : "Daum.PotPlayer"
 				},
 				{
 					"PackageIdentifier" : "DigitalScholar.Zotero"
@@ -43,22 +37,19 @@
 					"PackageIdentifier" : "AppWork.JDownloader"
 				},
 				{
+					"PackageIdentifier" : "wkhtmltopdf.wkhtmltox"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.msodbcsql.17"
-				},
-				{
-					"PackageIdentifier" : "GitHub.cli"
-				},
-				{
-					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2010.x64"
 				},
 				{
-					"PackageIdentifier" : "Google.Chrome"
+					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
 				},
 				{
-					"PackageIdentifier" : "MongoDB.Compass.Full"
+					"PackageIdentifier" : "GitHub.cli"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.CLRTypesSQLServer.2019"
@@ -67,16 +58,25 @@
 					"PackageIdentifier" : "Microsoft.VCRedist.2008.x64"
 				},
 				{
+					"PackageIdentifier" : "Google.Chrome"
+				},
+				{
 					"PackageIdentifier" : "GitExtensionsTeam.GitExtensions"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.WindowsPCHealthCheck"
 				},
 				{
+					"PackageIdentifier" : "MongoDB.Compass.Full"
+				},
+				{
+					"PackageIdentifier" : "sylikc.JPEGView"
+				},
+				{
 					"PackageIdentifier" : "WinDirStat.WinDirStat"
 				},
 				{
-					"PackageIdentifier" : "Adobe.Acrobat.Reader.64-bit"
+					"PackageIdentifier" : "Inkscape.Inkscape"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.WebDeploy"
@@ -89,9 +89,6 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VisualStudio.2022.Community"
-				},
-				{
-					"PackageIdentifier" : "DiskInternals.LinuxReader"
 				},
 				{
 					"PackageIdentifier" : "GnuPG.GnuPG"
@@ -112,6 +109,9 @@
 					"PackageIdentifier" : "Microsoft.DotNet.DesktopRuntime.6"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2012.x86"
 				},
 				{
@@ -122,9 +122,6 @@
 				},
 				{
 					"PackageIdentifier" : "Microsoft.DotNet.SDK.6"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.VCRedist.2008.x86"
@@ -139,10 +136,7 @@
 					"PackageIdentifier" : "Microsoft.VCRedist.2012.x64"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x86"
-				},
-				{
-					"PackageIdentifier" : "Anki.Anki"
+					"PackageIdentifier" : "Microsoft.VCRedist.2015+.x64"
 				},
 				{
 					"PackageIdentifier" : "Discord.Discord"
@@ -163,10 +157,10 @@
 					"PackageIdentifier" : "SteamRE.DepotDownloader"
 				},
 				{
-					"PackageIdentifier" : "Zoom.Zoom.EXE"
+					"PackageIdentifier" : "SumatraPDF.SumatraPDF"
 				},
 				{
-					"PackageIdentifier" : "PostgreSQL.pgAdmin"
+					"PackageIdentifier" : "Zoom.Zoom.EXE"
 				},
 				{
 					"PackageIdentifier" : "KhronosGroup.VulkanSDK"
@@ -185,6 +179,9 @@
 				},
 				{
 					"PackageIdentifier" : "IJHack.QtPass"
+				},
+				{
+					"PackageIdentifier" : "JeniusApps.Ambie"
 				},
 				{
 					"PackageIdentifier" : "Canonical.Ubuntu.2404"
@@ -220,5 +217,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.11.320-preview"
+	"WinGetVersion" : "1.11.400"
 }
