@@ -6,7 +6,7 @@ if ($host.Name -eq 'ConsoleHost')
     # based on: https://github.com/PowerShell/PSReadLine/blob/master/PSReadLine/SamplePSReadLineProfile.ps1
     Import-Module PSReadLine
     Set-PSReadLineOption -EditMode Windows
-    Set-PSReadLineOption -PredictionSource History
+    Set-PSReadLineOption -PredictionSource HistoryAndPlugin
     Set-PSReadLineOption -PredictionViewStyle ListView
     
     Set-PSReadLineKeyHandler -Key Ctrl+l -Function ClearScreen
