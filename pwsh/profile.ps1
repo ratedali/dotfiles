@@ -1,6 +1,6 @@
 #region Aliases
 New-Alias -Name g -Value git
-New-Alias -Name v -Value code.exe
+New-Alias -Name v -Value code
 #endregion Aliases
 
 #region Navigation

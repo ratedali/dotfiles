@@ -3,7 +3,12 @@
 
     $filter_input_arr = $PSCompletions.filter_input_arr
 
-    $config = scoop config
+    try {
+        $config = scoop config
+    }
+    catch {
+        return $completions
+    }
     $root_path = $config.root_path
     $global_path = $config.global_path
 
@@ -30,19 +35,18 @@
             }
         }
         'install' {
-            $dir = @()
             $PSCompletions.temp_scoop_installed_apps = Get-ChildItem "$root_path\apps" | ForEach-Object { $_.BaseName }
-            Get-ChildItem "$root_path\buckets" | ForEach-Object {
-                $dir += @{
+            $dir = Get-ChildItem "$root_path\buckets" | ForEach-Object {
+                @{
                     bucket = $_.BaseName
                     path   = "$($_.FullName)\bucket"
                 }
             }
-            $return = $PSCompletions.handle_data_by_runspace($dir, {
+            $tempList += $PSCompletions.handle_data_by_runspace($dir, {
                     param ($items, $PSCompletions, $Host_UI)
                     $return = @()
                     foreach ($item in $items) {
-                        Get-ChildItem $item.path | ForEach-Object {
+                        Get-ChildItem $item.path -Recurse -Filter *.json | ForEach-Object {
                             $app = "$($item.bucket)/$($_.BaseName)"
                             if ($app -notin $PSCompletions.input_arr -and $_.BaseName -notin $PSCompletions.temp_scoop_installed_apps) {
                                 $return += @{
@@ -194,7 +198,7 @@
                 }
                 'scoop_repo'                      = @{
                     'en-US' = @('Default Value: http://github.com/ScoopInstaller/Scoop', 'Git repository containining scoop source code.', 'This configuration is useful for custom forks.')
-                    'zh-CN' = @('默认值: http://github.com/ScoopInstaller/Scoop', 'Scoop 源代码仓库', '这个配置是可用的，对于自定义分支很有用。')
+                    'zh-CN' = @('默认值: http://github.com/ScoopInstaller/Scoop', 'Scoop 源代码仓库', '对于自定义分支很有用。')
                 }
                 'scoop_branch'                    = @{
                     'en-US' = @('Allow to use different branch than master.', 'Could be used for testing specific functionalities before released into all users.', 'If you want to receive updates earlier to test new functionalities use develop')
@@ -313,12 +317,12 @@
 
                 # scoop-install config
                 'scoop-install-url-replace-from'  = @{
-                    'zh-CN' = @('需要被替换的 URL 前缀。', '详情参考: https://gitee.com/abgox/scoop-install')
-                    'en-US' = @('The URL prefix to be replaced.', 'See https://github.com/abgox/scoop-install for details.')
+                    'zh-CN' = @('需要被替换的 URL 前缀。', '详情参考: https://gitee.com/abgox/scoop-tools')
+                    'en-US' = @('The URL prefix to be replaced.', 'See https://github.com/abgox/scoop-tools for details.')
                 }
                 'scoop-install-url-replace-to'    = @{
-                    'zh-CN' = @('需要替换成的 URL 前缀。', '详情参考: https://gitee.com/abgox/scoop-install')
-                    'en-US' = @('The URL prefix to be replaced with.', 'See https://github.com/abgox/scoop-install for details.')
+                    'zh-CN' = @('需要替换成的 URL 前缀。', '详情参考: https://gitee.com/abgox/scoop-tools')
+                    'en-US' = @('The URL prefix to be replaced with.', 'See https://github.com/abgox/scoop-tools for details.')
                 }
             }
 
